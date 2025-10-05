@@ -27,6 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <link rel="stylesheet" href="/vendor/platformscode-core.css" />
         {children}
       </body>
     </html>
