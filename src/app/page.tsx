@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import Image from "next/image";
 import { useRef } from "react";
 import dynamic from "next/dynamic";
 
@@ -11,14 +11,17 @@ const DgaNumberInput = dynamic(async () => (await import("platformscode-new-reac
 const DgaTextarea = dynamic(async () => (await import("platformscode-new-react")).DgaTextarea, { ssr: false });
 const DgaCheckbox = dynamic(async () => (await import("platformscode-new-react")).DgaCheckbox, { ssr: false });
 
+type ValueRef = { value?: string } | null;
+type CheckedRef = { checked?: boolean } | null;
+
 export default function Home() {
-  const nameRef = useRef<any>(null);
-  const emailRef = useRef<any>(null);
-  const dateRef = useRef<any>(null);
-  const phoneRef = useRef<any>(null);
-  const ageRef = useRef<any>(null);
-  const messageRef = useRef<any>(null);
-  const termsRef = useRef<any>(null);
+  const nameRef = useRef<ValueRef>(null);
+  const emailRef = useRef<ValueRef>(null);
+  const dateRef = useRef<ValueRef>(null);
+  const phoneRef = useRef<ValueRef>(null);
+  const ageRef = useRef<ValueRef>(null);
+  const messageRef = useRef<ValueRef>(null);
+  const termsRef = useRef<CheckedRef>(null);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -39,26 +42,26 @@ export default function Home() {
         <h2 className="text-lg font-semibold mb-4">Quick Form</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="col-span-1">
-            <DgaTextInput ref={nameRef} placeholder="Your name"></DgaTextInput>
+            <DgaTextInput ref={(el: any) => { (nameRef as any).current = el; }} placeholder="Your name"></DgaTextInput>
           </div>
           <div className="col-span-1">
-            <DgaTextInput ref={emailRef} placeholder="Email address" type="text"></DgaTextInput>
+            <DgaTextInput ref={(el: any) => { (emailRef as any).current = el; }} placeholder="Email address" type="text"></DgaTextInput>
           </div>
           <div className="col-span-1">
-            <DgaTextInput ref={phoneRef} placeholder="Phone number" type="text"></DgaTextInput>
+            <DgaTextInput ref={(el: any) => { (phoneRef as any).current = el; }} placeholder="Phone number" type="text"></DgaTextInput>
           </div>
           <div className="col-span-1">
-            <DgaNumberInput ref={ageRef} placeholder="Age"></DgaNumberInput>
+            <DgaNumberInput ref={(el: any) => { (ageRef as any).current = el; }} placeholder="Age"></DgaNumberInput>
           </div>
           <div className="md:col-span-2 col-span-1">
-            <DgaDatepicker ref={dateRef}></DgaDatepicker>
+            <DgaDatepicker ref={(el: any) => { (dateRef as any).current = el; }}></DgaDatepicker>
           </div>
           <div className="md:col-span-2 col-span-1">
-            <DgaTextarea ref={messageRef} placeholder="Message"></DgaTextarea>
+            <DgaTextarea ref={(el: any) => { (messageRef as any).current = el; }} placeholder="Message"></DgaTextarea>
           </div>
           <div className="md:col-span-2 col-span-1">
             <label className="flex items-center gap-2 text-sm">
-              <DgaCheckbox ref={termsRef}></DgaCheckbox>
+              <DgaCheckbox ref={(el: any) => { (termsRef as any).current = el; }}></DgaCheckbox>
               <span>I accept the terms</span>
             </label>
           </div>
