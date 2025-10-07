@@ -24,6 +24,7 @@ import { guid } from "../utils/guid";
 //   import Feedback from "../Feedback";
 // import "platformscode-new-react/dist/style.css";
 import { useEffect, useState } from "react";
+import { useLanguage } from "./i18n/LanguageProvider";
 import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
   
   function Slider() {
@@ -79,58 +80,10 @@ import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
   }
   
   const Home: React.FC = () => {
-  useEffect(() => {
-    const savedLang = typeof window !== 'undefined' ? localStorage.getItem('site-lang') : null;
-    const html = document.documentElement;
-    const initialLang = savedLang || html.getAttribute('lang') || 'ar';
-    html.setAttribute('lang', initialLang);
-    html.setAttribute('dir', initialLang === 'ar' ? 'rtl' : 'ltr');
-    applyLanguageToPlatformComponents(initialLang);
-    const observer = new MutationObserver(() => {
-      const l = html.getAttribute('lang') || 'ar';
-      applyLanguageToPlatformComponents(l);
-    });
-    observer.observe(html, { attributes: true, attributeFilter: ['lang'] });
-    return () => observer.disconnect();
-  }, []);
-
-  const toggleLanguage = () => {
-    const html = document.documentElement;
-    const current = html.getAttribute('lang') === 'ar' ? 'en' : 'ar';
-    html.setAttribute('lang', current);
-    html.setAttribute('dir', current === 'ar' ? 'rtl' : 'ltr');
-    try { localStorage.setItem('site-lang', current); } catch {}
-  };
-
-  const applyLanguageToPlatformComponents = (lang: string) => {
-    try {
-      const elements = Array.from(document.querySelectorAll('*')) as HTMLElement[];
-      for (const el of elements) {
-        const tag = el.tagName;
-        if (tag.startsWith('DGA-') || tag.startsWith('NDS-')) {
-          el.setAttribute('language', lang);
-          // Optional: search box speech recognition alignment
-          if (tag === 'DGA-SEARCH-BOX') {
-            el.setAttribute('speech-lang', lang === 'ar' ? 'ar-SA' : 'en-US');
-          }
-        }
-      }
-    } catch {}
-  };
+  const { lang, dict, toggle } = useLanguage();
 
   // Localized banner items (weather, date, time, location)
-  const [currentLang, setCurrentLang] = useState<'ar' | 'en'>(() =>
-    typeof document !== 'undefined' && (document.documentElement.getAttribute('lang') as 'ar' | 'en') || 'ar'
-  );
-
-  useEffect(() => {
-    const html = document.documentElement;
-    const update = () => setCurrentLang((html.getAttribute('lang') as 'ar' | 'en') || 'ar');
-    update();
-    const obs = new MutationObserver(update);
-    obs.observe(html, { attributes: true, attributeFilter: ['lang'] });
-    return () => obs.disconnect();
-  }, []);
+  const currentLang: 'ar' | 'en' = lang;
 
   const locale = currentLang === 'ar' ? 'ar-SA' : 'en-US';
   const now = new Date();
@@ -138,10 +91,17 @@ import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
   const timeStr = new Intl.DateTimeFormat(locale, { hour: 'numeric', minute: '2-digit', hour12: true }).format(now);
   const weatherStr = currentLang === 'ar' ? 'غائم' : 'Cloudy';
   const cityStr = currentLang === 'ar' ? 'الرياض' : 'Riyadh';
+  const t = {
+    menu: dict.header.menu.map((label) => ({ label })),
+    actions: dict.header.actions,
+  };
+  const menuLabels = dict.header.menu;
+  const newsIdx = menuLabels.findIndex(l => l === (currentLang === 'ar' ? 'الأخبار' : 'News'));
+  const servicesIdx = menuLabels.findIndex(l => l === (currentLang === 'ar' ? 'الخدمات' : 'Services'));
     return (
       <>
         <DigitalSignatureBanner className="max-md:hidden" />
-        <DgaSecondNavHeader variant="gray" >
+        <DgaSecondNavHeader key={currentLang} variant="gray" >
           <DgaSecondNavHeaderActions>
           <DgaButton
               label="Button"
@@ -190,7 +150,7 @@ import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
           </DgaSecondNavHeaderContent>
         </DgaSecondNavHeader>
   
-        <DgaNavHeader fullWidth divider>
+        <DgaNavHeader key={currentLang} fullWidth divider>
           <DgaNavHeaderMain collapsed>
             <div className=" w-11 h-16 ">
 <img src="https://imamu.edu.sa/_layouts/15/2016/Portal/img/logo.png" alt="logo" className="w-full h-full" />
@@ -205,75 +165,21 @@ import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
             </div>
           
             <DgaNavHeaderMenu>
-              <DgaNavHeaderLink
-                label="Item  1"
-                icon="arrow-down-01"
-                subMenuBackground="Brand"
-                subMenuFullWidth=""
-              >
-                {" "}
-              </DgaNavHeaderLink>
-              <DgaNavHeaderLink
-                label="Item  2"
-                icon="arrow-down-01"
-                subMenuBackground="Brand"
-                subMenuFullWidth=""
-              >
-                {" "}
-              </DgaNavHeaderLink>
-              <DgaNavHeaderLink
-                label="Item  3"
-                icon="arrow-down-01"
-                subMenuBackground="Brand"
-                subMenuFullWidth=""
-              >
-                {" "}
-              </DgaNavHeaderLink>
-              <DgaNavHeaderLink
-                label="Item  4"
-                icon="arrow-down-01"
-                subMenuBackground="Brand"
-                subMenuFullWidth=""
-              >
-                {" "}
-              </DgaNavHeaderLink>
-              <DgaNavHeaderLink
-                label="Item  5"
-                icon="arrow-down-01"
-                subMenuBackground="Brand"
-                subMenuFullWidth=""
-              >
-                {" "}
-              </DgaNavHeaderLink>
-              <DgaNavHeaderLink
-                label="Item  6"
-                icon="arrow-down-01"
-                subMenuBackground="Brand"
-                subMenuFullWidth=""
-              >
-                {" "}
-              </DgaNavHeaderLink>
-              <DgaNavHeaderLink
-                label="Item  7"
-                icon="arrow-down-01"
-                subMenuBackground="Brand"
-                subMenuFullWidth=""
-              >
-                {" "}
-              </DgaNavHeaderLink>
+              {t.menu.map(({ label }: { label: string }, idx: number) => (
+                <DgaNavHeaderLink
+                  key={label}
+                  label={label}
+                  icon={(idx === servicesIdx || idx === newsIdx - 1) ? "arrow-down-01" : undefined}
+                  subMenuBackground="brand"
+                >
+                </DgaNavHeaderLink>
+              ))}
             </DgaNavHeaderMenu>
           </DgaNavHeaderMain>
           <DgaNavHeaderActions>
-            <DgaHeaderActionBtn
-              label="Search"
-              icon="search-01"
-            ></DgaHeaderActionBtn>
-            <DgaHeaderActionBtn
-              label="عربي"
-              icon="translation"
-              onClick={toggleLanguage}
-            ></DgaHeaderActionBtn>
-            <DgaHeaderActionBtn label="Login" icon="user"></DgaHeaderActionBtn>
+            <DgaHeaderActionBtn label={t.actions.search} icon="search-01"></DgaHeaderActionBtn>
+            <DgaHeaderActionBtn label={t.actions.langToggle} icon="translation" onClick={() => toggle()}></DgaHeaderActionBtn>
+            <DgaHeaderActionBtn label={t.actions.login} icon="user"></DgaHeaderActionBtn>
           </DgaNavHeaderActions>
         </DgaNavHeader>
   
@@ -674,43 +580,15 @@ import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
           socialMediaTitle="Social Media"
           accessibilityTitle="accessibility Tools"
           socialMediaLinks={[
-            {
-              title: "any",
-              target: "",
-              // icon: <DgaIcon icon="linkedin-02" variant="stroke" type="rounded" />,
-            },
-            {
-              title: "any",
-              target: "",
-              // icon: <ArrowRight02Icon />,
-            },
-            {
-              title: "any",
-              target: "",
-              // icon: <ArrowRight02Icon />,
-            },
-            {
-              title: "any",
-              target: "",
-              // icon: <ArrowRight02Icon />,
-            },
+            { title: "LinkedIn", target: "#", icon: { name: "linkedin-02", variant: "stroke", type: "rounded" } },
+            { title: "Twitter", target: "#", icon: { name: "twitter-01", variant: "stroke", type: "rounded" } },
+            { title: "YouTube", target: "#", icon: { name: "youtube", variant: "stroke", type: "rounded" } },
+            { title: "Facebook", target: "#", icon: { name: "facebook-02", variant: "stroke", type: "rounded" } },
           ]}
           accessibilityLinks={[
-            {
-              title: "any",
-              target: "",
-              // icon: <ArrowRight02Icon />,
-            },
-            {
-              title: "any",
-              target: "",
-              // icon: <ArrowRight02Icon />,
-            },
-            {
-              title: "any",
-              target: "",
-              // icon: <ArrowRight02Icon />,
-            },
+            { title: "Increase text", target: "#", icon: { name: "zoom-in-area", variant: "stroke", type: "rounded" } },
+            { title: "Decrease text", target: "#", icon: { name: "zoom-out-area", variant: "stroke", type: "rounded" } },
+            { title: "Site map", target: "#", icon: { name: "grid-dots-outer", variant: "stroke", type: "rounded" } },
           ]}
           copyright="All Right Reserved For Digital Government Authority © 2024"
           basicLinks={[
