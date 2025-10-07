@@ -20,6 +20,7 @@ const DgaSecondNavHeader = dynamic(() => import("platformscode-new-react").then(
 const DgaSecondNavHeaderActions = dynamic(() => import("platformscode-new-react").then(m => m.DgaSecondNavHeaderActions), { ssr: false });
 const DgaSecondNavHeaderContent = dynamic(() => import("platformscode-new-react").then(m => m.DgaSecondNavHeaderContent), { ssr: false });
 const DgaSecondNavHeaderItem = dynamic(() => import("platformscode-new-react").then(m => m.DgaSecondNavHeaderItem), { ssr: false });
+const DgaLabel = dynamic(() => import("platformscode-new-react").then(m => m.DgaLabel), { ssr: false });
 import { guid } from "../utils/guid";
 //   import Feedback from "../Feedback";
 // import "platformscode-new-react/dist/style.css";
@@ -101,7 +102,11 @@ import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
     return (
       <>
         <DigitalSignatureBanner className="max-md:hidden" />
-        <DgaSecondNavHeader key={currentLang} variant="gray" >
+        <DgaSecondNavHeader
+          key={currentLang}
+          variant="gray"
+          hideDivider
+        >
           <DgaSecondNavHeaderActions>
           <DgaButton
               label="Button"
@@ -152,8 +157,13 @@ import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
   
         <DgaNavHeader key={currentLang} fullWidth divider>
           <DgaNavHeaderMain collapsed>
-            <div className=" w-11 h-16 ">
-<img src="https://imamu.edu.sa/_layouts/15/2016/Portal/img/logo.png" alt="logo" className="w-full h-full" />
+            <div className="flex items-center gap-3">
+              <div className="w-11 h-16">
+                <img src="https://imamu.edu.sa/_layouts/15/2016/Portal/img/logo.png" alt="logo" className="w-full h-full" />
+              </div>
+              <div className="flex flex-col leading-tight">
+                <DgaLabel label={dict.header.brand} size="md" variant="default" />
+              </div>
             {/* <DgaNavHeaderLogos
               logoSrc="https://imamu.edu.sa/_layouts/15/2016/Portal/img/logo.png"
               //   govSrc="https://dga-nds-fbhtx.ondigitalocean.app/mobile-logo.svg"
