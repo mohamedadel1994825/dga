@@ -192,12 +192,18 @@ import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
   
         <DgaNavHeader fullWidth divider>
           <DgaNavHeaderMain collapsed>
-            <DgaNavHeaderLogos
-              logoSrc="https://dga-nds-fbhtx.ondigitalocean.app/mobile-logo.svg"
+            <div className=" w-11 h-16 ">
+<img src="https://imamu.edu.sa/_layouts/15/2016/Portal/img/logo.png" alt="logo" className="w-full h-full" />
+            {/* <DgaNavHeaderLogos
+              logoSrc="https://imamu.edu.sa/_layouts/15/2016/Portal/img/logo.png"
               //   govSrc="https://dga-nds-fbhtx.ondigitalocean.app/mobile-logo.svg"
               logoLink="#"
               govLink="#"
-            ></DgaNavHeaderLogos>
+          
+
+            ></DgaNavHeaderLogos> */}
+            </div>
+          
             <DgaNavHeaderMenu>
               <DgaNavHeaderLink
                 label="Item  1"
