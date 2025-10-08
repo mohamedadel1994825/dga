@@ -2,11 +2,7 @@
 
 import { useEffect, useRef } from "react";
 
-type DigitalSignatureBannerProps = {
-  className?: string;
-};
-
-export default function DigitalSignatureBanner({ className }: DigitalSignatureBannerProps) {
+export default function DigitalSignatureBanner() {
   const sigRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
@@ -32,7 +28,7 @@ export default function DigitalSignatureBanner({ className }: DigitalSignatureBa
   return (
     <div >
       {/* @ts-expect-error - web component */}
-      <dga-digital-signature ref={(el: any) => (sigRef.current = el)} />
+      <dga-digital-signature ref={(el: HTMLElement) => (sigRef.current = el)} />
     </div>
   );
 }

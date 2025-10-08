@@ -1,6 +1,6 @@
 export function guid(): string {
-  if (typeof crypto !== "undefined" && "randomUUID" in crypto && typeof (crypto as any).randomUUID === "function") {
-    return (crypto as any).randomUUID();
+  if (typeof crypto !== "undefined" && "randomUUID" in crypto && typeof (crypto as unknown as { randomUUID: () => string }).randomUUID === "function") {
+    return (crypto as unknown as { randomUUID: () => string }).randomUUID();
   }
   const template = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";
   return template.replace(/[xy]/g, (c) => {

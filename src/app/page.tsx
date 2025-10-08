@@ -2,18 +2,12 @@
 // @ts-nocheck
 
 import dynamic from "next/dynamic";
-const DgaBreadcrumbs = dynamic(() => import("platformscode-new-react").then(m => m.DgaBreadcrumbs), { ssr: false });
 const DgaButton = dynamic(() => import("platformscode-new-react").then(m => m.DgaButton), { ssr: false });
-const DgaCard = dynamic(() => import("platformscode-new-react").then(m => m.DgaCard), { ssr: false });
-const DgaDivider = dynamic(() => import("platformscode-new-react").then(m => m.DgaDivider), { ssr: false });
-const DgaFeaturedIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaFeaturedIcon), { ssr: false });
-const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.DgaFooter), { ssr: false });
 const DgaHeaderActionBtn = dynamic(() => import("platformscode-new-react").then(m => m.DgaHeaderActionBtn), { ssr: false });
 const DgaIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaIcon), { ssr: false });
 const DgaNavHeader = dynamic(() => import("platformscode-new-react").then(m => m.DgaNavHeader), { ssr: false });
 const DgaNavHeaderActions = dynamic(() => import("platformscode-new-react").then(m => m.DgaNavHeaderActions), { ssr: false });
 const DgaNavHeaderLink = dynamic(() => import("platformscode-new-react").then(m => m.DgaNavHeaderLink), { ssr: false });
-const DgaNavHeaderLogos = dynamic(() => import("platformscode-new-react").then(m => m.DgaNavHeaderLogos), { ssr: false });
 const DgaNavHeaderMain = dynamic(() => import("platformscode-new-react").then(m => m.DgaNavHeaderMain), { ssr: false });
 const DgaNavHeaderMenu = dynamic(() => import("platformscode-new-react").then(m => m.DgaNavHeaderMenu), { ssr: false });
 const DgaSecondNavHeader = dynamic(() => import("platformscode-new-react").then(m => m.DgaSecondNavHeader), { ssr: false });
@@ -21,64 +15,12 @@ const DgaSecondNavHeaderActions = dynamic(() => import("platformscode-new-react"
 const DgaSecondNavHeaderContent = dynamic(() => import("platformscode-new-react").then(m => m.DgaSecondNavHeaderContent), { ssr: false });
 const DgaSecondNavHeaderItem = dynamic(() => import("platformscode-new-react").then(m => m.DgaSecondNavHeaderItem), { ssr: false });
 const DgaLabel = dynamic(() => import("platformscode-new-react").then(m => m.DgaLabel), { ssr: false });
-import { guid } from "../utils/guid";
 //   import Feedback from "../Feedback";
 // import "platformscode-new-react/dist/style.css";
-import { useEffect, useState } from "react";
 import { useLanguage } from "./i18n/LanguageProvider";
 import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
+import Image from "next/image";
   
-  function Slider() {
-    const numberInView = 3;
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [inView, setinView] = useState<number[]>([]);
-    const [inLeftView, setInLeftView] = useState<number[]>([]);
-    const [inRightView, setInRightView] = useState<number[]>([]);
-    const card = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    useEffect(() => {
-      if (currentIndex === 0) {
-        setinView(() => card.slice(currentIndex * numberInView, numberInView));
-        setInLeftView(() => {
-          return card.slice(-numberInView);
-        });
-        setInRightView(() => {
-          return card.slice(
-            currentIndex * numberInView + numberInView,
-            numberInView
-          );
-        });
-      }
-    }, [currentIndex]);
-  
-    return (
-      <div>
-        <div className="flex gap-[16px] md:-translate-x-[calc(100%/4-16px+(16px/4))] xl:-translate-x-[calc(100%/4-16px+(16px/4))/2] ">
-          {card.map((_, i) => {
-            return (
-              // <div
-              //   key={i.toString()}
-              //   className="w-[calc(100%/1-16px+(16px/1))] md:w-[calc(100%/2-16px+(16px/2))] xl:w-[calc(100%/4-16px+(16px/4))] flex-shrink-0 flex-grow-0"
-              // >
-              <DgaCard
-                key={i.toString()}
-                cardTitle={"title"}
-                description={"description"}
-                primaryActionLabel={"action"}
-                secondaryActionLabel={"action"}
-              />
-  
-              // </div>
-            );
-          })}
-        </div>
-        <div className="dots mt-[36px] flex justify-center items-center gap-[8px]">
-          <span className="size-[16px] inline-block rounded-full bg-[var(--stepper-button-completed,#1B8354)] cursor-pointer"></span>
-          <span className="size-[16px] inline-block rounded-full bg-[var(--background-neutral-200,#E5E7EB)] cursor-pointer"></span>
-          <span className="size-[16px] inline-block rounded-full bg-[var(--background-neutral-200,#E5E7EB)] cursor-pointer"></span>
-        </div>
-      </div>
-    );
-  }
   
   const Home: React.FC = () => {
   const { lang, dict, toggle } = useLanguage();
@@ -102,7 +44,7 @@ import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
     return (
       <div >
         <div >
-        <DigitalSignatureBanner  className="max-md:hidden"  />
+        <DigitalSignatureBanner />
         <DgaSecondNavHeader
           key={currentLang}
           variant="gray"
@@ -140,27 +82,27 @@ import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
               iconOnly
             ></DgaButton>
           </DgaSecondNavHeaderActions>
-          <DgaSecondNavHeaderContent>
+          <DgaSecondNavHeaderContent >
             <DgaSecondNavHeaderItem label={weatherStr}>
-              <DgaIcon icon="cloud" variant="stroke" type="rounded" />
+              <DgaIcon size={16} icon="cloud" variant="stroke" type="rounded" />
             </DgaSecondNavHeaderItem>
             <DgaSecondNavHeaderItem label={dateStr}>
-              <DgaIcon icon="calendar-04" variant="stroke" type="rounded" />
+              <DgaIcon size={16} icon="calendar-04" variant="stroke" type="rounded" />
             </DgaSecondNavHeaderItem>
             <DgaSecondNavHeaderItem label={timeStr}>
-              <DgaIcon icon="time-04" variant="stroke" type="rounded" />
+              <DgaIcon size={16} icon="time-04" variant="stroke" type="rounded" />
             </DgaSecondNavHeaderItem>
             <DgaSecondNavHeaderItem label={cityStr}>
-              <DgaIcon icon="location-01" variant="stroke" type="rounded" />
+              <DgaIcon size={16} icon="location-01" variant="stroke" type="rounded" />
             </DgaSecondNavHeaderItem>
           </DgaSecondNavHeaderContent>
         </DgaSecondNavHeader>
         </div>
-        <DgaNavHeader key={currentLang} fullWidth divider  >
-          <DgaNavHeaderMain  collapsed> 
+         <DgaNavHeader key={currentLang} fullWidth divider={false} >
+          <DgaNavHeaderMain  collapsed > 
             <div className="flex items-center gap-3">
               <div className="w-11 h-16">
-                <img src="https://imamu.edu.sa/_layouts/15/2016/Portal/img/logo.png" alt="logo" className="w-full h-full" />
+                <Image src="https://imamu.edu.sa/_layouts/15/2016/Portal/img/logo.png" alt="logo" width={110} height={160} />
               </div>
               <div className="flex flex-col leading-tight">
                 <DgaLabel label={dict.header.brand} size="md" variant="default" />

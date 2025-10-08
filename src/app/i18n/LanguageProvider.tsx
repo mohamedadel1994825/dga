@@ -127,7 +127,7 @@ export default function LanguageProvider({ children }: { children: React.ReactNo
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const value = useMemo<LanguageContextValue>(() => ({ lang, dict: DICTS[lang], toggle, set }), [lang, toggle]);
+  const value = useMemo<LanguageContextValue>(() => ({ lang, dict: DICTS[lang], toggle, set }), [lang, toggle, set]);
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
