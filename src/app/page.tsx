@@ -20,6 +20,8 @@ const DgaLabel = dynamic(() => import("platformscode-new-react").then(m => m.Dga
 import { useLanguage } from "./i18n/LanguageProvider";
 import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
 import Image from "next/image";
+import { DgaCard, DgaDivider, DgaFeaturedIcon, DgaFooter, DgaSlider } from "platformscode-new-react";
+import { guid } from "@/utils/guid";
   
   
   const Home: React.FC = () => {
@@ -43,14 +45,14 @@ import Image from "next/image";
   const servicesIdx = menuLabels.findIndex(l => l === (currentLang === 'ar' ? 'الخدمات' : 'Services'));
     return (
       <div >
-        <div >
+        <div>
         <DigitalSignatureBanner />
         <DgaSecondNavHeader
           key={currentLang}
           variant="gray"
           hideDivider
         >
-          <DgaSecondNavHeaderActions>
+          <DgaSecondNavHeaderActions >
           <DgaButton
               label="Button"
               variant="transparent"
@@ -136,21 +138,14 @@ import Image from "next/image";
           </DgaNavHeaderActions>
         </DgaNavHeader>
   
-        {/* <section
-          className="max-h-[491px] h-[491px]"
-          style={{
-            background: `linear-gradient(0deg, rgba(9, 42, 30, 0.80) 0%, rgba(9, 42, 30, 0.80) 100%), url(https://www.state.gov/wp-content/uploads/2023/07/shutterstock_1938189982v2.jpg) lightgray 0px -189.624px / 100% 195.723% no-repeat`,
-          }}
-        >
-          <div className="px-[196px] pt-[130px]">
-            <h1 className="display-xl-semibold text-[#FFF]">Hero Section</h1>
-            <p className="text-xl-regular text-[#FFF] mt-[24px] mb-[32px]">
-              Here you can add a brief description about the purpose of the portal
-              followed with a call to action button and an image or an
-              illustration on the left hand side.
-            </p>
-            <DgaButton label="Primary Button" variant="secondary" size="lg" />
-          </div>
+        <section className="relative max-h-[585px] h-[585px] bg-[rgba(27,131,84,1)] bg-no-repeat bg-cover bg-center  [background-image:url('/ImamUnive1.svg'),linear-gradient(180deg,rgba(4,21,13,0)_64.79%,rgba(0,0,0,0.2)_72.14%)]">
+          <Image src="/assets/ImamUniveText.svg" alt="Imam University" className="absolute top-[200px] left-1/2 -translate-x-1/2" width={700} height={92} />
+          <DgaLabel
+           size="lg" 
+          label={dict.hero?.description || ""}
+            variant="default" 
+            className="hero-desc absolute top-[380px] left-1/2 -translate-x-1/2 max-w-[70%] text-center"
+             />
         </section>
   
         <div className="pt-[40px] px-[16px] md:px-[80px]">
@@ -226,7 +221,7 @@ import Image from "next/image";
               followed with a call to action button and an image or an
               illustration on the left hand side.
             </p>
-            <Slider />
+            <DgaSlider />
           </section>
           <section className="mt-[24px]">
             <h1 className="display-sm-bold text-[#161616] mb-4">
@@ -417,10 +412,10 @@ import Image from "next/image";
           </section>
         </div>
         <DgaDivider color="primary" />
-   */}
+  
         {/* <Feedback /> */}
   
-        {/* <DgaFooter
+        <DgaFooter
           background="DarkGreen"
           NavLinks={true}
           groupLinks={[
@@ -496,7 +491,7 @@ import Image from "next/image";
             "https://dga-nds-fbhtx.ondigitalocean.app/mobile-logo.svg",
             "https://dga-nds-fbhtx.ondigitalocean.app/mobile-logo.svg",
           ]}
-        /> */}
+        />
       </div>
     );
   };

@@ -36,12 +36,27 @@ dga-digital-signature {
 dga-digital-signature .digital_wrapper {
   padding-inline: 64px !important;
 }
-dga-second-nav-header .container {
-  padding-inline: 64px !important;
-}
+
  dga-nav-header{
   padding-right: 32px !important;
 }
  dga-nav-header-actions {
-  margin-right: 64px !important;
- }
+   margin-right: 64px !important;
+  }
+
+/* Force DgaSecondNavHeader to take full width */
+
+
+/* More aggressive targeting */
+dga-second-nav-header .container {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding-inline: 64px !important;
+
+}
+
+/* Force white text for hero description label */
+section dga-label label{
+  color: #ffffff !important;
+}

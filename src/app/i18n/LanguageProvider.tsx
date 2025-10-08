@@ -14,6 +14,9 @@ type Dictionary = {
       langToggle: string; // label shown for the target language (e.g., "En" or "عربي")
     };
   };
+  hero?: {
+    description: string;
+  };
 };
 
 const DICTS: Record<SupportedLang, Dictionary> = {
@@ -35,6 +38,10 @@ const DICTS: Record<SupportedLang, Dictionary> = {
         langToggle: "En",
       },
     },
+    hero: {
+      description:
+        "من جذور أصيلة وإرث فكري عريق ينبع تميزنا. نرتقي بالتعليم والبحث العلمي، مدفوعين بقيم الوسطية والاعتدال، لنسهم في بناء الاقتصاد المعرفي وخدمة مجتمعنا والإنسانية. هنا، حيث الشفافية والمبادرة أساس كل عمل، نخلق بيئة محفزة للتشاركية والابتكار، ننطلق منها نحو آفاق لا محدودة من التميز، لتحقيق مستقبل مستدام ينفع الوطن والإسلام.",
+    },
   },
   en: {
     header: {
@@ -53,6 +60,10 @@ const DICTS: Record<SupportedLang, Dictionary> = {
         login: "Login",
         langToggle: "عربي",
       },
+    },
+    hero: {
+      description:
+        "From deep-rooted heritage and a rich intellectual legacy, our distinction emerges. We advance education and research, guided by moderation and balance, to contribute to a knowledge-based economy and serve our community and humanity. Here, where transparency and initiative are the foundation of every endeavor, we foster a collaborative and innovative environment, launching toward limitless horizons of excellence to achieve a sustainable future for the nation and Islam.",
     },
   },
 };
