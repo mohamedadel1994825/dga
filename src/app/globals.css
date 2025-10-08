@@ -60,3 +60,106 @@ dga-second-nav-header .container {
 section dga-label label{
   color: #ffffff !important;
 }
+
+/* Three Carousels Section Styling */
+.carousel-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+@media (min-width: 1024px) {
+  .carousel-container {
+    grid-template-columns: 1fr 1fr 2fr;
+  }
+}
+
+.carousel-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.carousel-double {
+  /* Double width styling for the third carousel */
+}
+
+.carousel-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #161616;
+  text-align: right;
+}
+
+/* Style the carousel content and platforms slider */
+.carousel-content {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  overflow-x: auto;
+  padding: 8px;
+}
+
+.carousel-slide {
+  flex: 0 0 auto;
+  text-align: center;
+  min-width: 150px;
+}
+
+.carousel-slide img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  margin-bottom: 8px;
+}
+
+.carousel-slide p {
+  font-size: 12px;
+  color: #666;
+  margin: 0;
+  text-align: center;
+}
+
+.carousel-card dga-slider {
+  width: 100%;
+  height: auto;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1023px) {
+  .carousel-container {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .carousel-card {
+    padding: 16px;
+  }
+  
+  .carousel-title {
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+  
+  .carousel-content {
+    gap: 12px;
+  }
+  
+  .carousel-slide {
+    min-width: 120px;
+  }
+  
+  .carousel-slide p {
+    font-size: 10px;
+  }
+}
