@@ -30,7 +30,7 @@ export default function DigitalSignatureBanner({ className }: DigitalSignatureBa
   // }, []);
 
   return (
-    <div className={className}>
+    <div >
       {/* @ts-expect-error - web component */}
       <dga-digital-signature ref={(el: any) => (sigRef.current = el)} />
     </div>

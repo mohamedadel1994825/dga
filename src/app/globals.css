@@ -24,3 +24,24 @@ body {
   color: var(--foreground);
   font-family: var(--font-arabic), Arial, Helvetica, sans-serif;
 }
+
+/* Override DGA component styles */
+dga-digital-signature {
+  --spacing-sm: 6px;
+  --section-padding: 100px;
+  --card-lg-padding: 32px;
+  --background-neutral-100: #f3f4f6;
+}
+
+dga-digital-signature .digital_wrapper {
+  padding-inline: 64px !important;
+}
+dga-second-nav-header .container {
+  padding-inline: 64px !important;
+}
+ dga-nav-header{
+  padding-right: 32px !important;
+}
+ dga-nav-header-actions {
+  margin-right: 64px !important;
+ }
