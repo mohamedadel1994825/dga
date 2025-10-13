@@ -19,6 +19,12 @@ const DgaLabel = dynamic(() => import("platformscode-new-react").then(m => m.Dga
 // import "platformscode-new-react/dist/style.css";
 import { useLanguage } from "./i18n/LanguageProvider";
 import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
+import FirstSection from "./components/FirstSection";
+import UniversityLifeSection from "./components/UniversityLifeSection";
+import ScientificResearchSection from "./components/ScientificResearchSection";
+import StudentAffairsSection from "./components/StudentAffairsSection";
+import EventsSection from "./components/EventsSection";
+import AdmissionsSection from "./components/AdmissionsSection";
 import Image from "next/image";
 const DgaCard = dynamic(() => import("platformscode-new-react").then(m => m.DgaCard), { ssr: false });
 const DgaCarousel = dynamic(() => import("platformscode-new-react").then(m => m.DgaCarousel), { ssr: false });
@@ -49,7 +55,7 @@ import { guid } from "@/utils/guid";
   const newsIdx = menuLabels.findIndex(l => l === (currentLang === 'ar' ? 'الأخبار' : 'News'));
   const servicesIdx = menuLabels.findIndex(l => l === (currentLang === 'ar' ? 'الخدمات' : 'Services'));
     return (
-      <div >
+      <div dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
         <div>
         <DigitalSignatureBanner />
         <DgaSecondNavHeader
@@ -153,6 +159,24 @@ import { guid } from "@/utils/guid";
              />
         </section>
   
+        {/* First Section from Figma: two cards + hero story */}
+        <FirstSection />
+
+        {/* University Life Section from Figma */}
+        <UniversityLifeSection />
+
+        {/* Scientific Research Section from Figma */}
+        <ScientificResearchSection />
+
+        {/* Student Affairs Section from Figma */}
+        <StudentAffairsSection />
+
+        {/* Events Section from Figma */}
+        <EventsSection />
+
+        {/* Admissions Section from Figma */}
+        <AdmissionsSection />
+
         <div className="pt-[40px] px-[16px] md:px-[80px]">
           <section className="mt-[24px]">
             <h1 className="display-sm-bold text-[#161616] mb-4">
@@ -357,18 +381,18 @@ import { guid } from "@/utils/guid";
           </section>
   
           <section className="py-[40px]">
-            <h1 className="display-sm-bold text-[#161616] mb-4">
-              Partner Section
+            <h1 className="display-sm-bold text-[#161616] mb-4 text-right">
+              الخدمات والمواقع الفرعية
             </h1>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center ">
               <DgaButton
                 iconOnly
-                iconType="arrow-left-01"
+                iconType="arrow-right-01"
                 iconProps={{ variant: "stroke", type: "standard" }}
                 variant="secondary"
                 size="lg"
               />
-              <div className="rounded-[16px] border-[1px] border-[#D2D6DB] p-[16px]">
+              <div className="partner-card">
                 <svg
                   width="86"
                   height="68"
@@ -392,7 +416,7 @@ import { guid } from "@/utils/guid";
                   />
                 </svg>
               </div>
-              <div className="rounded-[16px] border-[1px] border-[#D2D6DB] p-[16px]">
+              <div className="partner-card">
                 <svg
                   width="86"
                   height="68"
@@ -416,7 +440,7 @@ import { guid } from "@/utils/guid";
                   />
                 </svg>
               </div>
-              <div className="rounded-[16px] border-[1px] border-[#D2D6DB] p-[16px]">
+              <div className="partner-card">
                 <svg
                   width="86"
                   height="68"
@@ -440,7 +464,7 @@ import { guid } from "@/utils/guid";
                   />
                 </svg>
               </div>
-              <div className="rounded-[16px] border-[1px] border-[#D2D6DB] p-[16px]">
+              <div className="partner-card">
                 <svg
                   width="86"
                   height="68"
@@ -467,7 +491,7 @@ import { guid } from "@/utils/guid";
   
               <DgaButton
                 iconOnly
-                iconType="arrow-right-01"
+                iconType="arrow-left-01"
                 iconProps={{ variant: "stroke", type: "standard" }}
                 variant="secondary"
                 size="lg"

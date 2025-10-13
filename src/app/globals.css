@@ -75,10 +75,19 @@ section dga-label label{
   }
 }
 
+/* Force visible gray border for partner logo cards */
+.partner-card {
+  border: 1px solid #D2D6DB !important;
+  border-radius: 16px !important;
+  padding: 16px !important;
+  background: #fff;
+}
+
 .carousel-card {
   background: white;
   border-radius: 12px;
   padding: 24px;
+  border: 1px solid #D2D6DB; /* match Figma border neutral primary */
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.2s ease;
   position: relative;
@@ -283,6 +292,14 @@ dga-footer .copyright-section {
   align-items: center !important;
   flex-wrap: wrap !important;
   gap: 16px !important;
+}
+
+/* FirstSection RTL tweaks */
+.rtl .first-section h2,
+.rtl .first-section p,
+.rtl .first-section h3,
+.rtl .first-section button {
+  direction: rtl;
 }
 
 dga-footer .basic-links,
