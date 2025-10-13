@@ -163,3 +163,150 @@ section dga-label label{
     font-size: 10px;
   }
 }
+
+/* Force footer to take full width */
+dga-footer {
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  max-width: 100vw !important;
+}
+
+dga-footer .container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding-inline: 80px !important;
+}
+
+/* Ensure divider also takes full width */
+dga-divider {
+  width: 100vw !important;
+  margin-left: calc(-50vw + 50%) !important;
+  margin-right: calc(-50vw + 50%) !important;
+  max-width: 100vw !important;
+}
+
+/* Footer spacing to align with Figma */
+dga-footer {
+  padding-block: 0px 0px !important; /* top: 56px, bottom: 40px */
+  padding-inline: 0px 0px !important; /* top: 56px, bottom: 40px */
+
+}
+dga-footer ::slotted(.footer.footer--bg-brand) {
+  display: none;
+}
+dga-footer .container > * + * {
+  margin-top: 8px !important; /* vertical gap between top section and bottom section */
+}
+
+/* Main footer content grid */
+dga-footer .footer-content,
+dga-footer .footer-top,
+dga-footer [class*="content"] {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  column-gap: 80px !important;
+  row-gap: 0 !important;
+}
+
+/* Footer group/column spacing */
+dga-footer .footer-group,
+dga-footer .link-group,
+dga-footer [class*="group"] {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+/* Headings spacing */
+dga-footer h4,
+dga-footer .title,
+dga-footer [role="heading"],
+dga-footer .group-title {
+  margin-bottom: 20px !important;
+  padding-bottom: 12px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+dga-footer ul {
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+dga-footer ul li {
+  margin: 0 !important;
+}
+
+dga-footer ul li + li {
+  margin-top: 0 !important; /* gap handles this */
+}
+
+dga-footer a {
+  line-height: 1.6 !important;
+  transition: opacity 0.2s !important;
+}
+
+dga-footer a:hover {
+  opacity: 0.8 !important;
+}
+
+/* Social and accessibility blocks */
+dga-footer .social,
+dga-footer .accessibility,
+dga-footer .social-media,
+dga-footer .accessibility-tools {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+}
+
+dga-footer .social-links,
+dga-footer .accessibility-links {
+  display: flex !important;
+  gap: 12px !important;
+  flex-wrap: wrap !important;
+}
+
+/* Bottom strip spacing */
+dga-footer .footer-bottom,
+dga-footer .bottom,
+dga-footer .copyright-section {
+  padding-top: 24px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 16px !important;
+}
+
+dga-footer .basic-links,
+dga-footer .bottom-links {
+  display: flex !important;
+  gap: 24px !important;
+  align-items: center !important;
+}
+
+/* Responsive tweaks */
+@media (max-width: 1023px) {
+  dga-footer .container {
+    padding-inline: 24px !important;
+    padding-block: 32px !important;
+  }
+  
+  dga-footer .footer-content,
+  dga-footer .footer-top,
+  dga-footer [class*="content"] {
+    grid-template-columns: 1fr !important;
+    row-gap: 32px !important;
+  }
+  
+  dga-footer ul {
+    gap: 10px !important;
+  }
+}

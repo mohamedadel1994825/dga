@@ -20,7 +20,12 @@ const DgaLabel = dynamic(() => import("platformscode-new-react").then(m => m.Dga
 import { useLanguage } from "./i18n/LanguageProvider";
 import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
 import Image from "next/image";
-import { DgaCard, DgaCarousel, DgaCarouselItem, DgaDivider, DgaFeaturedIcon, DgaFooter } from "platformscode-new-react";
+const DgaCard = dynamic(() => import("platformscode-new-react").then(m => m.DgaCard), { ssr: false });
+const DgaCarousel = dynamic(() => import("platformscode-new-react").then(m => m.DgaCarousel), { ssr: false });
+const DgaCarouselItem = dynamic(() => import("platformscode-new-react").then(m => m.DgaCarouselItem), { ssr: false });
+const DgaDivider = dynamic(() => import("platformscode-new-react").then(m => m.DgaDivider), { ssr: false });
+const DgaFeaturedIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaFeaturedIcon), { ssr: false });
+const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.DgaFooter), { ssr: false });
 import { guid } from "@/utils/guid";
   
   
@@ -470,65 +475,66 @@ import { guid } from "@/utils/guid";
             </div>
           </section>
         </div>
-        <DgaDivider color="primary" />
-  
-        {/* <Feedback /> */}
-  
-        <DgaFooter
+        
+        <div className="w-full">
+          <DgaDivider color="primary" />
+
+          {/* <Feedback /> */}
+
+          <DgaFooter
           background="DarkGreen"
           NavLinks={true}
           groupLinks={[
             {
-              title: "Overview",
+              title: "ملخص",
               links: [
-                { name: "About [name of the portal]", target: "" },
-                { name: "Privacy and terms of use", target: "" },
-                { name: "How to use [name of the portal]", target: "" },
-                { name: "News and events", target: "" },
-                { name: "Service level agreement statistics", target: "" },
+                { name: "حول جامعة الإمام محمد بن سعود", target: "" },
+                { name: "الخصوصية وشروط الاستخدام", target: "" },
+                { name: "كيفية استخدام بوابة جامعة الإمام", target: "" },
+                { name: "الأخبار والأحداث", target: "" },
+                { name: "إحصائيات اتفاقية مستوى الخدمة", target: "" },
               ],
             },
             {
-              title: "Important links",
+              title: "روابط مهمة",
               links: [
-                { name: "National service portal", target: "" },
-                { name: "Open government data", target: "" },
+                { name: "بوابة الخدمة الوطنية", target: "" },
+                { name: "البيانات الحكومية المفتوحة", target: "" },
                 {
-                  name: "National strategy for data & Artificial intelligence",
+                  name: "الاستراتيجية الوطنية البيانات والذكاء الاصطناعي",
                   target: "",
                 },
-                { name: "Open data portal", target: "" },
-                { name: "E-Participation portal", target: "" },
+                { name: "بوابة البيانات المفتوحة", target: "" },
+                { name: "بوابة المشاركة الإلكترونية", target: "" },
               ],
             },
             {
-              title: "Contact & support",
+              title: "الاتصال والإعلام",
               links: [
-                { name: "Customer hub", target: "" },
-                { name: "Contact us", target: "" },
-                { name: "Engage with Us", target: "" },
-                { name: "Submit complaint", target: "" },
-                { name: "Report corruption", target: "" },
+                { name: "مركز العملاء", target: "" },
+                { name: "تواصل معنا", target: "" },
+                { name: "شارك معنا", target: "" },
+                { name: "تقديم شكوى", target: "" },
+                { name: "الإبلاغ عن الفساد", target: "" },
               ],
             },
           ]}
-          socialMediaTitle="Social Media"
-          accessibilityTitle="accessibility Tools"
+          socialMediaTitle="تفاعل معنا"
+          accessibilityTitle="أدوات الإتاحة والوصول"
           socialMediaLinks={[
+            { title: "X", target: "#", icon: { name: "twitter-01", variant: "stroke", type: "rounded" } },
             { title: "LinkedIn", target: "#", icon: { name: "linkedin-02", variant: "stroke", type: "rounded" } },
-            { title: "Twitter", target: "#", icon: { name: "twitter-01", variant: "stroke", type: "rounded" } },
-            { title: "YouTube", target: "#", icon: { name: "youtube", variant: "stroke", type: "rounded" } },
-            { title: "Facebook", target: "#", icon: { name: "facebook-02", variant: "stroke", type: "rounded" } },
+            { title: "Instagram", target: "#", icon: { name: "instagram", variant: "stroke", type: "rounded" } },
           ]}
           accessibilityLinks={[
-            { title: "Increase text", target: "#", icon: { name: "zoom-in-area", variant: "stroke", type: "rounded" } },
-            { title: "Decrease text", target: "#", icon: { name: "zoom-out-area", variant: "stroke", type: "rounded" } },
-            { title: "Site map", target: "#", icon: { name: "grid-dots-outer", variant: "stroke", type: "rounded" } },
+            { title: "خريطة الموقع", target: "#", icon: { name: "grid-dots-outer", variant: "stroke", type: "rounded" } },
+            { title: "بحث", target: "#", icon: { name: "search-01", variant: "stroke", type: "rounded" } },
+            { title: "عرض", target: "#", icon: { name: "view", variant: "stroke", type: "rounded" } },
           ]}
-          copyright="All Right Reserved For Digital Government Authority © 2024"
+          copyright="جميع الحقوق محفوظة لهيئة الحكومية الرقمية © 2024"
           basicLinks={[
             {
-              name: "Sitemap",
+              name: "تم تطويره وصيانته بواسطة جامعة الإمام محمد بن سعود",
               target: "#",
             },
             {
@@ -536,21 +542,21 @@ import { guid } from "@/utils/guid";
               target: "#",
             },
             {
-              name: "Mobile App",
+              name: "تطبيق الجوال",
               target: "#",
             },
           ]}
           extraLinks={[
             {
-              name: "Developed and Maintained by [insert the name of the entity]",
+              name: "تاريخ آخر تعديل : 7/10/2025",
               target: "#",
             },
           ]}
           bottomImages={[
-            "https://dga-nds-fbhtx.ondigitalocean.app/mobile-logo.svg",
-            "https://dga-nds-fbhtx.ondigitalocean.app/mobile-logo.svg",
+            "/assets/figma/footer/LogosFooter.svg",
           ]}
         />
+        </div>
       </div>
     );
   };
