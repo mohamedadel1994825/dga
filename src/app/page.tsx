@@ -1,5 +1,6 @@
 "use client";
 // @ts-nocheck
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
@@ -30,6 +31,7 @@ import StudentAffairsSection from "./components/StudentAffairsSection";
 import EventsSection from "./components/EventsSection";
 import AdmissionsSection from "./components/AdmissionsSection";
 import Image from "next/image";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 const DgaCard = dynamic(() => import("platformscode-new-react").then(m => m.DgaCard), { ssr: false });
 const DgaCarousel = dynamic(() => import("platformscode-new-react").then(m => m.DgaCarousel), { ssr: false });
 const DgaCarouselItem = dynamic(() => import("platformscode-new-react").then(m => m.DgaCarouselItem), { ssr: false });
@@ -41,6 +43,7 @@ const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.Dg
   const Home: React.FC = () => {
   const { lang, toggle } = useLanguage();
   const { _ } = useLingui();
+  const queryClient = new QueryClient()
 
   // Localized banner items (weather, date, time, location)
   const currentLang: 'ar' | 'en' = lang;
@@ -74,6 +77,8 @@ const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.Dg
   const newsIdx = 5; // Index of "الأخبار"
   const servicesIdx = 6; // Index of "الخدمات"
     return (
+      <QueryClientProvider client={queryClient}>
+        <ReactQueryDevtools initialIsOpen={false} />  
       <div dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
         <div>
         <WebComponentErrorBoundary fallback={<div style={{ minHeight: '40px' }} />}>
@@ -611,6 +616,8 @@ const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.Dg
         />
         </div>
       </div>
+      </QueryClientProvider>    
+
     );
   };
   
