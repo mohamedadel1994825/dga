@@ -1,8 +1,10 @@
 "use client";
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { I18nProvider } from "@lingui/react";
+import { i18n, dynamicActivate, type SupportedLocale } from "./i18n";
 
-type SupportedLang = "ar" | "en";
+type SupportedLang = SupportedLocale;
 
 type Dictionary = {
   header: {
@@ -110,8 +112,9 @@ export default function LanguageProvider({ children }: { children: React.ReactNo
     return "ar";
   });
 
-  const set = useCallback((l: SupportedLang) => {
+  const set = useCallback(async (l: SupportedLang) => {
     setLang(l);
+    await dynamicActivate(l);
     try { localStorage.setItem("site-lang", l); } catch {}
     setHtmlLangAndDir(l);
     syncPlatformComponentsLanguage(l);
@@ -130,11 +133,16 @@ export default function LanguageProvider({ children }: { children: React.ReactNo
       // localStorage not available
     }
     const initial = saved || lang;
-    setHtmlLangAndDir(initial);
-    syncPlatformComponentsLanguage(initial);
-    if (saved && saved !== lang) {
-      setLang(initial);
-    }
+    
+    // Initialize Lingui with the initial language
+    dynamicActivate(initial).then(() => {
+      setHtmlLangAndDir(initial);
+      syncPlatformComponentsLanguage(initial);
+      if (saved && saved !== lang) {
+        setLang(initial);
+      }
+    });
+
     const html = document.documentElement;
     const obs = new MutationObserver(() => {
       const l = (html.getAttribute("lang") as SupportedLang) || "ar";
@@ -147,7 +155,11 @@ export default function LanguageProvider({ children }: { children: React.ReactNo
 
   const value = useMemo<LanguageContextValue>(() => ({ lang, dict: DICTS[lang], toggle, set }), [lang, toggle, set]);
 
-  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
+  return (
+    <I18nProvider i18n={i18n}>
+      <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
+    </I18nProvider>
+  );
 }
 
 export type { SupportedLang, Dictionary };

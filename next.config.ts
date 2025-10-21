@@ -6,6 +6,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    swcPlugins: [
+      ["@lingui/swc-plugin", {}]
+    ],
+  },
   webpack: (config) => {
     config.resolve = config.resolve || {};
     config.resolve.alias = {
