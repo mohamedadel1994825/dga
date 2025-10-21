@@ -6,73 +6,8 @@ import { i18n, dynamicActivate, type SupportedLocale } from "./i18n";
 
 type SupportedLang = SupportedLocale;
 
-type Dictionary = {
-  header: {
-    brand: string;
-    menu: string[]; // ordered list of top-level menu labels
-    actions: {
-      search: string;
-      login: string;
-      langToggle: string; // label shown for the target language (e.g., "En" or "عربي")
-    };
-  };
-  hero?: {
-    description: string;
-  };
-};
-
-const DICTS: Record<SupportedLang, Dictionary> = {
-  ar: {
-    header: {
-      brand: "جامعة الإمام",
-      menu: [
-        "عن الجامعة",
-        "الكليات",
-        "البحث العلمي",
-        "الحياة الجامعية",
-        "العمادات",
-        "الأخبار",
-        "الخدمات",
-      ],
-      actions: {
-        search: "بحث",
-        login: "تسجيل الدخول",
-        langToggle: "En",
-      },
-    },
-    hero: {
-      description:
-        "من جذور أصيلة وإرث فكري عريق ينبع تميزنا. نرتقي بالتعليم والبحث العلمي، مدفوعين بقيم الوسطية والاعتدال، لنسهم في بناء الاقتصاد المعرفي وخدمة مجتمعنا والإنسانية. هنا، حيث الشفافية والمبادرة أساس كل عمل، نخلق بيئة محفزة للتشاركية والابتكار، ننطلق منها نحو آفاق لا محدودة من التميز، لتحقيق مستقبل مستدام ينفع الوطن والإسلام.",
-    },
-  },
-  en: {
-    header: {
-      brand: "Imam University",
-      menu: [
-        "About",
-        "Colleges",
-        "Research",
-        "Campus Life",
-        "Deanships",
-        "News",
-        "Services",
-      ],
-      actions: {
-        search: "Search",
-        login: "Login",
-        langToggle: "عربي",
-      },
-    },
-    hero: {
-      description:
-        "From deep-rooted heritage and a rich intellectual legacy, our distinction emerges. We advance education and research, guided by moderation and balance, to contribute to a knowledge-based economy and serve our community and humanity. Here, where transparency and initiative are the foundation of every endeavor, we foster a collaborative and innovative environment, launching toward limitless horizons of excellence to achieve a sustainable future for the nation and Islam.",
-    },
-  },
-};
-
 type LanguageContextValue = {
   lang: SupportedLang;
-  dict: Dictionary;
   toggle: () => void;
   set: (lang: SupportedLang) => void;
 };
@@ -85,75 +20,86 @@ export function useLanguage(): LanguageContextValue {
   return ctx;
 }
 
-function setHtmlLangAndDir(lang: SupportedLang) {
-  const html = document.documentElement;
-  html.setAttribute("lang", lang);
-  html.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
-}
-
-function syncPlatformComponentsLanguage(lang: SupportedLang) {
-  try {
-    const all = Array.from(document.querySelectorAll("*") as unknown as HTMLElement[]);
-    for (const el of all) {
-      const tag = el.tagName;
-      if (tag.startsWith("DGA-") || tag.startsWith("NDS-")) {
-        el.setAttribute("language", lang);
-        if (tag === "DGA-SEARCH-BOX") {
-          el.setAttribute("speech-lang", lang === "ar" ? "ar-SA" : "en-US");
-        }
-      }
-    }
-  } catch {}
-}
-
 export default function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<SupportedLang>(() => {
-    // Default is Arabic on first load
-    return "ar";
-  });
+  const [lang, setLang] = useState<SupportedLang>("ar");
+  const [isReady, setIsReady] = useState(false);
+  const [isSwitching, setIsSwitching] = useState(false);
 
-  const set = useCallback(async (l: SupportedLang) => {
-    setLang(l);
-    await dynamicActivate(l);
-    try { localStorage.setItem("site-lang", l); } catch {}
-    setHtmlLangAndDir(l);
-    syncPlatformComponentsLanguage(l);
-  }, []);
+  const set = useCallback(async (newLang: SupportedLang) => {
+    if (isSwitching || newLang === lang) return;
+    
+    setIsSwitching(true);
+    
+    try {
+      // Activate the new language in Lingui
+      await dynamicActivate(newLang);
+      
+      // Update state
+      setLang(newLang);
+      
+      // Update HTML attributes for RTL/LTR
+      document.documentElement.setAttribute("lang", newLang);
+      document.documentElement.setAttribute("dir", newLang === "ar" ? "rtl" : "ltr");
+      
+      // Update web components (DGA-* and NDS-* components)
+      const allElements = document.querySelectorAll("*");
+      allElements.forEach((el) => {
+        const tagName = el.tagName;
+        if (tagName.startsWith("DGA-") || tagName.startsWith("NDS-")) {
+          el.setAttribute("language", newLang);
+          if (tagName === "DGA-SEARCH-BOX") {
+            el.setAttribute("speech-lang", newLang === "ar" ? "ar-SA" : "en-US");
+          }
+        }
+      });
+      
+      // Persist to localStorage
+      localStorage.setItem("site-lang", newLang);
+    } catch (error) {
+      console.error("Language switch error:", error);
+    } finally {
+      setTimeout(() => setIsSwitching(false), 100);
+    }
+  }, [isSwitching, lang]);
 
   const toggle = useCallback(() => {
     set(lang === "ar" ? "en" : "ar");
   }, [lang, set]);
 
   useEffect(() => {
-    // On first mount, prefer saved value if present, else keep Arabic
-    let saved: SupportedLang | null = null;
-    try {
-      saved = localStorage.getItem("site-lang") as SupportedLang | null;
-    } catch {
-      // localStorage not available
-    }
-    const initial = saved || lang;
+    // Initialize on mount
+    const savedLang = localStorage.getItem("site-lang") as SupportedLang | null;
+    const initialLang = savedLang || "ar";
     
-    // Initialize Lingui with the initial language
-    dynamicActivate(initial).then(() => {
-      setHtmlLangAndDir(initial);
-      syncPlatformComponentsLanguage(initial);
-      if (saved && saved !== lang) {
-        setLang(initial);
-      }
+    dynamicActivate(initialLang).then(() => {
+      setLang(initialLang);
+      document.documentElement.setAttribute("lang", initialLang);
+      document.documentElement.setAttribute("dir", initialLang === "ar" ? "rtl" : "ltr");
+      
+      // Set language attribute on all web components
+      const allElements = document.querySelectorAll("*");
+      allElements.forEach((el) => {
+        const tagName = el.tagName;
+        if (tagName.startsWith("DGA-") || tagName.startsWith("NDS-")) {
+          el.setAttribute("language", initialLang);
+          if (tagName === "DGA-SEARCH-BOX") {
+            el.setAttribute("speech-lang", initialLang === "ar" ? "ar-SA" : "en-US");
+          }
+        }
+      });
+      
+      setIsReady(true);
     });
-
-    const html = document.documentElement;
-    const obs = new MutationObserver(() => {
-      const l = (html.getAttribute("lang") as SupportedLang) || "ar";
-      if (l !== lang) set(l);
-    });
-    obs.observe(html, { attributes: true, attributeFilter: ["lang"] });
-    return () => obs.disconnect();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const value = useMemo<LanguageContextValue>(() => ({ lang, dict: DICTS[lang], toggle, set }), [lang, toggle, set]);
+  const value = useMemo<LanguageContextValue>(
+    () => ({ lang, toggle, set }),
+    [lang, toggle, set]
+  );
+
+  if (!isReady) {
+    return null;
+  }
 
   return (
     <I18nProvider i18n={i18n}>
@@ -162,6 +108,4 @@ export default function LanguageProvider({ children }: { children: React.ReactNo
   );
 }
 
-export type { SupportedLang, Dictionary };
-
-
+export type { SupportedLang };

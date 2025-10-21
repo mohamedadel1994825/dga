@@ -14,92 +14,20 @@ msgstr ""
 "Plural-Forms: \n"
 
 #: src/app/components/LinguiExample.tsx:36
-#~ msgid "{itemCount, plural, one {You have # item} other {You have # items}}"
-#~ msgstr "{itemCount, plural, one {You have # item} other {You have # items}}"
-
-#: src/app/components/FirstSection.tsx:46
-msgid "A distinguished center at the Muslim World League endorses Imam University's achievements in paper and electronic publishing"
-msgstr "A distinguished center at the Muslim World League endorses Imam University's achievements in paper and electronic publishing"
-
-#: src/app/page.tsx:65
-msgid "About the University"
-msgstr "About the University"
-
-#: src/app/page.tsx:68
-msgid "Campus Life"
-msgstr "Campus Life"
-
-#: src/app/page.tsx:60
-msgid "Cloudy"
-msgstr "Cloudy"
-
-#: src/app/components/FirstSection.tsx:42
-msgid "College of Medicine"
-msgstr "College of Medicine"
-
-#: src/app/page.tsx:66
-msgid "Colleges"
-msgstr "Colleges"
-
-#: src/app/page.tsx:69
-msgid "Deanships"
-msgstr "Deanships"
-
-#: src/app/page.tsx:185
-msgid "From deep-rooted heritage and a rich intellectual legacy, our distinction emerges. We advance education and research, guided by moderation and balance, to contribute to a knowledge-based economy and serve our community and humanity. Here, where transparency and initiative are the foundation of every endeavor, we foster a collaborative and innovative environment, launching toward limitless horizons of excellence to achieve a sustainable future for the nation and Islam."
-msgstr "From deep-rooted heritage and a rich intellectual legacy, our distinction emerges. We advance education and research, guided by moderation and balance, to contribute to a knowledge-based economy and serve our community and humanity. Here, where transparency and initiative are the foundation of every endeavor, we foster a collaborative and innovative environment, launching toward limitless horizons of excellence to achieve a sustainable future for the nation and Islam."
-
-#: src/app/page.tsx:150
-msgid "Imam University"
-msgstr "Imam University"
-
-#: src/app/page.tsx:177
-msgid "Login"
-msgstr "Login"
-
-#: src/app/page.tsx:70
-msgid "News"
-msgstr "News"
-
-#: src/app/components/FirstSection.tsx:40
-msgid "Not just graduates.. In Imam University's medical college labs, we shape tomorrow's doctors with a national vision"
-msgstr "Not just graduates.. In Imam University's medical college labs, we shape tomorrow's doctors with a national vision"
-
-#: src/app/page.tsx:67
-msgid "Research"
-msgstr "Research"
-
-#: src/app/page.tsx:61
-msgid "Riyadh"
-msgstr "Riyadh"
+msgid "{itemCount, plural, one {You have # item} other {You have # items}}"
+msgstr "{itemCount, plural, one {You have # item} other {You have # items}}"
 
 #: src/app/components/LinguiExample.tsx:30
-#~ msgid "Search..."
-#~ msgstr "Search..."
-
-#: src/app/page.tsx:71
-msgid "Services"
-msgstr "Services"
+msgid "Search..."
+msgstr "Search..."
 
 #: src/app/components/LinguiExample.tsx:22
-#~ msgid "This is an example of <0>internationalization</0> with Lingui"
-#~ msgstr "This is an example of <0>internationalization</0> with Lingui"
-
-#: src/app/components/FirstSection.tsx:48
-msgid "University Library"
-msgstr "University Library"
+msgid "This is an example of <0>internationalization</0> with Lingui"
+msgstr "This is an example of <0>internationalization</0> with Lingui"
 
 #: src/app/components/LinguiExample.tsx:17
-#~ msgid "Welcome to Lingui"
-#~ msgstr "Welcome to Lingui"
-
-#: src/app/components/FirstSection.tsx:62
-msgid "When action transforms from a passing deed into an established value"
-msgstr "When action transforms from a passing deed into an established value"
-
-#: src/app/components/FirstSection.tsx:65
-msgid "While the stories of the past were told with passion, when ink and paper were the only window to knowledge; they were not just exchanged words..."
-msgstr "While the stories of the past were told with passion, when ink and paper were the only window to knowledge; they were not just exchanged words..."
+msgid "Welcome to Lingui"
+msgstr "Welcome to Lingui"
 
 #: src/app/components/StudentAffairsSection.tsx:69
 #: src/app/components/StudentAffairsSection.tsx:70
@@ -123,8 +51,8 @@ msgid "الأحداث والفعاليات القادمة"
 msgstr "Upcoming Events and Activities"
 
 #: src/app/page.tsx:70
-#~ msgid "الأخبار"
-#~ msgstr "News"
+msgid "الأخبار"
+msgstr "الأخبار"
 
 #: src/app/components/EventsSection.tsx:82
 msgid "الأربعاء"
@@ -135,6 +63,7 @@ msgid "الإسكان الجامعي"
 msgstr "University Housing"
 
 #: src/app/components/ScientificResearchSection.tsx:57
+#: src/app/page.tsx:67
 msgid "البحث العلمي"
 msgstr "Scientific Research"
 
@@ -155,12 +84,13 @@ msgid "الجامعة على خارطة الابتكار العالمي... بش�
 msgstr "The University on the Global Innovation Map... According to Times Ranking"
 
 #: src/app/components/UniversityLifeSection.tsx:58
+#: src/app/page.tsx:68
 msgid "الحياة الجامعية"
 msgstr "University Life"
 
 #: src/app/page.tsx:71
-#~ msgid "الخدمات"
-#~ msgstr "Services"
+msgid "الخدمات"
+msgstr "الخدمات"
 
 #: src/app/components/AdmissionsSection.tsx:29
 msgid "الخدمات الذاتية لأعضاء هيئة التدريس"
@@ -179,8 +109,8 @@ msgid "الخميس"
 msgstr "Thursday"
 
 #: src/app/page.tsx:61
-#~ msgid "الرياض"
-#~ msgstr "Riyadh"
+msgid "الرياض"
+msgstr "الرياض"
 
 #: src/app/components/EventsSection.tsx:79
 msgid "الطلبة"
@@ -192,16 +122,16 @@ msgid "الطلبة الدوليين"
 msgstr "International Students"
 
 #: src/app/page.tsx:69
-#~ msgid "العمادات"
-#~ msgstr "Deanships"
+msgid "العمادات"
+msgstr "العمادات"
 
 #: src/app/components/StudentAffairsSection.tsx:23
 msgid "العمل التطوعي"
 msgstr "Volunteer Work"
 
 #: src/app/page.tsx:66
-#~ msgid "الكليات"
-#~ msgstr "Colleges"
+msgid "الكليات"
+msgstr "الكليات"
 
 #: src/app/components/UniversityLifeSection.tsx:61
 msgid "المزيد من أنشطة الطلبة"
@@ -241,12 +171,12 @@ msgid "بين أنابيب المختبر.. عقول الباحثين تنتج �
 msgstr "Between test tubes... researchers' minds produce new hope for liver patients"
 
 #: src/app/components/FirstSection.tsx:65
-#~ msgid "بينما كانت حكايات الماضي تروى بزبرة مماثلها بشغف لأزمن كان الحبر والورقة هما نافذة العلم الوحيدة؛ لم تكن مجرد كلماتٍ تتبادل..."
-#~ msgstr "While the stories of the past were told with passion, when ink and paper were the only window to knowledge; they were not just exchanged words..."
+msgid "بينما كانت حكايات الماضي تروى بزبرة مماثلها بشغف لأزمن كان الحبر والورقة هما نافذة العلم الوحيدة؛ لم تكن مجرد كلماتٍ تتبادل..."
+msgstr "While the stories of the past were told with passion, when ink and paper were the only window to knowledge; they were not just exchanged words..."
 
 #: src/app/page.tsx:177
-#~ msgid "تسجيل الدخول"
-#~ msgstr "Login"
+msgid "تسجيل الدخول"
+msgstr "تسجيل الدخول"
 
 #: src/app/components/EventsSection.tsx:139
 #: src/app/components/EventsSection.tsx:153
@@ -254,8 +184,8 @@ msgid "تفاصيل المؤتمر"
 msgstr "Conference Details"
 
 #: src/app/page.tsx:150
-#~ msgid "جامعة الإمام"
-#~ msgstr "Imam University"
+msgid "جامعة الإمام"
+msgstr "جامعة الإمام"
 
 #: src/app/components/EventsSection.tsx:122
 msgid "جلسات علمية"
@@ -266,8 +196,8 @@ msgid "جوائز دولية في مجال البحث العلمي"
 msgstr "International awards in scientific research"
 
 #: src/app/components/FirstSection.tsx:62
-#~ msgid "حين يتحول المر من فعل عابر إلى قيمةٍ راسخة"
-#~ msgstr "When action transforms from a passing deed into an established value"
+msgid "حين يتحول المر من فعل عابر إلى قيمةٍ راسخة"
+msgstr "When action transforms from a passing deed into an established value"
 
 #: src/app/components/UniversityLifeSection.tsx:38
 msgid "خلف كواليس الاحتفال.. فريق طلابي يروح وطنية واحدة يصنع ذكرى لا تُنسى في يوم التأسيس"
@@ -318,12 +248,12 @@ msgid "عمادة شؤون الطلبة"
 msgstr "Deanship of Student Affairs"
 
 #: src/app/page.tsx:65
-#~ msgid "عن الجامعة"
-#~ msgstr "About the University"
+msgid "عن الجامعة"
+msgstr "عن الجامعة"
 
 #: src/app/page.tsx:60
-#~ msgid "غائم"
-#~ msgstr "Cloudy"
+msgid "غائم"
+msgstr "غائم"
 
 #: src/app/components/StudentAffairsSection.tsx:63
 #: src/app/components/StudentAffairsSection.tsx:64
@@ -348,8 +278,8 @@ msgid "كلية الحاسب"
 msgstr "College of Computer Science"
 
 #: src/app/components/FirstSection.tsx:42
-#~ msgid "كلية الطب"
-#~ msgstr "College of Medicine"
+msgid "كلية الطب"
+msgstr "College of Medicine"
 
 #: src/app/components/AdmissionsSection.tsx:89
 msgid "لقاء تعريفي يخص الطريق للطالبات المستجدات"
@@ -364,8 +294,8 @@ msgid "ليست مجرد تسلية.. كيف حوّل الطلاب شغفهم ا
 msgstr "Not just entertainment.. How students turned their digital passion into mental health, creativity, and balance"
 
 #: src/app/components/FirstSection.tsx:40
-#~ msgid "ليسوا مجرد خريجين.. بمعامل كلية الطب بجامعة الإمام نصنع أطباء المستقبل برؤية وطنية"
-#~ msgstr "Not just graduates.. In Imam University's medical college labs, we shape tomorrow's doctors with a national vision"
+msgid "ليسوا مجرد خريجين.. بمعامل كلية الطب بجامعة الإمام نصنع أطباء المستقبل برؤية وطنية"
+msgstr "Not just graduates.. In Imam University's medical college labs, we shape tomorrow's doctors with a national vision"
 
 #: src/app/components/EventsSection.tsx:116
 msgid "مؤتمر بتاريخ الأحد م19-06-1446 / هـ28-01-2026"
@@ -385,12 +315,12 @@ msgid "معلومات عن التسجيل والقبول"
 msgstr "Information about registration and admission"
 
 #: src/app/components/FirstSection.tsx:48
-#~ msgid "مكتبة الجامعة"
-#~ msgstr "University Library"
+msgid "مكتبة الجامعة"
+msgstr "University Library"
 
 #: src/app/page.tsx:185
-#~ msgid "من جذور أصيلة وإرث فكري عريق ينبع تميزنا. نرتقي بالتعليم والبحث العلمي، مدفوعين بقيم الوسطية والاعتدال، لنسهم في بناء الاقتصاد المعرفي وخدمة مجتمعنا والإنسانية. هنا، حيث الشفافية والمبادرة أساس كل عمل، نخلق بيئة محفزة للتشاركية والابتكار، ننطلق منها نحو آفاق لا محدودة من التميز، لتحقيق مستقبل مستدام ينفع الوطن والإسلام."
-#~ msgstr "From deep-rooted heritage and a rich intellectual legacy, our distinction emerges. We advance education and research, guided by moderation and balance, to contribute to a knowledge-based economy and serve our community and humanity. Here, where transparency and initiative are the foundation of every endeavor, we foster a collaborative and innovative environment, launching toward limitless horizons of excellence to achieve a sustainable future for the nation and Islam."
+msgid "من جذور أصيلة وإرث فكري عريق ينبع تميزنا. نرتقي بالتعليم والبحث العلمي، مدفوعين بقيم الوسطية والاعتدال، لنسهم في بناء الاقتصاد المعرفي وخدمة مجتمعنا والإنسانية. هنا، حيث الشفافية والمبادرة أساس كل عمل، نخلق بيئة محفزة للتشاركية والابتكار، ننطلق منها نحو آفاق لا محدودة من التميز، لتحقيق مستقبل مستدام ينفع الوطن والإسلام."
+msgstr "من جذور أصيلة وإرث فكري عريق ينبع تميزنا. نرتقي بالتعليم والبحث العلمي، مدفوعين بقيم الوسطية والاعتدال، لنسهم في بناء الاقتصاد المعرفي وخدمة مجتمعنا والإنسانية. هنا، حيث الشفافية والمبادرة أساس كل عمل، نخلق بيئة محفزة للتشاركية والابتكار، ننطلق منها نحو آفاق لا محدودة من التميز، لتحقيق مستقبل مستدام ينفع الوطن والإسلام."
 
 #: src/app/components/UniversityLifeSection.tsx:44
 msgid "من سباقات الإنسان الاقتصادية حيث تتصارع الأفكار بدلاً من قدراتهم، إلى فضاء هادئ منظّمة، في مبادرة LAG بالرياضيات الإلكترونية، جمعة اللعب إلى أبعد مختلف. كيف أصبحت نقاط قوة الداخلية وجزء من الداخلية. كيف أصبحت نقاط صحتنا النفسية... كيف حدث هذا؟"
@@ -422,5 +352,5 @@ msgid "ورشة عمل علمية وابتكارية"
 msgstr "Scientific and innovative workshops"
 
 #: src/app/components/FirstSection.tsx:46
-#~ msgid "يحظى مركزٌ مميزٌ برابطة العالم الإسلامي بتأييدٍ بإنجازات جامعة الإمام في الشعر الورقي والإلكتروني"
-#~ msgstr "A distinguished center at the Muslim World League endorses Imam University's achievements in paper and electronic publishing"
+msgid "يحظى مركزٌ مميزٌ برابطة العالم الإسلامي بتأييدٍ بإنجازات جامعة الإمام في الشعر الورقي والإلكتروني"
+msgstr "A distinguished center at the Muslim World League endorses Imam University's achievements in paper and electronic publishing"

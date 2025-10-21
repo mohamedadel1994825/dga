@@ -2,45 +2,49 @@
 // @ts-nocheck
 
 import dynamic from "next/dynamic";
+import { Trans, t } from "@lingui/macro";
+import { useLingui } from "@lingui/react";
 
 const DgaFeaturedIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaFeaturedIcon), { ssr: false });
 const DgaCard = dynamic(() => import("platformscode-new-react").then(m => m.DgaCard), { ssr: false });
 
 const ScientificResearchSection = () => {
+  const { _ } = useLingui();
+  
   const stats = [
     {
       icon: "link-external-01",
       number: "100",
-      label: "بحث علمي منشور في 2024"
+      label: <Trans>بحث علمي منشور في 2024</Trans>
     },
     {
       icon: "lightbulb-05",
       number: "30",
-      label: "ابتكاراً طلبناً في مجالات الثقبة"
+      label: <Trans>ابتكاراً طلبناً في مجالات الثقبة</Trans>
     },
     {
       icon: "award-02",
       number: "5",
-      label: "جوائز دولية في مجال البحث العلمي"
+      label: <Trans>جوائز دولية في مجال البحث العلمي</Trans>
     },
     {
       icon: "users-01",
       number: "250",
-      label: "ورشة عمل علمية وابتكارية"
+      label: <Trans>ورشة عمل علمية وابتكارية</Trans>
     }
   ];
 
   const newsCards = [
     {
-      title: "شفرات الوطن... الباحثات يبدعن حلاً رقمياً يضيع حداً لضياع الوقت بين فرق العمل الثقبة",
+      title: _(t`شفرات الوطن... الباحثات يبدعن حلاً رقمياً يضيع حداً لضياع الوقت بين فرق العمل الثقبة`),
       image: "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=300&fit=crop"
     },
     {
-      title: "الجامعة على خارطة الابتكار العالمي... بشهادة تصنيف صحيفة تايمز",
+      title: _(t`الجامعة على خارطة الابتكار العالمي... بشهادة تصنيف صحيفة تايمز`),
       image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=300&fit=crop"
     },
     {
-      title: "بين أنابيب المختبر.. عقول الباحثين تنتج أملاً جديداً لمرضى الكبد",
+      title: _(t`بين أنابيب المختبر.. عقول الباحثين تنتج أملاً جديداً لمرضى الكبد`),
       image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=300&fit=crop"
     }
   ];
@@ -50,11 +54,11 @@ const ScientificResearchSection = () => {
       {/* Header */}
       <div className="text-right mb-[40px]">
         <h1 className="display-sm-bold text-[#161616] mb-4">
-          البحث العلمي
+          <Trans>البحث العلمي</Trans>
         </h1>
         <p className="text-md-regular text-[#6C737F] max-w-[800px] mr-auto">
-          البحث العلمي هو استعمال لـ سؤال قد فهم معنى الأمة، شبكة تنهي الطريق للإبتكار، وجسر يُعبر بنا من
-          واقعنا إلى مستقبل نضعه بأيدينا ومعقولنا.
+          <Trans>البحث العلمي هو استعمال لـ سؤال قد فهم معنى الأمة، شبكة تنهي الطريق للإبتكار، وجسر يُعبر بنا من
+          واقعنا إلى مستقبل نضعه بأيدينا ومعقولنا.</Trans>
         </p>
       </div>
 
@@ -101,7 +105,7 @@ const ScientificResearchSection = () => {
       {/* Link to more research */}
       <div className="text-left pb-[40px]">
         <a href="#" className="text-sm-regular text-[#1B8354] hover:underline inline-flex items-center gap-2">
-          المزيد من الأبحاث العلمية
+          <Trans>المزيد من الأبحاث العلمية</Trans>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
@@ -112,4 +116,3 @@ const ScientificResearchSection = () => {
 };
 
 export default ScientificResearchSection;
-

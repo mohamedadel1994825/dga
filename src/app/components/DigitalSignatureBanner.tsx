@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "../i18n/LanguageProvider";
 
 export default function DigitalSignatureBanner() {
   const sigRef = useRef<HTMLElement | null>(null);
   const [mounted, setMounted] = useState(false);
   const [ready, setReady] = useState(false);
+  const { lang } = useLanguage();
 
   useEffect(() => {
     // Register the web component on the client only
@@ -24,6 +26,13 @@ export default function DigitalSignatureBanner() {
       });
   }, []);
 
+  // Set language attribute when component is ready or language changes
+  useEffect(() => {
+    if (sigRef.current && ready) {
+      sigRef.current.setAttribute("language", lang);
+    }
+  }, [lang, ready]);
+
   if (!mounted || !ready) {
     return <div style={{ minHeight: '40px' }} />; // Placeholder to prevent layout shift
   }
@@ -31,7 +40,10 @@ export default function DigitalSignatureBanner() {
   return (
     <div suppressHydrationWarning>
       {/* @ts-expect-error - web component */}
-      <dga-digital-signature ref={(el: HTMLElement) => (sigRef.current = el)} />
+      <dga-digital-signature 
+        ref={(el: HTMLElement) => (sigRef.current = el)}
+        language={lang}
+      />
     </div>
   );
 }

@@ -3,6 +3,8 @@
 
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
+import { t } from "@lingui/macro";
+import { useLingui } from "@lingui/react";
 const DgaButton = dynamic(() => import("platformscode-new-react").then(m => m.DgaButton), { ssr: false });
 const DgaHeaderActionBtn = dynamic(() => import("platformscode-new-react").then(m => m.DgaHeaderActionBtn), { ssr: false });
 const DgaIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaIcon), { ssr: false });
@@ -37,7 +39,8 @@ const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.Dg
   
   
   const Home: React.FC = () => {
-  const { lang, dict, toggle } = useLanguage();
+  const { lang, toggle } = useLanguage();
+  const { _ } = useLingui();
 
   // Localized banner items (weather, date, time, location)
   const currentLang: 'ar' | 'en' = lang;
@@ -54,15 +57,22 @@ const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.Dg
     setTimeStr(new Intl.DateTimeFormat(locale, { hour: 'numeric', minute: '2-digit', hour12: true }).format(now));
   }, [locale]);
   
-  const weatherStr = currentLang === 'ar' ? 'غائم' : 'Cloudy';
-  const cityStr = currentLang === 'ar' ? 'الرياض' : 'Riyadh';
-  const t = {
-    menu: dict.header.menu.map((label) => ({ label })),
-    actions: dict.header.actions,
-  };
-  const menuLabels = dict.header.menu;
-  const newsIdx = menuLabels.findIndex(l => l === (currentLang === 'ar' ? 'الأخبار' : 'News'));
-  const servicesIdx = menuLabels.findIndex(l => l === (currentLang === 'ar' ? 'الخدمات' : 'Services'));
+  const weatherStr = _(t`Cloudy`);
+  const cityStr = _(t`Riyadh`);
+  
+  // Menu items
+  const menuItems = [
+    { label: _(t`About the University`) },
+    { label: _(t`Colleges`) },
+    { label: _(t`Research`) },
+    { label: _(t`Campus Life`) },
+    { label: _(t`Deanships`) },
+    { label: _(t`News`) },
+    { label: _(t`Services`) },
+  ];
+  
+  const newsIdx = 5; // Index of "الأخبار"
+  const servicesIdx = 6; // Index of "الخدمات"
     return (
       <div dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
         <div>
@@ -137,7 +147,7 @@ const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.Dg
                 <Image src="https://imamu.edu.sa/_layouts/15/2016/Portal/img/logo.png" alt="logo" width={110} height={160} />
               </div>
               <div className="flex flex-col leading-tight">
-                <DgaLabel label={dict.header.brand} size="md" variant="default" />
+                <DgaLabel label={_(t`Imam University`)} size="md" variant="default" />
               </div>
             {/* <DgaNavHeaderLogos
               logoSrc="https://imamu.edu.sa/_layouts/15/2016/Portal/img/logo.png"
@@ -150,11 +160,11 @@ const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.Dg
             </div>
           
             <DgaNavHeaderMenu>
-              {t.menu.map(({ label }: { label: string }, idx: number) => (
+              {menuItems.map(({ label }, idx) => (
                 <DgaNavHeaderLink
-                  key={label}
+                  key={idx}
                   label={label}
-                  icon={(idx === servicesIdx || idx === newsIdx - 1) ? "arrow-down-01" : undefined}
+                  icon={(idx === servicesIdx || idx === newsIdx) ? "arrow-down-01" : undefined}
                   subMenuBackground="brand"
                 >
                 </DgaNavHeaderLink>
@@ -163,8 +173,8 @@ const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.Dg
           </DgaNavHeaderMain>
            <DgaNavHeaderActions  >
             <DgaHeaderActionBtn  icon="search-01"/>
-            <DgaHeaderActionBtn  label={t.actions.langToggle}  onClick={() => toggle()}></DgaHeaderActionBtn>
-            <DgaHeaderActionBtn label={t.actions.login} icon="user"></DgaHeaderActionBtn>
+            <DgaHeaderActionBtn  label={lang === 'ar' ? 'En' : 'عربي'}  onClick={() => toggle()}></DgaHeaderActionBtn>
+            <DgaHeaderActionBtn label={_(t`Login`)} icon="user"></DgaHeaderActionBtn>
           </DgaNavHeaderActions>
         </DgaNavHeader>
   
@@ -172,7 +182,7 @@ const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.Dg
           <Image src="/assets/ImamUniveText.svg" alt="Imam University" className="absolute top-[200px] left-1/2 -translate-x-1/2" width={700} height={92} />
           <DgaLabel
            size="lg" 
-          label={dict.hero?.description || ""}
+          label={_(t`From deep-rooted heritage and a rich intellectual legacy, our distinction emerges. We advance education and research, guided by moderation and balance, to contribute to a knowledge-based economy and serve our community and humanity. Here, where transparency and initiative are the foundation of every endeavor, we foster a collaborative and innovative environment, launching toward limitless horizons of excellence to achieve a sustainable future for the nation and Islam.`)}
             variant="default" 
             className="hero-desc absolute top-[380px] left-1/2 -translate-x-1/2 max-w-[70%] text-center"
              />

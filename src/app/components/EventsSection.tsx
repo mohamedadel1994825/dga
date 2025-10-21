@@ -2,6 +2,8 @@
 // @ts-nocheck
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import { Trans, t } from "@lingui/macro";
+import { useLingui } from "@lingui/react";
 
 const DgaIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaIcon), { ssr: false });
 const DgaButton = dynamic(() => import("platformscode-new-react").then(m => m.DgaButton), { ssr: false });
@@ -10,10 +12,10 @@ const DgaLabel = dynamic(() => import("platformscode-new-react").then(m => m.Dga
 type EventCardProps = {
   day: string;
   date: string;
-  title: string;
-  category: string;
-  categoryLabel: string;
-  ctaLabel: string;
+  title: React.ReactNode;
+  category: React.ReactNode;
+  categoryLabel: React.ReactNode;
+  ctaLabel: React.ReactNode;
 };
 
 function EventCard({ day, date, title, category, categoryLabel, ctaLabel }: EventCardProps) {
@@ -52,34 +54,36 @@ function EventCard({ day, date, title, category, categoryLabel, ctaLabel }: Even
 }
 
 export default function EventsSection() {
+  const { _ } = useLingui();
+  
   const events = [
     {
-      day: "الثلاثاء",
+      day: _(t`الثلاثاء`),
       date: "م04-03-2026 / هـ21-08-1446",
-      title: "مشروع ريادة الأعمال.. عندما تتحول المشروع دورة إلى فرصة حقيقية كيف أثمر تحويل الأفكار إلى مشاريع ناجحة",
-      category: "كلية إدارة الأعمال",
-      categoryLabel: "كلية الحاسب",
+      title: <Trans>مشروع ريادة الأعمال.. عندما تتحول المشروع دورة إلى فرصة حقيقية كيف أثمر تحويل الأفكار إلى مشاريع ناجحة</Trans>,
+      category: <Trans>كلية إدارة الأعمال</Trans>,
+      categoryLabel: <Trans>كلية الحاسب</Trans>,
     },
     {
-      day: "الأحد",
+      day: _(t`الأحد`),
       date: "م28-03-2026 / هـ19-08-1446",
-      title: "مشروع ريادة الأعمال.. عندما تتحول المشروع دورة إلى فرصة حقيقية كيف أثمر تحويل الأفكار إلى مشاريع ناجحة",
-      category: "عمادة شؤون الطلاب",
-      categoryLabel: "الطلبة الدوليين",
+      title: <Trans>مشروع ريادة الأعمال.. عندما تتحول المشروع دورة إلى فرصة حقيقية كيف أثمر تحويل الأفكار إلى مشاريع ناجحة</Trans>,
+      category: <Trans>عمادة شؤون الطلاب</Trans>,
+      categoryLabel: <Trans>الطلبة الدوليين</Trans>,
     },
     {
-      day: "الخميس",
+      day: _(t`الخميس`),
       date: "م25-03-2026 / هـ16-08-1446",
-      title: "رحلة حول العالم الإسلامي.. داخل جرو صحبة عبر ثقافات المسلمين المتنوعة كيف تجمع المحاضرة بين الجغرافيا والحضارة",
-      category: "الطلبة الدوليين",
-      categoryLabel: "الطلبة",
+      title: <Trans>رحلة حول العالم الإسلامي.. داخل جرو صحبة عبر ثقافات المسلمين المتنوعة كيف تجمع المحاضرة بين الجغرافيا والحضارة</Trans>,
+      category: <Trans>الطلبة الدوليين</Trans>,
+      categoryLabel: <Trans>الطلبة</Trans>,
     },
     {
-      day: "الأربعاء",
+      day: _(t`الأربعاء`),
       date: "م15-08-1446 / هـ19-08-1446",
-      title: "مرحب شباب الوطن.. وأفق حوار نقاش بين الطلاب والمشاركين كيفي حيث يجول حوار منتدى القيادة والتأثير واحتواؤه على محاور إلهامية تلهم الطلاب المشتركين",
-      category: "نقاشات",
-      categoryLabel: "كلية الحاسب",
+      title: <Trans>مرحب شباب الوطن.. وأفق حوار نقاش بين الطلاب والمشاركين كيفي حيث يجول حوار منتدى القيادة والتأثير واحتواؤه على محاور إلهامية تلهم الطلاب المشتركين</Trans>,
+      category: <Trans>نقاشات</Trans>,
+      categoryLabel: <Trans>كلية الحاسب</Trans>,
     },
   ];
 
@@ -90,14 +94,14 @@ export default function EventsSection() {
         <div className="flex items-start justify-between mb-[8px] gap-[16px] flex-wrap">
           <div className="flex-1">
             <h2 className="text-[32px] leading-[40px] font-bold text-[#1F2A37] mb-[8px]">
-              الأحداث والفعاليات القادمة
+              <Trans>الأحداث والفعاليات القادمة</Trans>
             </h2>
             <p className="text-[14px] leading-[22px] text-[#6C737F]">
-              بوابة أنشطتك الجامعية.. تابع بكل ما يتعلق بالمؤتمرات والفعاليات والأنشطة القادمة والتي تجري حالياً بتوسيع آفاقك.
+              <Trans>بوابة أنشطتك الجامعية.. تابع بكل ما يتعلق بالمؤتمرات والفعاليات والأنشطة القادمة والتي تجري حالياً بتوسيع آفاقك.</Trans>
             </p>
           </div>
           <button className="text-[14px] leading-[20px] text-[#6C737F] border border-[#D2D6DB] rounded-[8px] py-[8px] px-[16px] hover:bg-white transition-colors whitespace-nowrap">
-            عرض كل الأحداث
+            <Trans>عرض كل الأحداث</Trans>
           </button>
         </div>
         <div className="w-full h-[1px] bg-[#D2D6DB]"></div>
@@ -109,17 +113,17 @@ export default function EventsSection() {
         <div className="rounded-[16px] border border-[#D2D6DB] bg-white p-[32px] flex flex-col justify-between">
           <div className="mb-[24px]">
             <div className="text-[12px] leading-[18px] text-[#6C737F] mb-[8px]">
-              مؤتمر بتاريخ الأحد م19-06-1446 / هـ28-01-2026
+              <Trans>مؤتمر بتاريخ الأحد م19-06-1446 / هـ28-01-2026</Trans>
             </div>
             <h3 className="text-[24px] leading-[32px] font-bold text-[#1F2A37] mb-[16px] text-right">
-              التأثير المتبادل بين العلوم الاجتماعية والإنسانية والتقنيات الرقمية
+              <Trans>التأثير المتبادل بين العلوم الاجتماعية والإنسانية والتقنيات الرقمية</Trans>
             </h3>
             <div className="flex items-center gap-[8px] text-right justify-end flex-wrap">
-              <span className="text-[14px] leading-[20px] text-[#6C737F]">جلسات علمية</span>
+              <span className="text-[14px] leading-[20px] text-[#6C737F]"><Trans>جلسات علمية</Trans></span>
               <span className="text-[14px] leading-[20px] text-[#6C737F]">-</span>
-              <span className="text-[14px] leading-[20px] text-[#6C737F]">ورش عمل</span>
+              <span className="text-[14px] leading-[20px] text-[#6C737F]"><Trans>ورش عمل</Trans></span>
               <span className="text-[14px] leading-[20px] text-[#6C737F]">-</span>
-              <span className="text-[14px] leading-[20px] text-[#6C737F]">نقاشات</span>
+              <span className="text-[14px] leading-[20px] text-[#6C737F]"><Trans>نقاشات</Trans></span>
             </div>
           </div>
 
@@ -132,7 +136,7 @@ export default function EventsSection() {
           </div>
 
           <button className="self-end bg-[#1B8354] hover:bg-[#14573A] text-white rounded-[8px] py-[10px] px-[24px] text-[14px] leading-[20px] font-semibold transition-colors">
-            تفاصيل المؤتمر
+            <Trans>تفاصيل المؤتمر</Trans>
           </button>
         </div>
 
@@ -146,7 +150,7 @@ export default function EventsSection() {
               title={event.title}
               category={event.category}
               categoryLabel={event.categoryLabel}
-              ctaLabel="تفاصيل المؤتمر"
+              ctaLabel={<Trans>تفاصيل المؤتمر</Trans>}
             />
           ))}
         </div>
@@ -162,6 +166,5 @@ export default function EventsSection() {
     </section>
   );
 }
-
 
 

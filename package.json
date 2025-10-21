@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "pnpm lingui:compile && pnpm lingui:extract && next dev",
+    "build": "pnpm lingui:compile && pnpm lingui:extract && next build",
     "start": "next start",
     "postinstall": "node scripts/strip-platformscode-css.mjs",
     "lint": "eslint",
-    "extract": "lingui extract",
-    "compile": "lingui compile --typescript"
+    "lingui:extract": "lingui extract",
+    "lingui:compile": "lingui compile --typescript",
+    "lingui:watch": "lingui extract --watch"
   },
   "dependencies": {
     "@lingui/core": "^5.5.1",

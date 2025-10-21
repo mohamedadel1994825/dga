@@ -2,6 +2,8 @@
 // @ts-nocheck
 
 import dynamic from "next/dynamic";
+import { Trans, t } from "@lingui/macro";
+import { useLingui } from "@lingui/react";
 const DgaButton = dynamic(() => import("platformscode-new-react").then(m => m.DgaButton), { ssr: false });
 const DgaCard = dynamic(() => import("platformscode-new-react").then(m => m.DgaCard), { ssr: false });
 const DgaDivider = dynamic(() => import("platformscode-new-react").then(m => m.DgaDivider), { ssr: false });
@@ -10,31 +12,33 @@ const DgaCarousel = dynamic(() => import("platformscode-new-react").then(m => m.
 const DgaCarouselItem = dynamic(() => import("platformscode-new-react").then(m => m.DgaCarouselItem), { ssr: false });
 
 const AdmissionsSection: React.FC = () => {
+  const { _ } = useLingui();
+  
   // Service cards data
   const serviceCards = [
     {
       icon: "file-check-02",
-      title: "دليل القبول في الجامعة",
+      title: <Trans>دليل القبول في الجامعة</Trans>,
     },
     {
       icon: "book-open-01",
-      title: "الخدمات الذاتية للطلاب",
+      title: <Trans>الخدمات الذاتية للطلاب</Trans>,
     },
     {
       icon: "notebook-01",
-      title: "الخدمات الذاتية لأعضاء هيئة التدريس",
+      title: <Trans>الخدمات الذاتية لأعضاء هيئة التدريس</Trans>,
     },
     {
       icon: "message-chat-circle",
-      title: "نظام تواصل",
+      title: <Trans>نظام تواصل</Trans>,
     },
     {
       icon: "graduation-hat-01",
-      title: "برنامج خريج",
+      title: <Trans>برنامج خريج</Trans>,
     },
     {
       icon: "dots-horizontal",
-      title: "المزيد من الخدمات...",
+      title: <Trans>المزيد من الخدمات...</Trans>,
     },
   ];
 
@@ -44,7 +48,7 @@ const AdmissionsSection: React.FC = () => {
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-[24px]">
         {/* Button on the left */}
         <DgaButton
-          label="عرض كل الخدمات والأخبار"
+          label={_(t`عرض كل الخدمات والأخبار`)}
           variant="secondary"
           size="md"
         />
@@ -52,10 +56,10 @@ const AdmissionsSection: React.FC = () => {
         {/* Title and subtitle on the right */}
         <div className="flex flex-col items-end text-right flex-1">
           <h2 className="display-sm-bold text-[#161616] mb-2">
-            عمادة القبول والتسجيل
+            <Trans>عمادة القبول والتسجيل</Trans>
           </h2>
           <p className="text-md-regular text-[#6C737F]">
-            هنا تجد كل ما يتعلق بمتطلبات التسجيل للدراسة بالجامعة.
+            <Trans>هنا تجد كل ما يتعلق بمتطلبات التسجيل للدراسة بالجامعة.</Trans>
           </p>
         </div>
       </div>
@@ -82,10 +86,10 @@ const AdmissionsSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-[24px]">
                   <h3 className="text-white text-xl-bold text-right">
-                    لقاء تعريفي يخص الطريق للطالبات المستجدات
+                    <Trans>لقاء تعريفي يخص الطريق للطالبات المستجدات</Trans>
                   </h3>
                   <p className="text-white text-sm-regular text-right mt-2">
-                    عمادة القبول والتسجيل
+                    <Trans>عمادة القبول والتسجيل</Trans>
                   </p>
                 </div>
               </div>
@@ -100,10 +104,10 @@ const AdmissionsSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div className="absolute bottom-0 left-0 right-0 p-[24px]">
                   <h3 className="text-white text-xl-bold text-right">
-                    معلومات عن التسجيل والقبول
+                    <Trans>معلومات عن التسجيل والقبول</Trans>
                   </h3>
                   <p className="text-white text-sm-regular text-right mt-2">
-                    عمادة القبول والتسجيل
+                    <Trans>عمادة القبول والتسجيل</Trans>
                   </p>
                 </div>
               </div>
