@@ -8,7 +8,6 @@ const DgaCarousel = dynamic(() => import("platformscode-new-react").then(m => m.
 const DgaCarouselItem = dynamic(() => import("platformscode-new-react").then(m => m.DgaCarouselItem), { ssr: false });
 const DgaDivider = dynamic(() => import("platformscode-new-react").then(m => m.DgaDivider), { ssr: false });
 const DgaFeaturedIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaFeaturedIcon), { ssr: false });
-import { guid } from "@/utils/guid";
 import Image from "next/image";
 
 export default function StudentAffairsSection() {

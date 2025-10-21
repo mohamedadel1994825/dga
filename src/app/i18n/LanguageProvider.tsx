@@ -123,15 +123,22 @@ export default function LanguageProvider({ children }: { children: React.ReactNo
 
   useEffect(() => {
     // On first mount, prefer saved value if present, else keep Arabic
-    const saved = (localStorage.getItem("site-lang") as SupportedLang | null) || undefined;
+    let saved: SupportedLang | null = null;
+    try {
+      saved = localStorage.getItem("site-lang") as SupportedLang | null;
+    } catch {
+      // localStorage not available
+    }
     const initial = saved || lang;
     setHtmlLangAndDir(initial);
     syncPlatformComponentsLanguage(initial);
-    setLang(initial);
+    if (saved && saved !== lang) {
+      setLang(initial);
+    }
     const html = document.documentElement;
     const obs = new MutationObserver(() => {
       const l = (html.getAttribute("lang") as SupportedLang) || "ar";
-      if (l !== initial) set(l);
+      if (l !== lang) set(l);
     });
     obs.observe(html, { attributes: true, attributeFilter: ["lang"] });
     return () => obs.disconnect();

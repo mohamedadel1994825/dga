@@ -2,6 +2,7 @@
 // @ts-nocheck
 
 import dynamic from "next/dynamic";
+import { useState, useEffect } from "react";
 const DgaButton = dynamic(() => import("platformscode-new-react").then(m => m.DgaButton), { ssr: false });
 const DgaHeaderActionBtn = dynamic(() => import("platformscode-new-react").then(m => m.DgaHeaderActionBtn), { ssr: false });
 const DgaIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaIcon), { ssr: false });
@@ -19,6 +20,7 @@ const DgaLabel = dynamic(() => import("platformscode-new-react").then(m => m.Dga
 // import "platformscode-new-react/dist/style.css";
 import { useLanguage } from "./i18n/LanguageProvider";
 import DigitalSignatureBanner from "./components/DigitalSignatureBanner";
+import WebComponentErrorBoundary from "./components/WebComponentErrorBoundary";
 import FirstSection from "./components/FirstSection";
 import UniversityLifeSection from "./components/UniversityLifeSection";
 import ScientificResearchSection from "./components/ScientificResearchSection";
@@ -32,7 +34,6 @@ const DgaCarouselItem = dynamic(() => import("platformscode-new-react").then(m =
 const DgaDivider = dynamic(() => import("platformscode-new-react").then(m => m.DgaDivider), { ssr: false });
 const DgaFeaturedIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaFeaturedIcon), { ssr: false });
 const DgaFooter = dynamic(() => import("platformscode-new-react").then(m => m.DgaFooter), { ssr: false });
-import { guid } from "@/utils/guid";
   
   
   const Home: React.FC = () => {
@@ -42,9 +43,17 @@ import { guid } from "@/utils/guid";
   const currentLang: 'ar' | 'en' = lang;
 
   const locale = currentLang === 'ar' ? 'ar-SA' : 'en-US';
-  const now = new Date();
-  const dateStr = new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long', day: 'numeric' }).format(now);
-  const timeStr = new Intl.DateTimeFormat(locale, { hour: 'numeric', minute: '2-digit', hour12: true }).format(now);
+  
+  // Use state to avoid hydration mismatch - only render time on client
+  const [dateStr, setDateStr] = useState('');
+  const [timeStr, setTimeStr] = useState('');
+  
+  useEffect(() => {
+    const now = new Date();
+    setDateStr(new Intl.DateTimeFormat(locale, { year: 'numeric', month: 'long', day: 'numeric' }).format(now));
+    setTimeStr(new Intl.DateTimeFormat(locale, { hour: 'numeric', minute: '2-digit', hour12: true }).format(now));
+  }, [locale]);
+  
   const weatherStr = currentLang === 'ar' ? 'غائم' : 'Cloudy';
   const cityStr = currentLang === 'ar' ? 'الرياض' : 'Riyadh';
   const t = {
@@ -57,7 +66,9 @@ import { guid } from "@/utils/guid";
     return (
       <div dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
         <div>
-        <DigitalSignatureBanner />
+        <WebComponentErrorBoundary fallback={<div style={{ minHeight: '40px' }} />}>
+          <DigitalSignatureBanner />
+        </WebComponentErrorBoundary>
         <DgaSecondNavHeader
           key={currentLang}
           variant="gray"
@@ -96,18 +107,26 @@ import { guid } from "@/utils/guid";
             ></DgaButton>
           </DgaSecondNavHeaderActions>
           <DgaSecondNavHeaderContent >
-            <DgaSecondNavHeaderItem label={weatherStr}>
-              <DgaIcon size={16} icon="cloud" variant="stroke" type="rounded" />
-            </DgaSecondNavHeaderItem>
-            <DgaSecondNavHeaderItem label={dateStr}>
-              <DgaIcon size={16} icon="calendar-04" variant="stroke" type="rounded" />
-            </DgaSecondNavHeaderItem>
-            <DgaSecondNavHeaderItem label={timeStr}>
-              <DgaIcon size={16} icon="time-04" variant="stroke" type="rounded" />
-            </DgaSecondNavHeaderItem>
-            <DgaSecondNavHeaderItem label={cityStr}>
-              <DgaIcon size={16} icon="location-01" variant="stroke" type="rounded" />
-            </DgaSecondNavHeaderItem>
+            {weatherStr && (
+              <DgaSecondNavHeaderItem label={weatherStr}>
+                <DgaIcon size={16} icon="cloud" variant="stroke" type="rounded" />
+              </DgaSecondNavHeaderItem>
+            )}
+            {dateStr && (
+              <DgaSecondNavHeaderItem label={dateStr}>
+                <DgaIcon size={16} icon="calendar-04" variant="stroke" type="rounded" />
+              </DgaSecondNavHeaderItem>
+            )}
+            {timeStr && (
+              <DgaSecondNavHeaderItem label={timeStr}>
+                <DgaIcon size={16} icon="time-04" variant="stroke" type="rounded" />
+              </DgaSecondNavHeaderItem>
+            )}
+            {cityStr && (
+              <DgaSecondNavHeaderItem label={cityStr}>
+                <DgaIcon size={16} icon="location-01" variant="stroke" type="rounded" />
+              </DgaSecondNavHeaderItem>
+            )}
           </DgaSecondNavHeaderContent>
         </DgaSecondNavHeader>
         </div>
@@ -220,9 +239,9 @@ import { guid } from "@/utils/guid";
                   primaryActionLabel: "Read More",
                   showSecondaryAction: false,
                 },
-              ].map(({}) => (
+              ].map((_, index) => (
                 <div
-                  key={guid()}
+                  key={`stats-${index}`}
                   className="flex flex-col justify-center items-center"
                 >
                   <DgaFeaturedIcon icon={{
@@ -296,7 +315,7 @@ import { guid } from "@/utils/guid";
                 <h3 className="carousel-title">البرامج الأكاديمية</h3>
                 <DgaCarousel>
                   <DgaCarouselItem>
-                    <Image src="/assets/ImamUnive1.svg" alt="البرامج الجامعية المتميزة" width={300} height={200} />
+                    <Image src="/ImamUnive1.svg" alt="البرامج الجامعية المتميزة" width={300} height={200} />
                     <p className="carousel-text">برامج البكالوريوس والماجستير والدكتوراه</p>
                   </DgaCarouselItem>
                   <DgaCarouselItem>
@@ -360,9 +379,9 @@ import { guid } from "@/utils/guid";
                   image,
                   primaryActionLabel,
                   showSecondaryAction,
-                }) => (
+                }, index) => (
                   <DgaCard
-                    key={guid()}
+                    key={`news-card-${index}`}
                     cardTitle={title}
                     description={description}
                     image={image}

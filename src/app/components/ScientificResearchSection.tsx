@@ -2,7 +2,6 @@
 // @ts-nocheck
 
 import dynamic from "next/dynamic";
-import { guid } from "@/utils/guid";
 
 const DgaFeaturedIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaFeaturedIcon), { ssr: false });
 const DgaCard = dynamic(() => import("platformscode-new-react").then(m => m.DgaCard), { ssr: false });
@@ -61,9 +60,9 @@ const ScientificResearchSection = () => {
 
       {/* Statistics Cards */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-[24px] mb-[40px]">
-        {stats.map((stat) => (
+        {stats.map((stat, index) => (
           <div
-            key={guid()}
+            key={`stat-${index}`}
             className="flex flex-col items-center justify-center bg-white rounded-[16px] p-[32px] text-center"
           >
             <DgaFeaturedIcon 
@@ -88,9 +87,9 @@ const ScientificResearchSection = () => {
 
       {/* News Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] pb-[40px]">
-        {newsCards.map((card) => (
+        {newsCards.map((card, index) => (
           <DgaCard
-            key={guid()}
+            key={`research-card-${index}`}
             cardTitle={card.title}
             image={card.image}
             showFeaturedIcon={false}

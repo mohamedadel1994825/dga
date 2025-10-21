@@ -8,7 +8,6 @@ const DgaDivider = dynamic(() => import("platformscode-new-react").then(m => m.D
 const DgaFeaturedIcon = dynamic(() => import("platformscode-new-react").then(m => m.DgaFeaturedIcon), { ssr: false });
 const DgaCarousel = dynamic(() => import("platformscode-new-react").then(m => m.DgaCarousel), { ssr: false });
 const DgaCarouselItem = dynamic(() => import("platformscode-new-react").then(m => m.DgaCarouselItem), { ssr: false });
-import { guid } from "@/utils/guid";
 
 const AdmissionsSection: React.FC = () => {
   // Service cards data
@@ -114,9 +113,9 @@ const AdmissionsSection: React.FC = () => {
 
         {/* Right: Service Cards Grid */}
         <div className="grid grid-cols-3 gap-[16px]">
-          {serviceCards.map((card) => (
+          {serviceCards.map((card, index) => (
             <div
-              key={guid()}
+              key={`service-${index}`}
               className="flex flex-col items-center justify-center p-[16px] bg-white border border-[#E5E7EB] rounded-[12px] hover:shadow-md transition-shadow cursor-pointer h-[160px]"
             >
               <DgaFeaturedIcon
