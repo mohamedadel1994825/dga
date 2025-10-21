@@ -23,7 +23,10 @@ function stripPlatformscodeCss(targetPath) {
 
   if (sanitized !== original) {
     fs.writeFileSync(targetPath, sanitized, 'utf8');
-    return { changed: true, reason: markerIdx !== -1 ? 'sliced+regex' : 'regex' };
+    return {
+      changed: true,
+      reason: markerIdx !== -1 ? 'sliced+regex' : 'regex',
+    };
   }
   return { changed: false, reason: 'no-op' };
 }
@@ -49,8 +52,14 @@ const targets = [
   path.join(root, 'node_modules/@platformscode/core/dist/core/core.css'),
   path.join(root, 'node_modules/platformscode-new-react/dist/style.css'),
   // pnpm store copies
-  ...findPnpmStoreTargets('@platformscode+core@', '@platformscode/core/dist/core/core.css'),
-  ...findPnpmStoreTargets('platformscode-new-react@', 'platformscode-new-react/dist/style.css'),
+  ...findPnpmStoreTargets(
+    '@platformscode+core@',
+    '@platformscode/core/dist/core/core.css'
+  ),
+  ...findPnpmStoreTargets(
+    'platformscode-new-react@',
+    'platformscode-new-react/dist/style.css'
+  ),
 ];
 
 let changedAny = false;
@@ -77,10 +86,12 @@ if (!changedAny) {
 // Copy a cleaned core.css to public so we can include via <link>
 try {
   const publicCssDir = path.join(root, 'public', 'vendor');
-  if (!fs.existsSync(publicCssDir)) fs.mkdirSync(publicCssDir, { recursive: true });
+  if (!fs.existsSync(publicCssDir))
+    fs.mkdirSync(publicCssDir, { recursive: true });
   // Prefer pnpm cleaned copy if exists
-  const pnpmCore = targets.find(p => p.includes('.pnpm/@platformscode+core@'))
-    || path.join(root, 'node_modules/@platformscode/core/dist/core/core.css');
+  const pnpmCore =
+    targets.find(p => p.includes('.pnpm/@platformscode+core@')) ||
+    path.join(root, 'node_modules/@platformscode/core/dist/core/core.css');
   if (fs.existsSync(pnpmCore)) {
     const dest = path.join(publicCssDir, 'platformscode-core.css');
     fs.copyFileSync(pnpmCore, dest);
@@ -89,4 +100,3 @@ try {
 } catch (e) {
   console.warn('Failed to copy cleaned CSS to public:', e.message);
 }
-

@@ -1,5 +1,5 @@
-import type { NextConfig } from "next";
-import path from "path";
+import type { NextConfig } from 'next';
+import path from 'path';
 
 const nextConfig: NextConfig = {
   output: 'export',
@@ -7,15 +7,16 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   experimental: {
-    swcPlugins: [
-      ["@lingui/swc-plugin", {}]
-    ],
+    swcPlugins: [['@lingui/swc-plugin', {}]],
   },
-  webpack: (config) => {
+  webpack: config => {
     config.resolve = config.resolve || {};
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
-      "@platformscode/core/dist/core/core.css": path.resolve(process.cwd(), "src/app/empty.css"),
+      '@platformscode/core/dist/core/core.css': path.resolve(
+        process.cwd(),
+        'src/app/empty.css'
+      ),
     };
     return config;
   },

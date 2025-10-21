@@ -1,13 +1,16 @@
 export function guid(): string {
-  if (typeof crypto !== "undefined" && "randomUUID" in crypto && typeof (crypto as unknown as { randomUUID: () => string }).randomUUID === "function") {
+  if (
+    typeof crypto !== 'undefined' &&
+    'randomUUID' in crypto &&
+    typeof (crypto as unknown as { randomUUID: () => string }).randomUUID ===
+      'function'
+  ) {
     return (crypto as unknown as { randomUUID: () => string }).randomUUID();
   }
-  const template = "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx";
-  return template.replace(/[xy]/g, (c) => {
+  const template = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx';
+  return template.replace(/[xy]/g, c => {
     const r = (Math.random() * 16) | 0;
-    const v = c === "x" ? r : (r & 0x3) | 0x8;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
     return v.toString(16);
   });
 }
-
-

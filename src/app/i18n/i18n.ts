@@ -1,7 +1,7 @@
-import { i18n } from "@lingui/core";
-import { en, ar } from "make-plural/plurals";
+import { i18n } from '@lingui/core';
+import { en, ar } from 'make-plural/plurals';
 
-export type SupportedLocale = "en" | "ar";
+export type SupportedLocale = 'en' | 'ar';
 
 i18n.loadLocaleData({
   en: { plurals: en },
@@ -18,4 +18,3 @@ export async function dynamicActivate(locale: SupportedLocale) {
 }
 
 export { i18n };
-

@@ -1,8 +1,15 @@
-"use client";
+'use client';
 
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
-import { I18nProvider } from "@lingui/react";
-import { i18n, dynamicActivate, type SupportedLocale } from "./i18n";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
+import { I18nProvider } from '@lingui/react';
+import { i18n, dynamicActivate, type SupportedLocale } from './i18n';
 
 type SupportedLang = SupportedLocale;
 
@@ -16,78 +23,97 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function useLanguage(): LanguageContextValue {
   const ctx = useContext(LanguageContext);
-  if (!ctx) throw new Error("useLanguage must be used within LanguageProvider");
+  if (!ctx) throw new Error('useLanguage must be used within LanguageProvider');
   return ctx;
 }
 
-export default function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [lang, setLang] = useState<SupportedLang>("ar");
+export default function LanguageProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const [lang, setLang] = useState<SupportedLang>('ar');
   const [isReady, setIsReady] = useState(false);
   const [isSwitching, setIsSwitching] = useState(false);
 
-  const set = useCallback(async (newLang: SupportedLang) => {
-    if (isSwitching || newLang === lang) return;
-    
-    setIsSwitching(true);
-    
-    try {
-      // Activate the new language in Lingui
-      await dynamicActivate(newLang);
-      
-      // Update state
-      setLang(newLang);
-      
-      // Update HTML attributes for RTL/LTR
-      document.documentElement.setAttribute("lang", newLang);
-      document.documentElement.setAttribute("dir", newLang === "ar" ? "rtl" : "ltr");
-      
-      // Update web components (DGA-* and NDS-* components)
-      const allElements = document.querySelectorAll("*");
-      allElements.forEach((el) => {
-        const tagName = el.tagName;
-        if (tagName.startsWith("DGA-") || tagName.startsWith("NDS-")) {
-          el.setAttribute("language", newLang);
-          if (tagName === "DGA-SEARCH-BOX") {
-            el.setAttribute("speech-lang", newLang === "ar" ? "ar-SA" : "en-US");
+  const set = useCallback(
+    async (newLang: SupportedLang) => {
+      if (isSwitching || newLang === lang) return;
+
+      setIsSwitching(true);
+
+      try {
+        // Activate the new language in Lingui
+        await dynamicActivate(newLang);
+
+        // Update state
+        setLang(newLang);
+
+        // Update HTML attributes for RTL/LTR
+        document.documentElement.setAttribute('lang', newLang);
+        document.documentElement.setAttribute(
+          'dir',
+          newLang === 'ar' ? 'rtl' : 'ltr'
+        );
+
+        // Update web components (DGA-* and NDS-* components)
+        const allElements = document.querySelectorAll('*');
+        allElements.forEach(el => {
+          const tagName = el.tagName;
+          if (tagName.startsWith('DGA-') || tagName.startsWith('NDS-')) {
+            el.setAttribute('language', newLang);
+            if (tagName === 'DGA-SEARCH-BOX') {
+              el.setAttribute(
+                'speech-lang',
+                newLang === 'ar' ? 'ar-SA' : 'en-US'
+              );
+            }
           }
-        }
-      });
-      
-      // Persist to localStorage
-      localStorage.setItem("site-lang", newLang);
-    } catch (error) {
-      console.error("Language switch error:", error);
-    } finally {
-      setTimeout(() => setIsSwitching(false), 100);
-    }
-  }, [isSwitching, lang]);
+        });
+
+        // Persist to localStorage
+        localStorage.setItem('site-lang', newLang);
+      } catch (error) {
+        console.error('Language switch error:', error);
+      } finally {
+        setTimeout(() => setIsSwitching(false), 100);
+      }
+    },
+    [isSwitching, lang]
+  );
 
   const toggle = useCallback(() => {
-    set(lang === "ar" ? "en" : "ar");
+    set(lang === 'ar' ? 'en' : 'ar');
   }, [lang, set]);
 
   useEffect(() => {
     // Initialize on mount
-    const savedLang = localStorage.getItem("site-lang") as SupportedLang | null;
-    const initialLang = savedLang || "ar";
-    
+    const savedLang = localStorage.getItem('site-lang') as SupportedLang | null;
+    const initialLang = savedLang || 'ar';
+
     dynamicActivate(initialLang).then(() => {
       setLang(initialLang);
-      document.documentElement.setAttribute("lang", initialLang);
-      document.documentElement.setAttribute("dir", initialLang === "ar" ? "rtl" : "ltr");
-      
+      document.documentElement.setAttribute('lang', initialLang);
+      document.documentElement.setAttribute(
+        'dir',
+        initialLang === 'ar' ? 'rtl' : 'ltr'
+      );
+
       // Set language attribute on all web components
-      const allElements = document.querySelectorAll("*");
-      allElements.forEach((el) => {
+      const allElements = document.querySelectorAll('*');
+      allElements.forEach(el => {
         const tagName = el.tagName;
-        if (tagName.startsWith("DGA-") || tagName.startsWith("NDS-")) {
-          el.setAttribute("language", initialLang);
-          if (tagName === "DGA-SEARCH-BOX") {
-            el.setAttribute("speech-lang", initialLang === "ar" ? "ar-SA" : "en-US");
+        if (tagName.startsWith('DGA-') || tagName.startsWith('NDS-')) {
+          el.setAttribute('language', initialLang);
+          if (tagName === 'DGA-SEARCH-BOX') {
+            el.setAttribute(
+              'speech-lang',
+              initialLang === 'ar' ? 'ar-SA' : 'en-US'
+            );
           }
         }
       });
-      
+
       setIsReady(true);
     });
   }, []);
@@ -103,7 +129,9 @@ export default function LanguageProvider({ children }: { children: React.ReactNo
 
   return (
     <I18nProvider i18n={i18n}>
-      <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>
+      <LanguageContext.Provider value={value}>
+        {children}
+      </LanguageContext.Provider>
     </I18nProvider>
   );
 }

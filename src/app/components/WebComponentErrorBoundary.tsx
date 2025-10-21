@@ -1,6 +1,6 @@
-"use client";
+'use client';
 
-import React, { Component, ReactNode } from "react";
+import React, { Component, ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -27,7 +27,7 @@ export default class WebComponentErrorBoundary extends Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
     // Log error for debugging but don't crash the app
-    console.warn("Web component error caught:", error, errorInfo);
+    console.warn('Web component error caught:', error, errorInfo);
   }
 
   render() {
@@ -38,4 +38,3 @@ export default class WebComponentErrorBoundary extends Component<Props, State> {
     return this.props.children;
   }
 }
-

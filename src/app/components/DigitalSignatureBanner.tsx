@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { useEffect, useRef, useState } from "react";
-import { useLanguage } from "../i18n/LanguageProvider";
+import { useEffect, useRef, useState } from 'react';
+import { useLanguage } from '../i18n/LanguageProvider';
 
 export default function DigitalSignatureBanner() {
   const sigRef = useRef<HTMLElement | null>(null);
@@ -12,7 +12,7 @@ export default function DigitalSignatureBanner() {
   useEffect(() => {
     // Register the web component on the client only
     // Import just the needed component to avoid heavy bundles
-    import("@platformscode/core/dist/components/dga-digital-signature.js")
+    import('@platformscode/core/dist/components/dga-digital-signature.js')
       .then(() => {
         setMounted(true);
         // Give the web component time to fully initialize
@@ -29,7 +29,7 @@ export default function DigitalSignatureBanner() {
   // Set language attribute when component is ready or language changes
   useEffect(() => {
     if (sigRef.current && ready) {
-      sigRef.current.setAttribute("language", lang);
+      sigRef.current.setAttribute('language', lang);
     }
   }, [lang, ready]);
 
@@ -40,12 +40,10 @@ export default function DigitalSignatureBanner() {
   return (
     <div suppressHydrationWarning>
       {/* @ts-expect-error - web component */}
-      <dga-digital-signature 
+      <dga-digital-signature
         ref={(el: HTMLElement) => (sigRef.current = el)}
         language={lang}
       />
     </div>
   );
 }
-
-
