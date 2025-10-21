@@ -14,7 +14,8 @@
     "type-check": "tsc --noEmit",
     "lingui:extract": "lingui extract",
     "lingui:compile": "lingui compile --typescript",
-    "lingui:watch": "lingui extract --watch"
+    "lingui:watch": "lingui extract --watch",
+    "prepare": "husky"
   },
   "dependencies": {
     "@lingui/core": "^5.5.1",
@@ -46,6 +47,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-lingui": "^0.11.0",
     "eslint-plugin-prettier": "^5.5.4",
+    "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "tailwindcss": "^4",
     "typescript": "^5"
