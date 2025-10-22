@@ -3,23 +3,6 @@ import { NextRequest, NextResponse } from 'next/server';
 const locales = ['ar', 'en'];
 const defaultLocale = 'ar';
 
-// Get the preferred locale from the request
-function getLocale(request: NextRequest): string {
-  // Check if there is any supported locale in the pathname
-  const pathname = request.nextUrl.pathname;
-  const pathnameIsMissingLocale = locales.every(
-    locale => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
-  );
-
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getPreferredLocale(request);
-    return locale;
-  }
-
-  return defaultLocale;
-}
-
 function getPreferredLocale(request: NextRequest): string {
   // Check stored locale in cookie first (user's previous choice)
   const storedLocale = request.cookies.get('locale')?.value;
@@ -75,14 +58,18 @@ export function middleware(request: NextRequest) {
     );
   }
 
-  // Set locale cookie to match URL
+  // Set locale cookie only if it differs from current cookie
   const response = NextResponse.next();
-  response.cookies.set('locale', pathnameLocale, {
-    maxAge: 60 * 60 * 24 * 365, // 1 year
-    httpOnly: false,
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
-  });
+  const currentCookie = request.cookies.get('locale')?.value;
+
+  if (currentCookie !== pathnameLocale) {
+    response.cookies.set('locale', pathnameLocale, {
+      maxAge: 60 * 60 * 24 * 365, // 1 year
+      httpOnly: false,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+    });
+  }
 
   return response;
 }
