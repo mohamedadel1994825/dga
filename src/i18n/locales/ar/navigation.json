@@ -1,0 +1,98 @@
+{
+  "navigation": {
+    "main": {
+      "home": "الرئيسية",
+      "about": "عن الجامعة",
+      "admissions": "الالتحاق",
+      "academics": "الأكاديمية",
+      "research": "البحث العلمي",
+      "news": "الأخبار",
+      "events": "الفعاليات",
+      "contact": "اتصل بنا"
+    },
+    "about": {
+      "history": "تاريخ الجامعة",
+      "vision": "الرؤية والرسالة",
+      "leadership": "القيادة",
+      "facts": "حقائق وأرقام",
+      "awards": "الجوائز والتكريمات",
+      "partnerships": "الشراكات"
+    },
+    "admissions": {
+      "apply": "التقديم",
+      "requirements": "المتطلبات",
+      "programs": "البرامج",
+      "deadlines": "المواعيد النهائية",
+      "fees": "الرسوم",
+      "scholarships": "المنح الدراسية",
+      "faq": "الأسئلة الشائعة"
+    },
+    "academics": {
+      "colleges": "الكليات",
+      "departments": "الأقسام",
+      "programs": "البرامج",
+      "courses": "المقررات",
+      "faculty": "أعضاء هيئة التدريس",
+      "calendar": "التقويم الأكاديمي",
+      "policies": "السياسات الأكاديمية"
+    },
+    "research": {
+      "centers": "مراكز البحوث",
+      "publications": "المنشورات",
+      "grants": "المنح البحثية",
+      "conferences": "المؤتمرات",
+      "collaborations": "التعاون البحثي",
+      "innovation": "الابتكار"
+    },
+    "student": {
+      "portal": "البوابة الطلابية",
+      "services": "الخدمات الطلابية",
+      "life": "الحياة الطلابية",
+      "clubs": "النوادي الطلابية",
+      "activities": "الأنشطة",
+      "support": "الدعم الطلابي"
+    },
+    "faculty": {
+      "portal": "بوابة أعضاء هيئة التدريس",
+      "resources": "الموارد",
+      "development": "التطوير المهني",
+      "research": "البحث العلمي",
+      "teaching": "التدريس",
+      "services": "الخدمات"
+    },
+    "footer": {
+      "quickLinks": "روابط سريعة",
+      "academic": "أكاديمي",
+      "services": "خدمات",
+      "resources": "موارد",
+      "connect": "تواصل معنا",
+      "follow": "تابعنا",
+      "newsletter": "النشرة الإخبارية",
+      "subscribe": "اشترك",
+      "unsubscribe": "إلغاء الاشتراك"
+    },
+    "breadcrumb": {
+      "home": "الرئيسية",
+      "youAreHere": "أنت هنا",
+      "currentPage": "الصفحة الحالية"
+    },
+    "search": {
+      "placeholder": "البحث في الموقع...",
+      "noResults": "لا توجد نتائج",
+      "resultsFound": "تم العثور على {count} نتيجة",
+      "searchIn": "البحث في",
+      "all": "الكل",
+      "news": "الأخبار",
+      "events": "الفعاليات",
+      "people": "الأشخاص",
+      "academics": "الأكاديمية",
+      "filters": "المرشحات",
+      "sortBy": "ترتيب حسب",
+      "relevance": "الصلة",
+      "date": "التاريخ",
+      "title": "العنوان",
+      "clearFilters": "مسح المرشحات",
+      "applyFilters": "تطبيق المرشحات"
+    }
+  }
+}

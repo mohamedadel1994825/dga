@@ -2,7 +2,7 @@ import type { NextConfig } from 'next';
 import path from 'path';
 
 const nextConfig: NextConfig = {
-  output: 'export',
+  // output: 'export', // Commented out to allow middleware
   images: {
     unoptimized: true,
   },
@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
       ...(config.resolve.alias || {}),
       '@platformscode/core/dist/core/core.css': path.resolve(
         process.cwd(),
-        'src/app/empty.css'
+        'app/empty.css'
       ),
     };
     return config;

@@ -1,0 +1,163 @@
+{
+  "dga": {
+    "components": {
+      "searchBox": {
+        "placeholder": "البحث في الموقع...",
+        "searchButton": "بحث",
+        "clearButton": "مسح",
+        "voiceSearch": "البحث الصوتي",
+        "suggestions": "اقتراحات البحث",
+        "noResults": "لا توجد نتائج",
+        "searching": "جاري البحث...",
+        "error": "خطأ في البحث"
+      },
+      "header": {
+        "logo": "شعار الجامعة",
+        "menu": "القائمة الرئيسية",
+        "languageToggle": "تبديل اللغة",
+        "searchToggle": "تبديل البحث",
+        "userMenu": "قائمة المستخدم",
+        "notifications": "الإشعارات",
+        "accessibility": "إعدادات الوصولية"
+      },
+      "footer": {
+        "links": "روابط مفيدة",
+        "social": "وسائل التواصل الاجتماعي",
+        "newsletter": "النشرة الإخبارية",
+        "contact": "معلومات الاتصال",
+        "legal": "المعلومات القانونية",
+        "accessibility": "إمكانية الوصول"
+      },
+      "navigation": {
+        "mainMenu": "القائمة الرئيسية",
+        "subMenu": "القائمة الفرعية",
+        "breadcrumb": "مسار التنقل",
+        "skipLinks": "روابط التخطي",
+        "backToTop": "العودة إلى الأعلى"
+      },
+      "forms": {
+        "required": "مطلوب",
+        "optional": "اختياري",
+        "submit": "إرسال",
+        "reset": "إعادة تعيين",
+        "cancel": "إلغاء",
+        "save": "حفظ",
+        "edit": "تعديل",
+        "delete": "حذف",
+        "add": "إضافة",
+        "remove": "إزالة",
+        "upload": "رفع",
+        "download": "تحميل",
+        "preview": "معاينة",
+        "validation": {
+          "required": "هذا الحقل مطلوب",
+          "email": "يرجى إدخال بريد إلكتروني صحيح",
+          "phone": "يرجى إدخال رقم هاتف صحيح",
+          "minLength": "يجب أن يكون {min} أحرف على الأقل",
+          "maxLength": "يجب أن يكون {max} أحرف على الأكثر",
+          "pattern": "التنسيق غير صحيح"
+        }
+      },
+      "modals": {
+        "close": "إغلاق",
+        "confirm": "تأكيد",
+        "cancel": "إلغاء",
+        "ok": "موافق",
+        "yes": "نعم",
+        "no": "لا"
+      },
+      "tables": {
+        "sort": "ترتيب",
+        "filter": "تصفية",
+        "search": "بحث",
+        "export": "تصدير",
+        "import": "استيراد",
+        "refresh": "تحديث",
+        "selectAll": "اختيار الكل",
+        "deselectAll": "إلغاء اختيار الكل",
+        "noData": "لا توجد بيانات",
+        "loading": "جاري التحميل...",
+        "error": "خطأ في تحميل البيانات"
+      },
+      "pagination": {
+        "first": "الأول",
+        "previous": "السابق",
+        "next": "التالي",
+        "last": "الأخير",
+        "page": "صفحة",
+        "of": "من",
+        "items": "عناصر",
+        "perPage": "لكل صفحة",
+        "goToPage": "انتقل إلى صفحة",
+        "showing": "عرض",
+        "to": "إلى",
+        "results": "نتائج"
+      },
+      "alerts": {
+        "success": "نجح",
+        "error": "خطأ",
+        "warning": "تحذير",
+        "info": "معلومات",
+        "dismiss": "إغلاق",
+        "dismissAll": "إغلاق الكل"
+      },
+      "loading": {
+        "spinner": "جاري التحميل...",
+        "skeleton": "جاري تحميل المحتوى...",
+        "progress": "تقدم التحميل",
+        "percentage": "{percentage}%"
+      }
+    },
+    "accessibility": {
+      "skipToContent": "تخطي إلى المحتوى",
+      "skipToNavigation": "تخطي إلى التنقل",
+      "skipToMain": "تخطي إلى المحتوى الرئيسي",
+      "skipToFooter": "تخطي إلى التذييل",
+      "backToTop": "العودة إلى الأعلى",
+      "openMenu": "فتح القائمة",
+      "closeMenu": "إغلاق القائمة",
+      "toggleNavigation": "تبديل التنقل",
+      "toggleSearch": "تبديل البحث",
+      "toggleLanguage": "تبديل اللغة",
+      "toggleTheme": "تبديل المظهر",
+      "toggleFontSize": "تبديل حجم الخط",
+      "toggleContrast": "تبديل التباين",
+      "toggleSpacing": "تبديل المسافات",
+      "toggleMotion": "تبديل الحركة",
+      "screenReaderOnly": "للقارئ الشاشة فقط",
+      "visuallyHidden": "مخفي بصرياً",
+      "announcements": {
+        "pageLoaded": "تم تحميل الصفحة",
+        "formSubmitted": "تم إرسال النموذج",
+        "fileUploaded": "تم رفع الملف",
+        "searchResults": "تم العثور على {count} نتيجة",
+        "noResults": "لا توجد نتائج",
+        "loading": "جاري التحميل",
+        "error": "حدث خطأ",
+        "success": "تم بنجاح"
+      }
+    },
+    "analytics": {
+      "pageView": "عرض الصفحة",
+      "click": "نقرة",
+      "download": "تحميل",
+      "search": "بحث",
+      "formSubmit": "إرسال النموذج",
+      "fileUpload": "رفع الملف",
+      "videoPlay": "تشغيل الفيديو",
+      "videoPause": "إيقاف الفيديو",
+      "videoComplete": "اكتمال الفيديو",
+      "linkClick": "نقرة على الرابط",
+      "buttonClick": "نقرة على الزر",
+      "menuOpen": "فتح القائمة",
+      "menuClose": "إغلاق القائمة",
+      "modalOpen": "فتح النافذة المنبثقة",
+      "modalClose": "إغلاق النافذة المنبثقة",
+      "accordionOpen": "فتح الطي",
+      "accordionClose": "إغلاق الطي",
+      "tabSwitch": "تبديل التبويب",
+      "carouselNext": "التالي في العرض",
+      "carouselPrevious": "السابق في العرض"
+    }
+  }
+}

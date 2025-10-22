@@ -1,0 +1,63 @@
+{
+  "errors": {
+    "general": {
+      "somethingWentWrong": "حدث خطأ غير متوقع",
+      "tryAgain": "يرجى المحاولة مرة أخرى",
+      "contactSupport": "يرجى الاتصال بالدعم الفني",
+      "pageNotFound": "الصفحة غير موجودة",
+      "accessDenied": "ليس لديك صلاحية للوصول",
+      "sessionExpired": "انتهت صلاحية الجلسة",
+      "networkError": "خطأ في الشبكة",
+      "serverError": "خطأ في الخادم",
+      "timeout": "انتهت مهلة الطلب"
+    },
+    "auth": {
+      "invalidCredentials": "بيانات الدخول غير صحيحة",
+      "accountLocked": "الحساب مقفل",
+      "emailNotVerified": "البريد الإلكتروني غير مفعل",
+      "passwordExpired": "انتهت صلاحية كلمة المرور",
+      "tooManyAttempts": "محاولات دخول كثيرة",
+      "accountSuspended": "الحساب معلق",
+      "accountDeleted": "الحساب محذوف"
+    },
+    "validation": {
+      "fieldRequired": "الحقل {field} مطلوب",
+      "invalidFormat": "تنسيق {field} غير صحيح",
+      "tooShort": "{field} قصير جداً",
+      "tooLong": "{field} طويل جداً",
+      "invalidEmail": "البريد الإلكتروني غير صحيح",
+      "invalidPhone": "رقم الهاتف غير صحيح",
+      "invalidDate": "التاريخ غير صحيح",
+      "invalidTime": "الوقت غير صحيح",
+      "invalidUrl": "الرابط غير صحيح",
+      "invalidFile": "نوع الملف غير مدعوم",
+      "fileTooLarge": "حجم الملف كبير جداً",
+      "duplicateValue": "القيمة مكررة"
+    },
+    "api": {
+      "notFound": "البيانات غير موجودة",
+      "unauthorized": "غير مخول",
+      "forbidden": "ممنوع",
+      "conflict": "تعارض في البيانات",
+      "unprocessable": "البيانات غير صحيحة",
+      "rateLimited": "تم تجاوز الحد المسموح",
+      "serviceUnavailable": "الخدمة غير متاحة",
+      "badRequest": "طلب غير صحيح"
+    },
+    "file": {
+      "uploadFailed": "فشل رفع الملف",
+      "downloadFailed": "فشل تحميل الملف",
+      "fileNotFound": "الملف غير موجود",
+      "permissionDenied": "ليس لديك صلاحية للوصول للملف",
+      "corrupted": "الملف تالف",
+      "virusDetected": "تم اكتشاف فيروس في الملف"
+    },
+    "network": {
+      "connectionLost": "فقدان الاتصال",
+      "slowConnection": "اتصال بطيء",
+      "dnsError": "خطأ في DNS",
+      "sslError": "خطأ في SSL",
+      "proxyError": "خطأ في البروكسي"
+    }
+  }
+}
