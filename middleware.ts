@@ -21,7 +21,13 @@ function getLocale(request: NextRequest): string {
 }
 
 function getPreferredLocale(request: NextRequest): string {
-  // Check Accept-Language header
+  // Check stored locale in cookie first (user's previous choice)
+  const storedLocale = request.cookies.get('locale')?.value;
+  if (storedLocale && locales.includes(storedLocale)) {
+    return storedLocale;
+  }
+
+  // Check Accept-Language header for supported languages
   const acceptLanguage = request.headers.get('accept-language');
   if (acceptLanguage) {
     const preferredLocale = acceptLanguage
@@ -34,12 +40,7 @@ function getPreferredLocale(request: NextRequest): string {
     }
   }
 
-  // Check stored locale in cookie
-  const storedLocale = request.cookies.get('locale')?.value;
-  if (storedLocale && locales.includes(storedLocale)) {
-    return storedLocale;
-  }
-
+  // Default to Arabic for new users
   return defaultLocale;
 }
 
@@ -74,7 +75,7 @@ export function middleware(request: NextRequest) {
     );
   }
 
-  // Set locale cookie
+  // Set locale cookie to match URL
   const response = NextResponse.next();
   response.cookies.set('locale', pathnameLocale, {
     maxAge: 60 * 60 * 24 * 365, // 1 year

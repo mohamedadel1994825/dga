@@ -34,9 +34,9 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!locales.includes(locale as Locale)) {
     notFound();
@@ -61,14 +61,14 @@ export async function generateMetadata({
   };
 }
 
-export default function LocaleLayout({
+export default async function LocaleLayout({
   children,
   params,
 }: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  const { locale } = params;
+  const { locale } = await params;
 
   if (!locales.includes(locale as Locale)) {
     notFound();
@@ -84,9 +84,7 @@ export default function LocaleLayout({
       >
         <link rel='stylesheet' href='/vendor/platformscode-core.css' />
         <QueryProvider>
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
+          <LanguageProvider initialLocale={locale}>{children}</LanguageProvider>
         </QueryProvider>
       </body>
     </html>

@@ -29,8 +29,10 @@ export function useLanguage(): LanguageContextValue {
 
 export default function LanguageProvider({
   children,
+  initialLocale,
 }: {
   children: React.ReactNode;
+  initialLocale?: string;
 }) {
   const [lang, setLang] = useState<SupportedLang>('ar');
   const [isReady, setIsReady] = useState(false);
@@ -73,6 +75,16 @@ export default function LanguageProvider({
 
         // Persist to localStorage
         localStorage.setItem('site-lang', newLang);
+
+        // Update URL to reflect language change
+        const currentPath = window.location.pathname;
+        const pathWithoutLocale = currentPath.replace(/^\/[a-z]{2}(\/|$)/, '/');
+        const newPath = `/${newLang}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
+
+        // Use router.push for client-side navigation
+        if (typeof window !== 'undefined') {
+          window.history.pushState(null, '', newPath);
+        }
       } catch (error) {
         console.error('Language switch error:', error);
       } finally {
@@ -87,9 +99,17 @@ export default function LanguageProvider({
   }, [lang, set]);
 
   useEffect(() => {
-    // Initialize on mount
+    // Initialize on mount - prioritize URL locale over localStorage
+    const urlLocale = initialLocale as SupportedLang | null;
     const savedLang = localStorage.getItem('site-lang') as SupportedLang | null;
-    const initialLang = savedLang || 'ar';
+
+    // Priority: URL locale > localStorage > default (ar)
+    const initialLang =
+      urlLocale && ['ar', 'en'].includes(urlLocale)
+        ? urlLocale
+        : savedLang && ['ar', 'en'].includes(savedLang)
+          ? savedLang
+          : 'ar';
 
     dynamicActivate(initialLang).then(() => {
       setLang(initialLang);
@@ -114,9 +134,14 @@ export default function LanguageProvider({
         }
       });
 
+      // Update localStorage to match URL locale
+      if (urlLocale && urlLocale !== savedLang) {
+        localStorage.setItem('site-lang', initialLang);
+      }
+
       setIsReady(true);
     });
-  }, []);
+  }, [initialLocale]);
 
   const value = useMemo<LanguageContextValue>(
     () => ({ lang, toggle, set }),

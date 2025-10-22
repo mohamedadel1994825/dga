@@ -30,16 +30,5 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang='ar' dir='rtl' suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${ibmPlexArabic.variable} antialiased`}
-        suppressHydrationWarning
-      >
-        {/* eslint-disable-next-line @next/next/no-css-tags */}
-        <link rel='stylesheet' href='/vendor/platformscode-core.css' />
-        <LanguageProvider>{children}</LanguageProvider>
-      </body>
-    </html>
-  );
+  return children;
 }
