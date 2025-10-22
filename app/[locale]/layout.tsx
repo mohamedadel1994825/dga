@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
 import '../globals.css';
 import 'platformscode-new-react/dist/style.css';
 import LanguageProvider from '../../src/i18n/LanguageProvider';
+import DigitalSignatureBanner from './(public)/_components/DigitalSignatureBanner';
 import QueryProvider from '@/providers/QueryProvider';
 
 const Geist_Sans = Geist({
@@ -83,7 +84,9 @@ export default function LocaleLayout({
       >
         <link rel='stylesheet' href='/vendor/platformscode-core.css' />
         <QueryProvider>
-          <LanguageProvider>{children}</LanguageProvider>
+          <LanguageProvider>
+            {children}
+          </LanguageProvider>
         </QueryProvider>
       </body>
     </html>
