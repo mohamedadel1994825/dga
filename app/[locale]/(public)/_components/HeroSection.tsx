@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import { useLanguage } from '@/i18n/LanguageProvider';
 
 const DgaLabel = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaLabel),
@@ -12,10 +11,7 @@ const DgaLabel = dynamic(
 );
 
 export default function HeroSection() {
-  const { lang } = useLanguage();
   const { _ } = useLingui();
-
-  const currentLang: 'ar' | 'en' = lang;
 
   return (
     <section className="relative max-h-[585px] h-[585px] bg-[rgba(27,131,84,1)] bg-no-repeat bg-cover bg-center [background-image:url('/ImamUnive1.svg'),linear-gradient(180deg,rgba(4,21,13,0)_64.79%,rgba(0,0,0,0.2)_72.14%)]">

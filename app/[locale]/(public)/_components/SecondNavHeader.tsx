@@ -67,7 +67,7 @@ export default function SecondNavHeader() {
   const cityStr = _(t`Riyadh`);
 
   return (
-    <DgaSecondNavHeader key={currentLang} variant='gray' hideDivider>
+    <DgaSecondNavHeader variant='gray' hideDivider>
       <DgaSecondNavHeaderActions>
         <DgaButton
           label='Button'

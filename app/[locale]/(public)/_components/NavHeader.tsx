@@ -43,7 +43,6 @@ export default function NavHeader() {
   const { lang, toggle } = useLanguage();
   const { _ } = useLingui();
 
-  const currentLang: 'ar' | 'en' = lang;
 
   // Menu items
   const menuItems = [
@@ -60,7 +59,7 @@ export default function NavHeader() {
   const servicesIdx = 6; // Index of "الخدمات"
 
   return (
-    <DgaNavHeader key={currentLang} fullWidth divider={false}>
+    <DgaNavHeader fullWidth divider={false}>
       <DgaNavHeaderMain collapsed>
         <div className='flex items-center gap-3'>
           <div className='w-11 h-16'>

@@ -1,8 +1,6 @@
 'use client';
 
 import { Suspense } from 'react';
-import dynamic from 'next/dynamic';
-import { useLanguage } from '@/i18n/LanguageProvider';
 import DigitalSignatureBanner from './(public)/_components/DigitalSignatureBanner';
 import WebComponentErrorBoundary from './(public)/_components/WebComponentErrorBoundary';
 import SecondNavHeader from './(public)/_components/SecondNavHeader';
@@ -20,11 +18,8 @@ import NewsSection from './(public)/_components/NewsSection';
 import FooterSection from './(public)/_components/FooterSection';
 
 export default function HomePage() {
-  const { lang } = useLanguage();
-  const currentLang: 'ar' | 'en' = lang;
-
   return (
-    <div dir={currentLang === 'ar' ? 'rtl' : 'ltr'}>
+    <div>
       <DigitalSignatureBanner />
       <SecondNavHeader />
       <NavHeader />

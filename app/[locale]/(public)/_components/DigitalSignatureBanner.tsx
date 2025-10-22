@@ -42,7 +42,6 @@ export default function DigitalSignatureBanner() {
       {/* @ts-expect-error - web component */}
       <dga-digital-signature
         ref={(el: HTMLElement) => (sigRef.current = el)}
-        language={lang}
       />
     </div>
   );
