@@ -9,7 +9,7 @@ import React, {
   useState,
 } from 'react';
 import { I18nProvider } from '@lingui/react';
-import { i18n, dynamicActivate, type SupportedLocale } from '../i18n/i18n';
+import { i18n, dynamicActivate, type SupportedLocale } from '../i18n/config';
 
 type SupportedLang = SupportedLocale;
 

@@ -1,6 +1,4 @@
-import { setupI18n } from '@lingui/core';
-import { messages as arMessages } from './locales/ar/messages';
-import { messages as enMessages } from './locales/en/messages';
+import { i18n } from '@lingui/core';
 
 export const locales = ['ar', 'en'] as const;
 export type Locale = (typeof locales)[number];
@@ -21,21 +19,6 @@ export function isRTL(locale: Locale): boolean {
 
 export function getDirection(locale: Locale): 'rtl' | 'ltr' {
   return isRTL(locale) ? 'rtl' : 'ltr';
-}
-
-export const i18n = setupI18n({
-  locale: defaultLocale,
-  locales: [...locales],
-  messages: {
-    ar: arMessages,
-    en: enMessages,
-  },
-});
-
-export async function dynamicActivate(locale: Locale) {
-  const { messages } = await import(`./locales/${locale}/messages`);
-  i18n.load(locale, messages);
-  i18n.activate(locale);
 }
 
 export function getLocaleFromPathname(pathname: string): Locale | null {
@@ -180,3 +163,23 @@ export function getPreferredLocale(
   // 6. Fallback to default
   return defaultLocale;
 }
+
+import { en, ar } from 'make-plural/plurals';
+
+export type SupportedLocale = 'en' | 'ar';
+
+i18n.loadLocaleData({
+  en: { plurals: en },
+  ar: { plurals: ar },
+});
+
+/**
+ * Dynamically loads the message catalog for the given locale.
+ */
+export async function dynamicActivate(locale: SupportedLocale) {
+  const { messages } = await import(`./locales/${locale}/messages`);
+  i18n.load(locale, messages);
+  i18n.activate(locale);
+}
+
+export { i18n };
