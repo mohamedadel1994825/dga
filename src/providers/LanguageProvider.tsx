@@ -9,7 +9,7 @@ import React, {
   useState,
 } from 'react';
 import { I18nProvider } from '@lingui/react';
-import { i18n, dynamicActivate, type SupportedLocale } from './i18n';
+import { i18n, dynamicActivate, type SupportedLocale } from '../i18n/i18n';
 
 type SupportedLang = SupportedLocale;
 
@@ -76,12 +76,15 @@ export default function LanguageProvider({
         // Persist to localStorage
         localStorage.setItem('site-lang', newLang);
 
+        // Update cookie to match the new language
+        document.cookie = `locale=${newLang}; Path=/; Max-Age=31536000; SameSite=Lax`;
+
         // Update URL to reflect language change
         const currentPath = window.location.pathname;
         const pathWithoutLocale = currentPath.replace(/^\/[a-z]{2}(\/|$)/, '/');
         const newPath = `/${newLang}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
 
-        // Use router.push for client-side navigation
+        // Use pushState for smooth navigation without reload
         if (typeof window !== 'undefined') {
           window.history.pushState(null, '', newPath);
         }

@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import { useState, useEffect } from 'react';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import { useLanguage } from '@/i18n/LanguageProvider';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 const DgaButton = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaButton),

@@ -1,16 +1,16 @@
 import { useCallback } from 'react';
-import { useLanguage } from '@/app/i18n/LanguageProvider';
-import { useTranslation as useLinguiTranslation } from '@lingui/react';
+import { useLanguage } from '@/providers/LanguageProvider';
+import { useLingui } from '@lingui/react';
 
 export function useTranslation() {
   const { lang } = useLanguage();
-  const { t } = useLinguiTranslation();
+  const { i18n } = useLingui();
 
   const translate = useCallback(
     (key: string, values?: Record<string, any>) => {
-      return t(key, values);
+      return i18n._(key, values);
     },
-    [t]
+    [i18n]
   );
 
   const formatDate = useCallback(

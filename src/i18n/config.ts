@@ -25,20 +25,10 @@ export function getDirection(locale: Locale): 'rtl' | 'ltr' {
 
 export const i18n = setupI18n({
   locale: defaultLocale,
-  locales,
+  locales: [...locales],
   messages: {
     ar: arMessages,
     en: enMessages,
-  },
-  fallbackLocale: defaultLocale,
-  missingBehavior: 'fallback',
-  catalogs: {
-    ar: {
-      messages: arMessages,
-    },
-    en: {
-      messages: enMessages,
-    },
   },
 });
 
@@ -175,7 +165,7 @@ export function getPreferredLocale(
   }
 
   // 3. Check cookie
-  const cookieLocale = getLocaleFromCookie(cookie);
+  const cookieLocale = getLocaleFromCookie(cookie || null);
   if (cookieLocale) return cookieLocale;
 
   // 4. Check Accept-Language header

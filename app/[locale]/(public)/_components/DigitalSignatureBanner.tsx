@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { useLanguage } from '@/i18n/LanguageProvider';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 export default function DigitalSignatureBanner() {
   const sigRef = useRef<HTMLElement | null>(null);
@@ -40,9 +40,7 @@ export default function DigitalSignatureBanner() {
   return (
     <div suppressHydrationWarning>
       {/* @ts-expect-error - web component */}
-      <dga-digital-signature
-        ref={(el: HTMLElement) => (sigRef.current = el)}
-      />
+      <dga-digital-signature ref={(el: HTMLElement) => (sigRef.current = el)} />
     </div>
   );
 }

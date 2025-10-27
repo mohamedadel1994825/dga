@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
 import '../globals.css';
 import 'platformscode-new-react/dist/style.css';
-import LanguageProvider from '../../src/i18n/LanguageProvider';
+import LanguageProvider from '../../src/providers/LanguageProvider';
 import DigitalSignatureBanner from './(public)/_components/DigitalSignatureBanner';
 import QueryProvider from '@/providers/QueryProvider';
 

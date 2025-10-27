@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
-import { useLanguage } from '@/i18n/LanguageProvider';
+import { useLanguage } from '@/providers/LanguageProvider';
 
 const DgaButton = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaButton),
@@ -42,7 +42,6 @@ const DgaNavHeaderMenu = dynamic(
 export default function NavHeader() {
   const { lang, toggle } = useLanguage();
   const { _ } = useLingui();
-
 
   // Menu items
   const menuItems = [

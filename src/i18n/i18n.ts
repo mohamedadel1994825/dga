@@ -12,7 +12,7 @@ i18n.loadLocaleData({
  * Dynamically loads the message catalog for the given locale.
  */
 export async function dynamicActivate(locale: SupportedLocale) {
-  const { messages } = await import(`../locales/${locale}/messages`);
+  const { messages } = await import(`./locales/${locale}/messages`);
   i18n.load(locale, messages);
   i18n.activate(locale);
 }
