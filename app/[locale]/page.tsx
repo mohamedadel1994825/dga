@@ -19,33 +19,93 @@ import FooterSection from './(public)/_components/FooterSection';
 
 export default function HomePage() {
   return (
-    <div>
+    <div
+      className='min-h-screen transition-colors duration-300'
+      style={{
+        backgroundColor: 'var(--color-background-primary, #ffffff)',
+        color: 'var(--color-text-primary, #0f172a)',
+      }}
+    >
       <DigitalSignatureBanner />
       <SecondNavHeader />
       <NavHeader />
 
       <HeroSection />
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div
+            className='flex items-center justify-center p-8 min-h-[200px]'
+            style={{
+              color: 'var(--color-text-secondary, #64748b)',
+              backgroundColor: 'var(--color-background-primary, #ffffff)',
+            }}
+          >
+            Loading...
+          </div>
+        }
+      >
         {/* First Section from Figma: two cards + hero story */}
-        <FirstSection />
+        <div
+          style={{
+            backgroundColor: 'var(--color-background-primary, #ffffff)',
+          }}
+        >
+          <FirstSection />
+        </div>
 
         {/* University Life Section from Figma */}
-        <UniversityLifeSection />
+        <div
+          style={{
+            backgroundColor: 'var(--color-background-secondary, #f8fafc)',
+          }}
+        >
+          <UniversityLifeSection />
+        </div>
 
         {/* Scientific Research Section from Figma */}
-        <ScientificResearchSection />
+        <div
+          style={{
+            backgroundColor: 'var(--color-background-primary, #ffffff)',
+          }}
+        >
+          <ScientificResearchSection />
+        </div>
 
         {/* Student Affairs Section from Figma */}
-        <StudentAffairsSection />
+        <div
+          style={{
+            backgroundColor: 'var(--color-background-secondary, #f8fafc)',
+          }}
+        >
+          <StudentAffairsSection />
+        </div>
 
         {/* Events Section from Figma */}
-        <EventsSection />
+        <div
+          style={{
+            backgroundColor: 'var(--color-background-primary, #ffffff)',
+          }}
+        >
+          <EventsSection />
+        </div>
 
         {/* Admissions Section from Figma */}
-        <AdmissionsSection />
+        <div
+          style={{
+            backgroundColor: 'var(--color-background-secondary, #f8fafc)',
+          }}
+        >
+          <AdmissionsSection />
+        </div>
 
-        <div className='pt-[40px] px-[16px] md:px-[80px]'>
+        <div
+          className='pt-[40px] px-[16px] md:px-[80px]'
+          style={{
+            backgroundColor: 'var(--color-background-primary, #ffffff)',
+            color: 'var(--color-text-primary, #0f172a)',
+          }}
+        >
           {/* About Section */}
           <AboutSection />
 

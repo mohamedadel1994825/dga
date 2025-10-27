@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useLanguage } from '@/providers/LanguageProvider';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 
 const DgaButton = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaButton),
@@ -96,6 +97,7 @@ export default function NavHeader() {
 
       <DgaNavHeaderActions>
         <DgaHeaderActionBtn icon='search-01' />
+        {/* <ThemeToggle size='sm' /> */}
         <DgaHeaderActionBtn
           label={lang === 'ar' ? 'En' : 'عربي'}
           onClick={() => toggle()}

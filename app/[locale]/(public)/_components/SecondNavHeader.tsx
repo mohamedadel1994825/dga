@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useLanguage } from '@/providers/LanguageProvider';
+import { useTheme } from '../../../../src/hooks';
 
 const DgaButton = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaButton),
@@ -65,7 +66,7 @@ export default function SecondNavHeader() {
 
   const weatherStr = _(t`Cloudy`);
   const cityStr = _(t`Riyadh`);
-
+const {toggleTheme} = useTheme();
   return (
     <DgaSecondNavHeader variant='gray' hideDivider>
       <DgaSecondNavHeaderActions>
@@ -75,6 +76,9 @@ export default function SecondNavHeader() {
           iconType='view'
           size='sm'
           iconOnly
+          onClick={() => {
+            toggleTheme();
+          }}
         />
         <DgaButton
           label='Button'

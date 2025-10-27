@@ -3,9 +3,11 @@ import { notFound } from 'next/navigation';
 import { Geist, Geist_Mono, IBM_Plex_Sans_Arabic } from 'next/font/google';
 import '../globals.css';
 import 'platformscode-new-react/dist/style.css';
+import '../../src/theme/theme-variables.css';
 import LanguageProvider from '../../src/providers/LanguageProvider';
 import DigitalSignatureBanner from './(public)/_components/DigitalSignatureBanner';
 import QueryProvider from '@/providers/QueryProvider';
+import { ThemeProvider } from '@/theme';
 
 const Geist_Sans = Geist({
   variable: '--font-geist-sans',
@@ -84,7 +86,11 @@ export default async function LocaleLayout({
       >
         <link rel='stylesheet' href='/vendor/platformscode-core.css' />
         <QueryProvider>
-          <LanguageProvider initialLocale={locale}>{children}</LanguageProvider>
+          <ThemeProvider>
+            <LanguageProvider initialLocale={locale}>
+              {children}
+            </LanguageProvider>
+          </ThemeProvider>
         </QueryProvider>
       </body>
     </html>

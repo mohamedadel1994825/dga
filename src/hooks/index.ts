@@ -29,12 +29,5 @@ export { useFetch } from './useFetch';
 // Form handling
 export { useForm } from './useForm';
 
-// Re-export commonly used hooks
-export { useTranslation } from './useTranslation';
-export { useAccessibility } from './useAccessibility';
-export { useAuth } from './useAuth';
-export { useLocalStorage } from './useLocalStorage';
-export { useMediaQuery } from './useMediaQuery';
-export { useDebounce } from './useDebounce';
-export { useFetch } from './useFetch';
-export { useForm } from './useForm';
+// Theme
+export { useTheme } from './useTheme';

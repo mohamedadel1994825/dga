@@ -12,25 +12,88 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Theme-aware body styles */
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--color-background-primary, #ffffff) !important;
+  color: var(--color-text-primary, #0f172a) !important;
   font-family: var(--font-arabic), Arial, Helvetica, sans-serif;
+  transition:
+    background-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
 }
 
-/* Override DGA component styles */
+/* Dark mode styles */
+[data-theme='dark'] body {
+  background: var(--color-background-primary, #0f172a) !important;
+  color: var(--color-text-primary, #ffffff) !important;
+}
+
+/* Light mode styles */
+[data-theme='light'] body {
+  background: var(--color-background-primary, #ffffff) !important;
+  color: var(--color-text-primary, #0f172a) !important;
+}
+
+/* Force theme colors on all elements */
+[data-theme='dark'] {
+  background-color: var(--color-background-primary, #0f172a) !important;
+  color: var(--color-text-primary, #ffffff) !important;
+}
+
+[data-theme='light'] {
+  background-color: var(--color-background-primary, #ffffff) !important;
+  color: var(--color-text-primary, #0f172a) !important;
+}
+
+/* Debug theme changes - make it more visible */
+[data-theme='light'] {
+  --theme-bg: #ffffff;
+  --theme-text: #0f172a;
+}
+
+[data-theme='dark'] {
+  --theme-bg: #0f172a;
+  --theme-text: #ffffff;
+}
+
+/* Apply theme colors to all elements for testing */
+* {
+  transition:
+    background-color 0.2s ease-in-out,
+    color 0.2s ease-in-out;
+}
+
+/* Override DGA component styles with theme support */
 dga-digital-signature {
   --spacing-sm: 6px;
   --section-padding: 100px;
   --card-lg-padding: 32px;
-  --background-neutral-100: #f3f4f6;
+  --background-neutral-100: var(--color-background-secondary, #f3f4f6);
+}
+
+/* Theme-aware DGA component overrides */
+[data-theme='dark'] dga-digital-signature {
+  --background-neutral-100: var(--color-background-tertiary);
+}
+
+/* DGA Components Theme Integration - Better Practice */
+/* Use CSS custom properties that DGA components can inherit */
+:root {
+  --dga-background-primary: var(--color-background-primary, #ffffff);
+  --dga-text-primary: var(--color-text-primary, #0f172a);
+  --dga-border-primary: var(--color-border-primary, #e2e8f0);
+}
+
+/* Apply theme-aware styles to DGA components without !important */
+dga-nav-header,
+dga-second-nav-header,
+dga-footer {
+  background-color: var(--dga-background-primary);
+  color: var(--dga-text-primary);
+  border-color: var(--dga-border-primary);
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 dga-digital-signature .digital_wrapper {
