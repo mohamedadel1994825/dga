@@ -11,9 +11,16 @@ import type {
   LetterSpacing,
   FontFamily,
 } from './tokens/typography';
-import type { Spacing, SpacingScale } from './tokens/spacing';
+import type { Spacing, SpacingScale, ComponentSpacing } from './tokens/spacing';
 import type { BorderRadius, BorderRadiusScale } from './tokens/borderRadius';
 import type { Shadow, ShadowScale } from './tokens/shadows';
+import type {
+  Duration,
+  Easing,
+  Animation,
+  AnimationPreset,
+} from './tokens/animations';
+import type { ZIndex, ComponentZIndex } from './tokens/zIndex';
 
 export type ThemeMode = 'light' | 'dark';
 
@@ -73,3 +80,7 @@ export type ThemeColorPath =
 export type ThemeSpacingValue = Spacing | SpacingScale;
 export type ThemeBorderRadiusValue = BorderRadius | BorderRadiusScale;
 export type ThemeShadowValue = Shadow | ShadowScale;
+export type ThemeDurationValue = Duration;
+export type ThemeEasingValue = Easing;
+export type ThemeAnimationValue = Animation;
+export type ThemeZIndexValue = ZIndex | ComponentZIndex;

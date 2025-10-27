@@ -117,6 +117,30 @@ export const lightColors = {
     focus: '#0ea5e9',
     error: '#ef4444',
   },
+
+  // Interactive State Colors
+  interactive: {
+    hover: {
+      primary: '#0284c7',
+      secondary: '#475569',
+      success: '#16a34a',
+      warning: '#d97706',
+      error: '#dc2626',
+    },
+    active: {
+      primary: '#0369a1',
+      secondary: '#334155',
+      success: '#15803d',
+      warning: '#b45309',
+      error: '#b91c1c',
+    },
+    disabled: {
+      primary: '#94a3b8',
+      secondary: '#cbd5e1',
+      background: '#f1f5f9',
+      text: '#94a3b8',
+    },
+  },
 } as const;
 
 export const darkColors = {
@@ -170,6 +194,30 @@ export const darkColors = {
     secondary: '#475569',
     focus: '#0ea5e9',
     error: '#ef4444',
+  },
+
+  // Interactive State Colors (adjusted for dark mode)
+  interactive: {
+    hover: {
+      primary: '#38bdf8',
+      secondary: '#94a3b8',
+      success: '#4ade80',
+      warning: '#fbbf24',
+      error: '#f87171',
+    },
+    active: {
+      primary: '#7dd3fc',
+      secondary: '#cbd5e1',
+      success: '#86efac',
+      warning: '#fcd34d',
+      error: '#fca5a5',
+    },
+    disabled: {
+      primary: '#475569',
+      secondary: '#334155',
+      background: '#1e293b',
+      text: '#475569',
+    },
   },
 } as const;
 

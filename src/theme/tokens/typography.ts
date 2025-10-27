@@ -46,6 +46,28 @@ export const letterSpacings = {
 export const fontFamilies = {
   sans: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'] as string[],
   mono: ['ui-monospace', 'SFMono-Regular', 'monospace'] as string[],
+  display: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'] as string[],
+} as const;
+
+// Font styles
+export const fontStyles = {
+  normal: 'normal',
+  italic: 'italic',
+} as const;
+
+// Text decoration
+export const textDecoration = {
+  none: 'none',
+  underline: 'underline',
+  lineThrough: 'line-through',
+} as const;
+
+// Text transform
+export const textTransform = {
+  none: 'none',
+  uppercase: 'uppercase',
+  lowercase: 'lowercase',
+  capitalize: 'capitalize',
 } as const;
 
 export type FontWeight = keyof typeof fontWeights;
@@ -53,3 +75,6 @@ export type FontSize = keyof typeof fontSizes;
 export type LineHeight = keyof typeof lineHeights;
 export type LetterSpacing = keyof typeof letterSpacings;
 export type FontFamily = keyof typeof fontFamilies;
+export type FontStyle = keyof typeof fontStyles;
+export type TextDecoration = keyof typeof textDecoration;
+export type TextTransform = keyof typeof textTransform;
