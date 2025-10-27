@@ -10,20 +10,8 @@ function getPreferredLocale(request: NextRequest): string {
     return storedLocale;
   }
 
-  // Check Accept-Language header for supported languages
-  const acceptLanguage = request.headers.get('accept-language');
-  if (acceptLanguage) {
-    const preferredLocale = acceptLanguage
-      .split(',')
-      .map(lang => lang.split(';')[0].trim())
-      .find(lang => locales.includes(lang.split('-')[0]));
-
-    if (preferredLocale) {
-      return preferredLocale.split('-')[0];
-    }
-  }
-
-  // Default to Arabic for new users
+  // Always default to Arabic for new users
+  // This ensures Arabic is the default regardless of browser language
   return defaultLocale;
 }
 
