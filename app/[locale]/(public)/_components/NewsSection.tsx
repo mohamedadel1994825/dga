@@ -9,11 +9,11 @@ const DgaCard = dynamic(
 
 export default function NewsSection() {
   return (
-    <section className='mt-[24px]'>
-      <h1 className='display-sm-bold text-[#161616] mb-4'>
+    <section className='mt-6'>
+      <h1 className='display-sm-bold text-text-primary mb-4'>
         Articles and News Section
       </h1>
-      <p className='text-md-regular text-[#161616] mb-8'>
+      <p className='text-md-regular text-text-primary mb-8'>
         Here you can add a brief description about the purpose of the portal.
       </p>
 
@@ -74,7 +74,7 @@ export default function NewsSection() {
         )}
       </div>
 
-      <p className='text-sm-regular text-right text-[#161616] py-[16px] mt-[40px]'>
+      <p className='text-sm-regular text-right text-text-primary py-4 mt-10'>
         Last Modified Date: 04/12/2020 - 4:13 PM Saudi Arabia Time
       </p>
     </section>

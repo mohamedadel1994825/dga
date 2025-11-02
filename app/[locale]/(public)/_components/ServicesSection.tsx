@@ -14,9 +14,11 @@ const DgaCarouselItem = dynamic(
 
 export default function ServicesSection() {
   return (
-    <section className='mt-[24px] bg-[#F9FAFB] py-[40px]'>
-      <h1 className='display-sm-bold text-[#161616] mb-4'>Services Section</h1>
-      <p className='text-md-regular text-[#161616] mb-8'>
+    <section className='mt-6 bg-background-secondary py-10'>
+      <h1 className='display-sm-bold text-text-primary mb-4'>
+        Services Section
+      </h1>
+      <p className='text-md-regular text-text-primary mb-8'>
         Here you can add a brief description about the purpose of the portal
         followed with a call to action button and an image or an illustration on
         the left hand side.

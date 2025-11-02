@@ -58,9 +58,9 @@ const AdmissionsSection: React.FC = () => {
   ];
 
   return (
-    <section className='pt-[40px] px-[16px] md:px-[80px]'>
+    <section className='pt-10 px-4 md:px-20'>
       {/* Header Section */}
-      <div className='flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-[24px]'>
+      <div className='flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6'>
         {/* Button on the left */}
         <DgaButton
           label={_(t`عرض كل الخدمات والأخبار`)}
@@ -70,10 +70,10 @@ const AdmissionsSection: React.FC = () => {
 
         {/* Title and subtitle on the right */}
         <div className='flex flex-col items-end text-right flex-1'>
-          <h2 className='display-sm-bold text-[#161616] mb-2'>
+          <h2 className='display-sm-bold text-text-primary mb-2'>
             <Trans>عمادة القبول والتسجيل</Trans>
           </h2>
-          <p className='text-md-regular text-[#6C737F]'>
+          <p className='text-md-regular text-text-tertiary'>
             <Trans>
               هنا تجد كل ما يتعلق بمتطلبات التسجيل للدراسة بالجامعة.
             </Trans>
@@ -82,16 +82,16 @@ const AdmissionsSection: React.FC = () => {
       </div>
 
       {/* Divider */}
-      <div className='mb-[32px] flex justify-end'>
-        <div className='w-[192px]'>
+      <div className='mb-8 flex justify-end'>
+        <div className='w-48'>
           <DgaDivider color='primary' />
         </div>
       </div>
 
       {/* Main Content Section */}
-      <div className='grid grid-cols-1 lg:grid-cols-2 gap-[16px]'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
         {/* Left: Hero Story Card */}
-        <div className='relative h-[336px] rounded-[16px] overflow-hidden bg-gradient-to-br from-[#1B8354] to-[#14573A]'>
+        <div className='relative h-[336px] rounded-2xl overflow-hidden bg-gradient-to-br from-primary-600 to-primary-800'>
           <DgaCarousel>
             <DgaCarouselItem>
               <div className='relative h-[336px] w-full'>
@@ -102,7 +102,7 @@ const AdmissionsSection: React.FC = () => {
                   className='object-cover'
                 />
                 <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent'></div>
-                <div className='absolute bottom-0 left-0 right-0 p-[24px]'>
+                <div className='absolute bottom-0 left-0 right-0 p-6'>
                   <h3 className='text-white text-xl-bold text-right'>
                     <Trans>لقاء تعريفي يخص الطريق للطالبات المستجدات</Trans>
                   </h3>
@@ -121,7 +121,7 @@ const AdmissionsSection: React.FC = () => {
                   className='object-cover'
                 />
                 <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent'></div>
-                <div className='absolute bottom-0 left-0 right-0 p-[24px]'>
+                <div className='absolute bottom-0 left-0 right-0 p-6'>
                   <h3 className='text-white text-xl-bold text-right'>
                     <Trans>معلومات عن التسجيل والقبول</Trans>
                   </h3>
@@ -135,11 +135,11 @@ const AdmissionsSection: React.FC = () => {
         </div>
 
         {/* Right: Service Cards Grid */}
-        <div className='grid grid-cols-3 gap-[16px]'>
+        <div className='grid grid-cols-3 gap-4'>
           {serviceCards.map((card, index) => (
             <div
               key={`service-${index}`}
-              className='flex flex-col items-center justify-center p-[16px] bg-white border border-[#E5E7EB] rounded-[12px] hover:shadow-md transition-shadow cursor-pointer h-[160px]'
+              className='flex flex-col items-center justify-center p-4 bg-background-primary border border-border-secondary rounded-xl hover:shadow-md transition-shadow cursor-pointer h-40'
             >
               <DgaFeaturedIcon
                 icon={{
@@ -151,7 +151,7 @@ const AdmissionsSection: React.FC = () => {
                 color='brand'
                 size='lg'
               />
-              <p className='text-sm-medium text-[#161616] text-center mt-[12px]'>
+              <p className='text-sm-medium text-text-primary text-center mt-3'>
                 {card.title}
               </p>
             </div>

@@ -14,7 +14,7 @@ export default function HeroSection() {
   const { _ } = useLingui();
 
   return (
-    <section className="relative max-h-[585px] h-[585px] bg-[rgba(27,131,84,1)] bg-no-repeat bg-cover bg-center [background-image:url('/ImamUnive1.svg'),linear-gradient(180deg,rgba(4,21,13,0)_64.79%,rgba(0,0,0,0.2)_72.14%)]">
+    <section className="relative max-h-[585px] h-[585px] bg-primary-600 bg-no-repeat bg-cover bg-center [background-image:url('/ImamUnive1.svg'),linear-gradient(180deg,rgba(4,21,13,0)_64.79%,rgba(0,0,0,0.2)_72.14%)]">
       <Image
         src='/assets/ImamUniveText.svg'
         alt='Imam University'

@@ -9,15 +9,17 @@ const DgaFeaturedIcon = dynamic(
 
 export default function AboutSection() {
   return (
-    <section className='mt-[24px]'>
-      <h1 className='display-sm-bold text-[#161616] mb-4'>About us Section</h1>
-      <p className='text-md-regular text-[#161616] mb-8'>
+    <section className='mt-6'>
+      <h1 className='display-sm-bold text-text-primary mb-4'>
+        About us Section
+      </h1>
+      <p className='text-md-regular text-text-primary mb-8'>
         Here you can add a brief description about the purpose of the portal
         followed with a call to action button and an image or an illustration on
         the left hand side.
       </p>
 
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-[32px] mt-[32px]'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mt-8'>
         {[
           {
             showFeaturedIcon: false,
@@ -64,10 +66,8 @@ export default function AboutSection() {
               color='brand'
               size='xl'
             />
-            <h3 className='display-lg-regular text-[#14573A] mt-[24px]'>
-              1.5M
-            </h3>
-            <p className='text-md-regular text-[#1F2A37] mt-[8px]'>Person</p>
+            <h3 className='display-lg-regular text-primary-800 mt-6'>1.5M</h3>
+            <p className='text-md-regular text-text-primary mt-2'>Person</p>
           </div>
         ))}
       </div>

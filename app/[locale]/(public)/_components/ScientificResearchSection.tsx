@@ -65,13 +65,13 @@ const ScientificResearchSection = () => {
   ];
 
   return (
-    <section className='pt-[40px] px-[16px] md:px-[80px] bg-[#F9FAFB]'>
+    <section className='pt-10 px-4 md:px-20 bg-background-secondary'>
       {/* Header */}
-      <div className='text-right mb-[40px]'>
-        <h1 className='display-sm-bold text-[#161616] mb-4'>
+      <div className='text-right mb-10'>
+        <h1 className='display-sm-bold text-text-primary mb-4'>
           <Trans>البحث العلمي</Trans>
         </h1>
-        <p className='text-md-regular text-[#6C737F] max-w-[800px] mr-auto'>
+        <p className='text-md-regular text-text-tertiary max-w-[800px] mr-auto'>
           <Trans>
             البحث العلمي هو استعمال لـ سؤال قد فهم معنى الأمة، شبكة تنهي الطريق
             للإبتكار، وجسر يُعبر بنا من واقعنا إلى مستقبل نضعه بأيدينا ومعقولنا.
@@ -80,11 +80,11 @@ const ScientificResearchSection = () => {
       </div>
 
       {/* Statistics Cards */}
-      <div className='grid grid-cols-1 md:grid-cols-4 gap-[24px] mb-[40px]'>
+      <div className='grid grid-cols-1 md:grid-cols-4 gap-6 mb-10'>
         {stats.map((stat, index) => (
           <div
             key={`stat-${index}`}
-            className='flex flex-col items-center justify-center bg-white rounded-[16px] p-[32px] text-center'
+            className='flex flex-col items-center justify-center bg-background-primary rounded-2xl p-8 text-center'
           >
             <DgaFeaturedIcon
               icon={{
@@ -96,10 +96,10 @@ const ScientificResearchSection = () => {
               color='brand'
               size='lg'
             />
-            <h3 className='display-lg-regular text-[#14573A] mt-[24px]'>
+            <h3 className='display-lg-regular text-primary-800 mt-6'>
               {stat.number}
             </h3>
-            <p className='text-md-regular text-[#1F2A37] mt-[8px]'>
+            <p className='text-md-regular text-text-primary mt-2'>
               {stat.label}
             </p>
           </div>
@@ -107,7 +107,7 @@ const ScientificResearchSection = () => {
       </div>
 
       {/* News Cards */}
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-[24px] pb-[40px]'>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-6 pb-10'>
         {newsCards.map((card, index) => (
           <DgaCard
             key={`research-card-${index}`}
@@ -123,7 +123,7 @@ const ScientificResearchSection = () => {
       <div className='text-left pb-[40px]'>
         <a
           href='#'
-          className='text-sm-regular text-[#1B8354] hover:underline inline-flex items-center gap-2'
+          className='text-sm-regular text-primary-600 hover:underline inline-flex items-center gap-2'
         >
           <Trans>المزيد من الأبحاث العلمية</Trans>
           <svg

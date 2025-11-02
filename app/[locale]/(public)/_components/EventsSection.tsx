@@ -27,10 +27,10 @@ function EventCard({
   ctaLabel,
 }: EventCardProps) {
   return (
-    <div className='rounded-[16px] border border-[#D2D6DB] bg-white p-[24px] flex flex-col gap-[16px] h-full'>
+    <div className='rounded-2xl border border-border-primary bg-background-primary p-6 flex flex-col gap-4 h-full'>
       {/* Calendar icon and date */}
-      <div className='flex items-start gap-[12px]'>
-        <div className='flex-shrink-0 w-[40px] h-[40px] rounded-[8px] bg-[#F3F4F6] flex items-center justify-center'>
+      <div className='flex items-start gap-3'>
+        <div className='flex-shrink-0 w-10 h-10 rounded-lg bg-neutral-100 flex items-center justify-center'>
           <DgaIcon
             size={24}
             icon='calendar-04'
@@ -39,30 +39,30 @@ function EventCard({
           />
         </div>
         <div className='text-right flex-1'>
-          <div className='text-[14px] leading-[20px] font-semibold text-[#1F2A37]'>
+          <div className='text-sm leading-5 font-semibold text-text-primary'>
             {day}
           </div>
-          <div className='text-[12px] leading-[18px] text-[#6C737F]'>
+          <div className='text-xs leading-[18px] text-text-tertiary'>
             {date}
           </div>
         </div>
       </div>
 
       {/* Event title */}
-      <h3 className='text-[16px] leading-[24px] font-bold text-[#1F2A37] text-right flex-1'>
+      <h3 className='text-base leading-6 font-bold text-text-primary text-right flex-1'>
         {title}
       </h3>
 
       {/* Category and CTA */}
-      <div className='flex items-center justify-between gap-[12px]'>
-        <button className='bg-[#1B8354] hover:bg-[#14573A] text-white rounded-[8px] py-[8px] px-[16px] text-[12px] leading-[18px] font-semibold transition-colors'>
+      <div className='flex items-center justify-between gap-3'>
+        <button className='bg-primary-600 hover:bg-primary-800 text-white rounded-lg py-2 px-4 text-xs leading-[18px] font-semibold transition-colors'>
           {ctaLabel}
         </button>
-        <div className='flex items-center gap-[8px]'>
-          <span className='text-[12px] leading-[18px] text-[#6C737F]'>
+        <div className='flex items-center gap-2'>
+          <span className='text-xs leading-[18px] text-text-tertiary'>
             {category}
           </span>
-          <span className='bg-[#F3F4F6] text-[#1F2A37] rounded-[6px] py-[4px] px-[8px] text-[12px] leading-[16px] font-medium'>
+          <span className='bg-neutral-100 text-text-primary rounded-md py-1 px-2 text-xs leading-4 font-medium'>
             {categoryLabel}
           </span>
         </div>
@@ -127,76 +127,72 @@ export default function EventsSection() {
   ];
 
   return (
-    <section className='px-[16px] md:px-[80px] py-[40px] bg-[#F9FAFB]'>
+    <section className='px-4 md:px-20 py-10 bg-background-secondary'>
       {/* Header */}
-      <div className='mb-[32px] text-right'>
-        <div className='flex items-start justify-between mb-[8px] gap-[16px] flex-wrap'>
+      <div className='mb-8 text-right'>
+        <div className='flex items-start justify-between mb-2 gap-4 flex-wrap'>
           <div className='flex-1'>
-            <h2 className='text-[32px] leading-[40px] font-bold text-[#1F2A37] mb-[8px]'>
+            <h2 className='text-3xl leading-10 font-bold text-text-primary mb-2'>
               <Trans>الأحداث والفعاليات القادمة</Trans>
             </h2>
-            <p className='text-[14px] leading-[22px] text-[#6C737F]'>
+            <p className='text-sm leading-[22px] text-text-tertiary'>
               <Trans>
                 بوابة أنشطتك الجامعية.. تابع بكل ما يتعلق بالمؤتمرات والفعاليات
                 والأنشطة القادمة والتي تجري حالياً بتوسيع آفاقك.
               </Trans>
             </p>
           </div>
-          <button className='text-[14px] leading-[20px] text-[#6C737F] border border-[#D2D6DB] rounded-[8px] py-[8px] px-[16px] hover:bg-white transition-colors whitespace-nowrap'>
+          <button className='text-sm leading-5 text-text-tertiary border border-border-primary rounded-lg py-2 px-4 hover:bg-background-primary transition-colors whitespace-nowrap'>
             <Trans>عرض كل الأحداث</Trans>
           </button>
         </div>
-        <div className='w-full h-[1px] bg-[#D2D6DB]'></div>
+        <div className='w-full h-px bg-border-primary'></div>
       </div>
 
       {/* Featured event and events grid */}
-      <div className='grid grid-cols-1 lg:grid-cols-2 gap-[32px]'>
+      <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
         {/* Featured Event Card */}
-        <div className='rounded-[16px] border border-[#D2D6DB] bg-white p-[32px] flex flex-col justify-between'>
-          <div className='mb-[24px]'>
-            <div className='text-[12px] leading-[18px] text-[#6C737F] mb-[8px]'>
+        <div className='rounded-2xl border border-border-primary bg-background-primary p-8 flex flex-col justify-between'>
+          <div className='mb-6'>
+            <div className='text-xs leading-[18px] text-text-tertiary mb-2'>
               <Trans>مؤتمر بتاريخ الأحد م19-06-1446 / هـ28-01-2026</Trans>
             </div>
-            <h3 className='text-[24px] leading-[32px] font-bold text-[#1F2A37] mb-[16px] text-right'>
+            <h3 className='text-2xl leading-8 font-bold text-text-primary mb-4 text-right'>
               <Trans>
                 التأثير المتبادل بين العلوم الاجتماعية والإنسانية والتقنيات
                 الرقمية
               </Trans>
             </h3>
-            <div className='flex items-center gap-[8px] text-right justify-end flex-wrap'>
-              <span className='text-[14px] leading-[20px] text-[#6C737F]'>
+            <div className='flex items-center gap-2 text-right justify-end flex-wrap'>
+              <span className='text-sm leading-5 text-text-tertiary'>
                 <Trans>جلسات علمية</Trans>
               </span>
-              <span className='text-[14px] leading-[20px] text-[#6C737F]'>
-                -
-              </span>
-              <span className='text-[14px] leading-[20px] text-[#6C737F]'>
+              <span className='text-sm leading-5 text-text-tertiary'>-</span>
+              <span className='text-sm leading-5 text-text-tertiary'>
                 <Trans>ورش عمل</Trans>
               </span>
-              <span className='text-[14px] leading-[20px] text-[#6C737F]'>
-                -
-              </span>
-              <span className='text-[14px] leading-[20px] text-[#6C737F]'>
+              <span className='text-sm leading-5 text-text-tertiary'>-</span>
+              <span className='text-sm leading-5 text-text-tertiary'>
                 <Trans>نقاشات</Trans>
               </span>
             </div>
           </div>
 
           {/* 3D Illustration */}
-          <div className='relative w-full h-[240px] mb-[24px]'>
+          <div className='relative w-full h-[240px] mb-6'>
             <div className='absolute inset-0 flex items-center justify-center'>
               {/* Placeholder for 3D illustration - you can replace with actual image */}
-              <div className='w-[300px] h-[240px] bg-gradient-to-br from-[#1B8354] to-[#14573A] rounded-[16px] opacity-20'></div>
+              <div className='w-[300px] h-[240px] bg-gradient-to-br from-primary-600 to-primary-800 rounded-2xl opacity-20'></div>
             </div>
           </div>
 
-          <button className='self-end bg-[#1B8354] hover:bg-[#14573A] text-white rounded-[8px] py-[10px] px-[24px] text-[14px] leading-[20px] font-semibold transition-colors'>
+          <button className='self-end bg-primary-600 hover:bg-primary-800 text-white rounded-lg py-[10px] px-6 text-sm leading-5 font-semibold transition-colors'>
             <Trans>تفاصيل المؤتمر</Trans>
           </button>
         </div>
 
         {/* Events Grid */}
-        <div className='grid grid-cols-1 sm:grid-cols-2 gap-[16px]'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
           {events.map((event, index) => (
             <EventCard
               key={index}
@@ -212,11 +208,11 @@ export default function EventsSection() {
       </div>
 
       {/* Carousel dots indicator */}
-      <div className='flex justify-center items-center gap-[8px] mt-[24px]'>
-        <div className='w-[8px] h-[8px] rounded-full bg-[#1B8354]'></div>
-        <div className='w-[8px] h-[8px] rounded-full bg-[#D2D6DB]'></div>
-        <div className='w-[8px] h-[8px] rounded-full bg-[#D2D6DB]'></div>
-        <div className='w-[8px] h-[8px] rounded-full bg-[#D2D6DB]'></div>
+      <div className='flex justify-center items-center gap-2 mt-6'>
+        <div className='w-2 h-2 rounded-full bg-primary-600'></div>
+        <div className='w-2 h-2 rounded-full bg-border-primary'></div>
+        <div className='w-2 h-2 rounded-full bg-border-primary'></div>
+        <div className='w-2 h-2 rounded-full bg-border-primary'></div>
       </div>
     </section>
   );

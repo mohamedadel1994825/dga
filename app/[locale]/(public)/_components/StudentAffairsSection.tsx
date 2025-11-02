@@ -96,10 +96,10 @@ export default function StudentAffairsSection() {
   ];
 
   return (
-    <section className='pt-[40px] px-[16px] md:px-[80px]'>
-      <div className='mt-[24px]'>
+    <section className='pt-10 px-4 md:px-20'>
+      <div className='mt-6'>
         {/* Header Section */}
-        <div className='flex flex-col md:flex-row justify-between items-start md:items-center mb-[24px]'>
+        <div className='flex flex-col md:flex-row justify-between items-start md:items-center mb-6'>
           {/* Left side - Button/Link */}
           <div className='order-2 md:order-1'>
             <DgaButton
@@ -113,30 +113,30 @@ export default function StudentAffairsSection() {
 
           {/* Right side - Title and Subtitle */}
           <div className='text-right order-1 md:order-2 mb-4 md:mb-0'>
-            <h2 className='display-sm-bold text-[#161616] mb-2'>
+            <h2 className='display-sm-bold text-text-primary mb-2'>
               <Trans>عمادة شؤون الطلبة</Trans>
             </h2>
-            <p className='text-md-regular text-[#6C737F]'>
+            <p className='text-md-regular text-text-tertiary'>
               <Trans>كل ما يتعلق بالشؤون الإدارية للطلبة.</Trans>
             </p>
           </div>
         </div>
 
         {/* Divider */}
-        <div className='mb-[32px] flex justify-end'>
-          <div className='w-[192px]'>
+        <div className='mb-8 flex justify-end'>
+          <div className='w-48'>
             <DgaDivider color='primary' />
           </div>
         </div>
 
         {/* Main Content - Cards and Carousel */}
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-[16px]'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
           {/* Service Cards Grid - Left Side */}
-          <div className='grid grid-cols-1 sm:grid-cols-3 gap-[16px]'>
+          <div className='grid grid-cols-1 sm:grid-cols-3 gap-4'>
             {serviceCards.map(card => (
               <div
                 key={card.id}
-                className='bg-[#F9FAFB] rounded-[12px] p-[24px] flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow cursor-pointer min-h-[160px]'
+                className='bg-background-secondary rounded-xl p-6 flex flex-col items-center justify-center text-center hover:shadow-md transition-shadow cursor-pointer min-h-40'
               >
                 <DgaFeaturedIcon
                   icon={{
@@ -148,7 +148,7 @@ export default function StudentAffairsSection() {
                   color='brand'
                   size='md'
                 />
-                <h3 className='text-md-semibold text-[#161616] mt-[16px]'>
+                <h3 className='text-md-semibold text-text-primary mt-4'>
                   {card.title}
                 </h3>
               </div>
@@ -156,7 +156,7 @@ export default function StudentAffairsSection() {
           </div>
 
           {/* Hero Story Carousel - Right Side */}
-          <div className='relative rounded-[12px] overflow-hidden h-[336px]'>
+          <div className='relative rounded-xl overflow-hidden h-[336px]'>
             <DgaCarousel>
               {carouselItems.map(item => (
                 <DgaCarouselItem key={item.id}>
@@ -167,7 +167,7 @@ export default function StudentAffairsSection() {
                       fill
                       className='object-cover'
                     />
-                    <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-[24px]'>
+                    <div className='absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6'>
                       <p className='text-lg-semibold text-white'>
                         {item.title}
                       </p>
