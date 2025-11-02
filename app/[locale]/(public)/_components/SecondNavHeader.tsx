@@ -66,7 +66,7 @@ export default function SecondNavHeader() {
 
   const weatherStr = _(t`Cloudy`);
   const cityStr = _(t`Riyadh`);
-const {toggleTheme} = useTheme();
+  const { toggleTheme } = useTheme();
   return (
     <DgaSecondNavHeader variant='gray' hideDivider>
       <DgaSecondNavHeaderActions>
