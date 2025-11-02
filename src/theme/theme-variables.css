@@ -53,143 +53,150 @@
 :root[data-theme='light'] {
   /* Background Colors */
   --color-background-primary: #ffffff;
-  --color-background-secondary: #f8fafc;
-  --color-background-tertiary: #f1f5f9;
-  --color-background-inverse: #0a0a0a;
+  --color-background-secondary: #f9fafb;
+  --color-background-tertiary: #ffffff;
+  --color-background-inverse: #0d121c;
   --color-background-overlay: rgba(0, 0, 0, 0.5);
   --color-background-disabled: #f1f5f9;
 
   /* Text Colors */
-  --color-text-primary: #0f172a;
-  --color-text-secondary: #475569;
-  --color-text-tertiary: #64748b;
+  --color-text-primary: #161616;
+  --color-text-secondary: #384250;
+  --color-text-tertiary: #6c737f;
   --color-text-inverse: #ffffff;
   --color-text-disabled: #94a3b8;
-  --color-text-link: #1e40af;
-  --color-text-link-hover: #1e3a8a;
+  --color-text-link: #166a45;
+  --color-text-link-hover: #14573a;
 
   /* Border Colors */
-  --color-border-primary: #e2e8f0;
-  --color-border-secondary: #cbd5e1;
-  --color-border-focus: #1e40af;
-  --color-border-error: #ef4444;
-  --color-border-success: #10b981;
-  --color-border-warning: #f59e0b;
+  --color-border-primary: #d2d6db;
+  --color-border-secondary: #e5e7eb;
+  --color-border-focus: #166a45;
+  --color-border-error: #f04438;
+  --color-border-success: #17b26a;
+  --color-border-warning: #f79009;
   --color-border-disabled: #cbd5e1;
 
   /* Primary Colors - DGA Official Blue (#1E40AF) */
   --color-primary-0: #ffffff;
-  --color-primary-50: #eef2ff;
-  --color-primary-100: #e0e7ff;
-  --color-primary-200: #c7d2fe;
-  --color-primary-300: #a5b4fc;
-  --color-primary-400: #818cf8;
-  --color-primary-500: #6366f1;
-  --color-primary-600: #4f46e5;
-  --color-primary-700: #1e40af;
-  --color-primary-800: #1e3a8a;
-  --color-primary-900: #1a2f6f;
-  --color-primary-950: #172554;
+  --color-primary-25: #f7fdf9;
+  --color-primary-50: #f3fcf6;
+  --color-primary-100: #dff6e7;
+  --color-primary-200: #b8eacb;
+  --color-primary-300: #88d8ad;
+  --color-primary-400: #54c08a;
+  --color-primary-500: #25935f;
+  --color-primary-600: #1b8354;
+  --color-primary-700: #166a45;
+  --color-primary-800: #14573a;
+  --color-primary-900: #104631;
+  --color-primary-950: #092a1e;
 
   /* Secondary Colors - DGA Official Green (#059669) */
   --color-secondary-0: #ffffff;
-  --color-secondary-50: #ecfdf5;
-  --color-secondary-100: #d1fae5;
-  --color-secondary-200: #a7f3d0;
-  --color-secondary-300: #6ee7b7;
-  --color-secondary-400: #34d399;
-  --color-secondary-500: #10b981;
-  --color-secondary-600: #059669;
-  --color-secondary-700: #047857;
-  --color-secondary-800: #065f46;
-  --color-secondary-900: #064e3b;
-  --color-secondary-950: #022c22;
+  --color-secondary-25: #fffef7;
+  --color-secondary-50: #fffef2;
+  --color-secondary-100: #fffce6;
+  --color-secondary-200: #fcf3bd;
+  --color-secondary-300: #fae996;
+  --color-secondary-400: #f7d54d;
+  --color-secondary-500: #f5bd02;
+  --color-secondary-600: #dba102;
+  --color-secondary-700: #b87b02;
+  --color-secondary-800: #945c01;
+  --color-secondary-900: #6e3c00;
+  --color-secondary-950: #472400;
 
   /* Neutral Colors */
   --color-neutral-0: #ffffff;
-  --color-neutral-50: #fafafa;
-  --color-neutral-100: #f5f5f5;
-  --color-neutral-200: #e5e5e5;
-  --color-neutral-300: #d4d4d4;
-  --color-neutral-400: #a3a3a3;
-  --color-neutral-500: #737373;
-  --color-neutral-600: #525252;
-  --color-neutral-700: #404040;
-  --color-neutral-800: #262626;
-  --color-neutral-900: #171717;
-  --color-neutral-950: #0a0a0a;
+  --color-neutral-25: #fcfcfd;
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d2d6db;
+  --color-neutral-400: #9da4ae;
+  --color-neutral-500: #6c737f;
+  --color-neutral-600: #4d5761;
+  --color-neutral-700: #384250;
+  --color-neutral-800: #1f2a37;
+  --color-neutral-900: #111927;
+  --color-neutral-950: #0d121c;
 
   /* Success Colors - DGA Official (#10B981) */
   --color-success-0: #ffffff;
-  --color-success-50: #ecfdf5;
-  --color-success-100: #d1fae5;
-  --color-success-200: #a7f3d0;
-  --color-success-300: #6ee7b7;
-  --color-success-400: #34d399;
-  --color-success-500: #10b981;
-  --color-success-600: #059669;
-  --color-success-700: #047857;
-  --color-success-800: #065f46;
-  --color-success-900: #064e3b;
-  --color-success-950: #022c22;
+  --color-success-25: #f6fef9;
+  --color-success-50: #ecfdf3;
+  --color-success-100: #dcfae6;
+  --color-success-200: #abefc6;
+  --color-success-300: #75e0a7;
+  --color-success-400: #47cd89;
+  --color-success-500: #17b26a;
+  --color-success-600: #079455;
+  --color-success-700: #067647;
+  --color-success-800: #085d3a;
+  --color-success-900: #074d31;
+  --color-success-950: #053321;
 
   /* Warning Colors - DGA Official */
   --color-warning-0: #ffffff;
-  --color-warning-50: #fffbeb;
-  --color-warning-100: #fef3c7;
-  --color-warning-200: #fde68a;
-  --color-warning-300: #fcd34d;
-  --color-warning-400: #fbbf24;
-  --color-warning-500: #f59e0b;
-  --color-warning-600: #d97706;
-  --color-warning-700: #b45309;
-  --color-warning-800: #92400e;
-  --color-warning-900: #78350f;
-  --color-warning-950: #451a03;
+  --color-warning-25: #fffcf5;
+  --color-warning-50: #fffaeb;
+  --color-warning-100: #fef0c7;
+  --color-warning-200: #fedf89;
+  --color-warning-300: #fec84b;
+  --color-warning-400: #fdb022;
+  --color-warning-500: #f79009;
+  --color-warning-600: #dc6803;
+  --color-warning-700: #b54708;
+  --color-warning-800: #93370d;
+  --color-warning-900: #7a2e0e;
+  --color-warning-950: #4e1d09;
 
   /* Error Colors - DGA Official */
   --color-error-0: #ffffff;
-  --color-error-50: #fef2f2;
-  --color-error-100: #fee2e2;
-  --color-error-200: #fecaca;
-  --color-error-300: #fca5a5;
-  --color-error-400: #f87171;
-  --color-error-500: #ef4444;
-  --color-error-600: #dc2626;
-  --color-error-700: #b91c1c;
-  --color-error-800: #991b1b;
-  --color-error-900: #7f1d1d;
-  --color-error-950: #450a0a;
+  --color-error-25: #fffbfa;
+  --color-error-50: #fef3f2;
+  --color-error-100: #fee4e2;
+  --color-error-200: #fecdca;
+  --color-error-300: #fda29b;
+  --color-error-400: #f97066;
+  --color-error-500: #f04438;
+  --color-error-600: #d92d20;
+  --color-error-700: #b42318;
+  --color-error-800: #912018;
+  --color-error-900: #7a271a;
+  --color-error-950: #55160c;
 
   /* Info Colors - DGA Official (#3B82F6) */
   --color-info-0: #ffffff;
-  --color-info-50: #eff6ff;
-  --color-info-100: #dbeafe;
-  --color-info-200: #bfdbfe;
-  --color-info-300: #93c5fd;
-  --color-info-400: #60a5fa;
-  --color-info-500: #3b82f6;
-  --color-info-600: #2563eb;
-  --color-info-700: #1d4ed8;
-  --color-info-800: #1e40af;
-  --color-info-900: #1e3a8a;
-  --color-info-950: #172554;
+  --color-info-25: #f5faff;
+  --color-info-50: #eff8ff;
+  --color-info-100: #d1e9ff;
+  --color-info-200: #b2ddff;
+  --color-info-300: #84caff;
+  --color-info-400: #53b1fd;
+  --color-info-500: #2e90fa;
+  --color-info-600: #1570ef;
+  --color-info-700: #175cd3;
+  --color-info-800: #1849a9;
+  --color-info-900: #194185;
+  --color-info-950: #102a56;
 
   /* Interactive State Colors */
   /* Note: These are typically used via JavaScript/TypeScript */
 
-  --color-interactive-hover-primary: #1e3a8a;
-  --color-interactive-hover-secondary: #047857;
-  --color-interactive-hover-success: #059669;
-  --color-interactive-hover-warning: #d97706;
-  --color-interactive-hover-error: #dc2626;
+  --color-interactive-hover-primary: #14573a;
+  --color-interactive-hover-secondary: #b87b02;
+  --color-interactive-hover-success: #079455;
+  --color-interactive-hover-warning: #dc6803;
+  --color-interactive-hover-error: #d92d20;
   --color-interactive-hover-info: #2563eb;
 
-  --color-interactive-active-primary: #172554;
-  --color-interactive-active-secondary: #065f46;
-  --color-interactive-active-success: #047857;
-  --color-interactive-active-warning: #b45309;
-  --color-interactive-active-error: #b91c1c;
+  --color-interactive-active-primary: #092a1e;
+  --color-interactive-active-secondary: #945c01;
+  --color-interactive-active-success: #067647;
+  --color-interactive-active-warning: #b54708;
+  --color-interactive-active-error: #b42318;
   --color-interactive-active-info: #1d4ed8;
 
   --color-interactive-disabled-primary: #94a3b8;
@@ -203,143 +210,150 @@
 /* Dark Theme Variables */
 :root[data-theme='dark'] {
   /* Background Colors */
-  --color-background-primary: #0f172a;
-  --color-background-secondary: #1e293b;
-  --color-background-tertiary: #334155;
-  --color-background-inverse: #ffffff;
+  --color-background-primary: #0d121c;
+  --color-background-secondary: #111927;
+  --color-background-tertiary: #1f2a37;
+  --color-background-inverse: #0d121c;
   --color-background-overlay: rgba(0, 0, 0, 0.75);
   --color-background-disabled: #1e293b;
 
   /* Text Colors */
   --color-text-primary: #ffffff;
-  --color-text-secondary: #cbd5e1;
-  --color-text-tertiary: #94a3b8;
+  --color-text-secondary: #f3f4f6;
+  --color-text-tertiary: #e5e7eb;
   --color-text-inverse: #0f172a;
   --color-text-disabled: #475569;
   --color-text-link: #60a5fa;
   --color-text-link-hover: #93c5fd;
 
   /* Border Colors */
-  --color-border-primary: #334155;
-  --color-border-secondary: #475569;
+  --color-border-primary: #6c737f;
+  --color-border-secondary: #384250;
   --color-border-focus: #60a5fa;
-  --color-border-error: #f87171;
-  --color-border-success: #34d399;
-  --color-border-warning: #fbbf24;
+  --color-border-error: #f97066;
+  --color-border-success: #47cd89;
+  --color-border-warning: #fdb022;
   --color-border-disabled: #475569;
 
   /* Primary Colors - DGA Official Blue (#1E40AF) (same as light) */
   --color-primary-0: #ffffff;
-  --color-primary-50: #eef2ff;
-  --color-primary-100: #e0e7ff;
-  --color-primary-200: #c7d2fe;
-  --color-primary-300: #a5b4fc;
-  --color-primary-400: #818cf8;
-  --color-primary-500: #6366f1;
-  --color-primary-600: #4f46e5;
-  --color-primary-700: #1e40af;
-  --color-primary-800: #1e3a8a;
-  --color-primary-900: #1a2f6f;
-  --color-primary-950: #172554;
+  --color-primary-25: #f7fdf9;
+  --color-primary-50: #f3fcf6;
+  --color-primary-100: #dff6e7;
+  --color-primary-200: #b8eacb;
+  --color-primary-300: #88d8ad;
+  --color-primary-400: #54c08a;
+  --color-primary-500: #25935f;
+  --color-primary-600: #1b8354;
+  --color-primary-700: #166a45;
+  --color-primary-800: #14573a;
+  --color-primary-900: #104631;
+  --color-primary-950: #092a1e;
 
   /* Secondary Colors - DGA Official Green (#059669) (same as light) */
   --color-secondary-0: #ffffff;
-  --color-secondary-50: #ecfdf5;
-  --color-secondary-100: #d1fae5;
-  --color-secondary-200: #a7f3d0;
-  --color-secondary-300: #6ee7b7;
-  --color-secondary-400: #34d399;
-  --color-secondary-500: #10b981;
-  --color-secondary-600: #059669;
-  --color-secondary-700: #047857;
-  --color-secondary-800: #065f46;
-  --color-secondary-900: #064e3b;
-  --color-secondary-950: #022c22;
+  --color-secondary-25: #fffef7;
+  --color-secondary-50: #fffef2;
+  --color-secondary-100: #fffce6;
+  --color-secondary-200: #fcf3bd;
+  --color-secondary-300: #fae996;
+  --color-secondary-400: #f7d54d;
+  --color-secondary-500: #f5bd02;
+  --color-secondary-600: #dba102;
+  --color-secondary-700: #b87b02;
+  --color-secondary-800: #945c01;
+  --color-secondary-900: #6e3c00;
+  --color-secondary-950: #472400;
 
   /* Neutral Colors (inverted for dark mode) */
-  --color-neutral-0: #0a0a0a;
-  --color-neutral-50: #171717;
-  --color-neutral-100: #262626;
-  --color-neutral-200: #404040;
-  --color-neutral-300: #525252;
-  --color-neutral-400: #737373;
-  --color-neutral-500: #a3a3a3;
-  --color-neutral-600: #d4d4d4;
-  --color-neutral-700: #e5e5e5;
-  --color-neutral-800: #f5f5f5;
-  --color-neutral-900: #fafafa;
-  --color-neutral-950: #ffffff;
+  --color-neutral-0: #0d121c;
+  --color-neutral-25: #fcfcfd;
+  --color-neutral-50: #f9fafb;
+  --color-neutral-100: #f3f4f6;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d2d6db;
+  --color-neutral-400: #9da4ae;
+  --color-neutral-500: #6c737f;
+  --color-neutral-600: #4d5761;
+  --color-neutral-700: #384250;
+  --color-neutral-800: #1f2a37;
+  --color-neutral-900: #111927;
+  --color-neutral-950: #0d121c;
 
   /* Success Colors - DGA Official (#10B981) (same as light) */
   --color-success-0: #ffffff;
-  --color-success-50: #ecfdf5;
-  --color-success-100: #d1fae5;
-  --color-success-200: #a7f3d0;
-  --color-success-300: #6ee7b7;
-  --color-success-400: #34d399;
-  --color-success-500: #10b981;
-  --color-success-600: #059669;
-  --color-success-700: #047857;
-  --color-success-800: #065f46;
-  --color-success-900: #064e3b;
-  --color-success-950: #022c22;
+  --color-success-25: #f6fef9;
+  --color-success-50: #ecfdf3;
+  --color-success-100: #dcfae6;
+  --color-success-200: #abefc6;
+  --color-success-300: #75e0a7;
+  --color-success-400: #47cd89;
+  --color-success-500: #17b26a;
+  --color-success-600: #079455;
+  --color-success-700: #067647;
+  --color-success-800: #085d3a;
+  --color-success-900: #074d31;
+  --color-success-950: #053321;
 
   /* Warning Colors - DGA Official (same as light) */
   --color-warning-0: #ffffff;
-  --color-warning-50: #fffbeb;
-  --color-warning-100: #fef3c7;
-  --color-warning-200: #fde68a;
-  --color-warning-300: #fcd34d;
-  --color-warning-400: #fbbf24;
-  --color-warning-500: #f59e0b;
-  --color-warning-600: #d97706;
-  --color-warning-700: #b45309;
-  --color-warning-800: #92400e;
-  --color-warning-900: #78350f;
-  --color-warning-950: #451a03;
+  --color-warning-25: #fffcf5;
+  --color-warning-50: #fffaeb;
+  --color-warning-100: #fef0c7;
+  --color-warning-200: #fedf89;
+  --color-warning-300: #fec84b;
+  --color-warning-400: #fdb022;
+  --color-warning-500: #f79009;
+  --color-warning-600: #dc6803;
+  --color-warning-700: #b54708;
+  --color-warning-800: #93370d;
+  --color-warning-900: #7a2e0e;
+  --color-warning-950: #4e1d09;
 
   /* Error Colors - DGA Official (same as light) */
   --color-error-0: #ffffff;
-  --color-error-50: #fef2f2;
-  --color-error-100: #fee2e2;
-  --color-error-200: #fecaca;
-  --color-error-300: #fca5a5;
-  --color-error-400: #f87171;
-  --color-error-500: #ef4444;
-  --color-error-600: #dc2626;
-  --color-error-700: #b91c1c;
-  --color-error-800: #991b1b;
-  --color-error-900: #7f1d1d;
-  --color-error-950: #450a0a;
+  --color-error-25: #fffbfa;
+  --color-error-50: #fef3f2;
+  --color-error-100: #fee4e2;
+  --color-error-200: #fecdca;
+  --color-error-300: #fda29b;
+  --color-error-400: #f97066;
+  --color-error-500: #f04438;
+  --color-error-600: #d92d20;
+  --color-error-700: #b42318;
+  --color-error-800: #912018;
+  --color-error-900: #7a271a;
+  --color-error-950: #55160c;
 
   /* Info Colors - DGA Official (#3B82F6) (same as light) */
   --color-info-0: #ffffff;
-  --color-info-50: #eff6ff;
-  --color-info-100: #dbeafe;
-  --color-info-200: #bfdbfe;
-  --color-info-300: #93c5fd;
-  --color-info-400: #60a5fa;
-  --color-info-500: #3b82f6;
-  --color-info-600: #2563eb;
-  --color-info-700: #1d4ed8;
-  --color-info-800: #1e40af;
-  --color-info-900: #1e3a8a;
-  --color-info-950: #172554;
+  --color-info-25: #f5faff;
+  --color-info-50: #eff8ff;
+  --color-info-100: #d1e9ff;
+  --color-info-200: #b2ddff;
+  --color-info-300: #84caff;
+  --color-info-400: #53b1fd;
+  --color-info-500: #2e90fa;
+  --color-info-600: #1570ef;
+  --color-info-700: #175cd3;
+  --color-info-800: #1849a9;
+  --color-info-900: #194185;
+  --color-info-950: #102a56;
 
   /* Interactive State Colors (adjusted for dark mode) */
 
-  --color-interactive-hover-primary: #4f46e5;
-  --color-interactive-hover-secondary: #34d399;
-  --color-interactive-hover-success: #34d399;
-  --color-interactive-hover-warning: #fbbf24;
-  --color-interactive-hover-error: #f87171;
+  --color-interactive-hover-primary: #1b8354;
+  --color-interactive-hover-secondary: #f7d54d;
+  --color-interactive-hover-success: #47cd89;
+  --color-interactive-hover-warning: #fdb022;
+  --color-interactive-hover-error: #f97066;
   --color-interactive-hover-info: #60a5fa;
 
-  --color-interactive-active-primary: #6366f1;
-  --color-interactive-active-secondary: #6ee7b7;
-  --color-interactive-active-success: #6ee7b7;
-  --color-interactive-active-warning: #fcd34d;
-  --color-interactive-active-error: #fca5a5;
+  --color-interactive-active-primary: #25935f;
+  --color-interactive-active-secondary: #fae996;
+  --color-interactive-active-success: #75e0a7;
+  --color-interactive-active-warning: #fec84b;
+  --color-interactive-active-error: #fda29b;
   --color-interactive-active-info: #93c5fd;
 
   --color-interactive-disabled-primary: #475569;

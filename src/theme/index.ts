@@ -52,7 +52,7 @@ export {
 } from './tokens/colors';
 
 // Color utilities
-export * from './utils';
+// Note: generate-css-variables is a CLI script, not exported for runtime use
 export {
   fontWeights,
   fontSizes,

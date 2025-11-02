@@ -71,77 +71,98 @@ export interface InteractiveStates {
  */
 const basePrimaryScale = {
   0: '#ffffff',
-  50: '#eef2ff',
-  100: '#e0e7ff',
-  200: '#c7d2fe',
-  300: '#a5b4fc',
-  400: '#818cf8',
-  500: '#6366f1',
-  600: '#4f46e5',
-  700: '#1e40af', // Main primary - DGA Official
-  800: '#1e3a8a',
-  900: '#1a2f6f', // Fixed: Distinct darker shade between 800 and 950
-  950: '#172554',
+  25: '#f7fdf9',
+  50: '#f3fcf6',
+  100: '#dff6e7',
+  200: '#b8eacb',
+  300: '#88d8ad',
+  400: '#54c08a',
+  500: '#25935f',
+  600: '#1b8354',
+  700: '#166a45',
+  800: '#14573a',
+  900: '#104631',
+  950: '#092a1e',
 } as BaseColorScale;
 
 const baseSecondaryScale = {
   0: '#ffffff',
-  50: '#ecfdf5',
-  100: '#d1fae5',
-  200: '#a7f3d0',
-  300: '#6ee7b7',
-  400: '#34d399',
-  500: '#10b981',
-  600: '#059669', // Main secondary - DGA Official
-  700: '#047857',
-  800: '#065f46',
-  900: '#064e3b',
-  950: '#022c22',
+  25: '#fffef7',
+  50: '#fffef2',
+  100: '#fffce6',
+  200: '#fcf3bd',
+  300: '#fae996',
+  400: '#f7d54d',
+  500: '#f5bd02',
+  600: '#dba102',
+  700: '#b87b02',
+  800: '#945c01',
+  900: '#6e3c00',
+  950: '#472400',
 } as BaseColorScale;
 
 const baseNeutralScale = {
   0: '#ffffff',
-  50: '#fafafa',
-  100: '#f5f5f5',
-  200: '#e5e5e5',
-  300: '#d4d4d4',
-  400: '#a3a3a3',
-  500: '#737373',
-  600: '#525252',
-  700: '#404040',
-  800: '#262626',
-  900: '#171717',
-  950: '#0a0a0a',
+  25: '#fcfcfd',
+  50: '#f9fafb',
+  100: '#f3f4f6',
+  200: '#e5e7eb',
+  300: '#d2d6db',
+  400: '#9da4ae',
+  500: '#6c737f',
+  600: '#4d5761',
+  700: '#384250',
+  800: '#1f2a37',
+  900: '#111927',
+  950: '#0d121c',
 } as BaseColorScale;
 
 const baseWarningScale = {
   0: '#ffffff',
-  50: '#fffbeb',
-  100: '#fef3c7',
-  200: '#fde68a',
-  300: '#fcd34d',
-  400: '#fbbf24',
-  500: '#f59e0b', // Main warning - DGA Official
-  600: '#d97706',
-  700: '#b45309',
-  800: '#92400e',
-  900: '#78350f',
-  950: '#451a03',
+  25: '#fffcf5',
+  50: '#fffaeb',
+  100: '#fef0c7',
+  200: '#fedf89',
+  300: '#fec84b',
+  400: '#fdb022',
+  500: '#f79009',
+  600: '#dc6803',
+  700: '#b54708',
+  800: '#93370d',
+  900: '#7a2e0e',
+  950: '#4e1d09',
 } as BaseColorScale;
 
 const baseErrorScale = {
   0: '#ffffff',
-  50: '#fef2f2',
-  100: '#fee2e2',
-  200: '#fecaca',
-  300: '#fca5a5',
-  400: '#f87171',
-  500: '#ef4444', // Main error - DGA Official
-  600: '#dc2626', // Accent - DGA Official
-  700: '#b91c1c',
-  800: '#991b1b',
-  900: '#7f1d1d',
-  950: '#450a0a',
+  25: '#fffbfa',
+  50: '#fef3f2',
+  100: '#fee4e2',
+  200: '#fecdca',
+  300: '#fda29b',
+  400: '#f97066',
+  500: '#f04438',
+  600: '#d92d20',
+  700: '#b42318',
+  800: '#912018',
+  900: '#7a271a',
+  950: '#55160c',
+} as BaseColorScale;
+
+const baseSuccessScale = {
+  0: '#ffffff',
+  25: '#f6fef9',
+  50: '#ecfdf3',
+  100: '#dcfae6',
+  200: '#abefc6',
+  300: '#75e0a7',
+  400: '#47cd89',
+  500: '#17b26a',
+  600: '#079455',
+  700: '#067647',
+  800: '#085d3a',
+  900: '#074d31',
+  950: '#053321',
 } as BaseColorScale;
 
 /**
@@ -160,8 +181,8 @@ export const lightColors = {
   neutral: baseNeutralScale,
 
   // Semantic Colors - Success
-  // Best Practice: Success uses secondary scale (green)
-  success: baseSecondaryScale,
+  // Success has its own green scale (separate from secondary gold)
+  success: baseSuccessScale,
 
   // Semantic Colors - Warning
   warning: baseWarningScale,
@@ -173,25 +194,26 @@ export const lightColors = {
   // Best Practice: Info shares some values with primary but has distinct lighter shades
   info: {
     0: '#ffffff',
-    50: '#eff6ff',
-    100: '#dbeafe',
-    200: '#bfdbfe',
-    300: '#93c5fd',
-    400: '#60a5fa',
-    500: '#3b82f6', // Main info - DGA Official
-    600: '#2563eb',
-    700: '#1d4ed8',
-    800: basePrimaryScale[700], // References primary.700 - #1e40af
-    900: basePrimaryScale[800], // References primary.800 - #1e3a8a
-    950: basePrimaryScale[950], // References primary.950 - #172554
+    25: '#f5faff',
+    50: '#eff8ff',
+    100: '#d1e9ff',
+    200: '#b2ddff',
+    300: '#84caff',
+    400: '#53b1fd',
+    500: '#2e90fa',
+    600: '#1570ef',
+    700: '#175cd3',
+    800: '#1849a9',
+    900: '#194185',
+    950: '#102a56',
   } as BaseColorScale,
 
   // Background Colors - Semantic naming
   // Best Practice: Reference neutral scale for consistency
   background: {
-    primary: baseNeutralScale[0], // #ffffff
-    secondary: '#f8fafc',
-    tertiary: '#f1f5f9',
+    primary: '#ffffff', // #ffffff
+    secondary: '#f9fafb',
+    tertiary: '#ffffff',
     inverse: baseNeutralScale[950], // #0a0a0a → referenced as #0f172a in CSS (need to align)
     overlay: 'rgba(0, 0, 0, 0.5)',
     disabled: '#f1f5f9',
@@ -200,23 +222,23 @@ export const lightColors = {
   // Text Colors - Semantic naming
   // Best Practice: Reference neutral scale
   text: {
-    primary: '#0f172a', // Dark neutral, slightly off from neutral.950
-    secondary: '#475569',
-    tertiary: '#64748b',
+    primary: '#161616', // Dark neutral, slightly off from neutral.950
+    secondary: '#384250',
+    tertiary: '#6c737f',
     inverse: baseNeutralScale[0], // #ffffff
     disabled: '#94a3b8',
-    link: basePrimaryScale[700], // References primary.700 - #1e40af
-    'link-hover': basePrimaryScale[800], // References primary.800 - #1e3a8a
+    link: basePrimaryScale[700], // References primary.700 - #166a45
+    'link-hover': basePrimaryScale[800], // References primary.800 - #14573a
   },
 
   // Border Colors
   // Best Practice: Reference scale colors for semantic meanings
   border: {
-    primary: '#e2e8f0',
-    secondary: '#cbd5e1',
-    focus: basePrimaryScale[700], // References primary.700 - #1e40af
+    primary: '#d2d6db',
+    secondary: '#e5e7eb',
+    focus: basePrimaryScale[700], // References primary.700 - #166a45
     error: baseErrorScale[500], // References error.500 - #ef4444
-    success: baseSecondaryScale[500], // References secondary/success.500 - #10b981
+    success: baseSuccessScale[500], // References success.500 - #17b26a
     warning: baseWarningScale[500], // References warning.500 - #f59e0b
     disabled: '#cbd5e1',
   },
@@ -225,17 +247,17 @@ export const lightColors = {
   // Best Practice: Reference scale colors instead of duplicating values
   interactive: {
     hover: {
-      primary: basePrimaryScale[800], // References primary.800 - #1e3a8a
-      secondary: baseSecondaryScale[700], // References secondary.700 - #047857
-      success: baseSecondaryScale[600], // References success.600 - #059669
+      primary: basePrimaryScale[800], // References primary.800 - #14573a
+      secondary: baseSecondaryScale[700], // References secondary.700 - #b87b02
+      success: baseSuccessScale[600], // References success.600 - #079455
       warning: baseWarningScale[600], // References warning.600 - #d97706
       error: baseErrorScale[600], // References error.600 - #dc2626
       info: '#2563eb', // Distinct info hover color
     },
     active: {
-      primary: basePrimaryScale[950], // References primary.950 - #172554
-      secondary: baseSecondaryScale[800], // References secondary.800 - #065f46
-      success: baseSecondaryScale[700], // References success.700 - #047857
+      primary: basePrimaryScale[950], // References primary.950 - #092a1e
+      secondary: baseSecondaryScale[800], // References secondary.800 - #945c01
+      success: baseSuccessScale[700], // References success.700 - #067647
       warning: baseWarningScale[700], // References warning.700 - #b45309
       error: baseErrorScale[700], // References error.700 - #b91c1c
       info: '#1d4ed8', // Distinct info active color
@@ -259,18 +281,19 @@ export const lightColors = {
  * Best Practice: Define dark mode scales separately, reference base scales where shared
  */
 const baseNeutralScaleDark = {
-  0: '#0a0a0a',
-  50: '#171717',
-  100: '#262626',
-  200: '#404040',
-  300: '#525252',
-  400: '#737373',
-  500: '#a3a3a3',
-  600: '#d4d4d4',
-  700: '#e5e5e5',
-  800: '#f5f5f5',
-  900: '#fafafa',
-  950: '#ffffff',
+  0: '#0d121c',
+  25: '#fcfcfd',
+  50: '#f9fafb',
+  100: '#f3f4f6',
+  200: '#e5e7eb',
+  300: '#d2d6db',
+  400: '#9da4ae',
+  500: '#6c737f',
+  600: '#4d5761',
+  700: '#384250',
+  800: '#1f2a37',
+  900: '#111927',
+  950: '#0d121c',
 } as BaseColorScale;
 
 export const darkColors = {
@@ -284,7 +307,7 @@ export const darkColors = {
   neutral: baseNeutralScaleDark,
 
   // Semantic Colors (same across themes for consistency)
-  success: baseSecondaryScale,
+  success: baseSuccessScale,
   warning: baseWarningScale,
   error: baseErrorScale,
   info: lightColors.info, // References light info which already references primary
@@ -292,10 +315,10 @@ export const darkColors = {
   // Background Colors (inverted for dark mode)
   // Best Practice: Reference neutral dark scale
   background: {
-    primary: '#0f172a', // Slightly lighter than neutral.950 for better contrast
-    secondary: '#1e293b',
-    tertiary: '#334155',
-    inverse: baseNeutralScaleDark[950], // References dark neutral.950 - #ffffff
+    primary: '#0d121c', // Slightly lighter than neutral.950 for better contrast
+    secondary: '#111927',
+    tertiary: '#1f2a37',
+    inverse: baseNeutralScaleDark[0], // References dark neutral.0 - #0d121c (darkest in dark mode)
     overlay: 'rgba(0, 0, 0, 0.75)',
     disabled: '#1e293b',
   },
@@ -303,9 +326,9 @@ export const darkColors = {
   // Text Colors (inverted for dark mode)
   // Best Practice: Reference neutral dark scale
   text: {
-    primary: baseNeutralScaleDark[950], // References dark neutral.950 - #ffffff
-    secondary: '#cbd5e1',
-    tertiary: '#94a3b8',
+    primary: '#ffffff', // References dark neutral.950 - #ffffff
+    secondary: '#f3f4f6',
+    tertiary: '#e5e7eb',
     inverse: '#0f172a',
     disabled: '#475569',
     link: '#60a5fa', // Lighter for better visibility in dark mode (info.400)
@@ -315,11 +338,11 @@ export const darkColors = {
   // Border Colors (adjusted for dark mode)
   // Best Practice: Reference scale colors where appropriate
   border: {
-    primary: '#334155',
-    secondary: '#475569',
+    primary: '#6c737f',
+    secondary: '#384250',
     focus: '#60a5fa', // Lighter for dark mode (info.400)
     error: baseErrorScale[400], // References error.400 - #f87171
-    success: baseSecondaryScale[400], // References success.400 - #34d399
+    success: baseSuccessScale[400], // References success.400 - #47cd89
     warning: baseWarningScale[400], // References warning.400 - #fbbf24
     disabled: '#475569',
   },
@@ -328,17 +351,17 @@ export const darkColors = {
   // Best Practice: Reference scale colors, use lighter shades for dark mode
   interactive: {
     hover: {
-      primary: basePrimaryScale[600], // References primary.600 - #4f46e5
-      secondary: baseSecondaryScale[400], // References secondary.400 - #34d399
-      success: baseSecondaryScale[400], // References success.400 - #34d399
+      primary: basePrimaryScale[600], // References primary.600 - #1b8354
+      secondary: baseSecondaryScale[400], // References secondary.400 - #f7d54d
+      success: baseSuccessScale[400], // References success.400 - #47cd89
       warning: baseWarningScale[400], // References warning.400 - #fbbf24
       error: baseErrorScale[400], // References error.400 - #f87171
       info: '#60a5fa', // info.400
     },
     active: {
-      primary: basePrimaryScale[500], // References primary.500 - #6366f1
-      secondary: baseSecondaryScale[300], // References secondary.300 - #6ee7b7
-      success: baseSecondaryScale[300], // References success.300 - #6ee7b7
+      primary: basePrimaryScale[500], // References primary.500 - #25935f
+      secondary: baseSecondaryScale[300], // References secondary.300 - #fae996
+      success: baseSuccessScale[300], // References success.300 - #75e0a7
       warning: baseWarningScale[300], // References warning.300 - #fcd34d
       error: baseErrorScale[300], // References error.300 - #fca5a5
       info: '#93c5fd', // info.300

@@ -12,6 +12,8 @@ export const fontWeights = {
 } as const;
 
 export const fontSizes = {
+  '2xs': '0.5rem', // 8px
+  'size-10': '0.625rem', // 10px
   xs: '0.75rem', // 12px
   sm: '0.875rem', // 14px
   base: '1rem', // 16px
@@ -19,19 +21,37 @@ export const fontSizes = {
   xl: '1.25rem', // 20px
   '2xl': '1.5rem', // 24px
   '3xl': '1.875rem', // 30px
+  'size-32': '2rem', // 32px
   '4xl': '2.25rem', // 36px
+  'size-40': '2.5rem', // 40px
   '5xl': '3rem', // 48px
-  '6xl': '3.75rem', // 60px
+  '6xl': '3.5rem', // 56px
+  'size-60': '3.75rem', // 60px
   '7xl': '4.5rem', // 72px
 } as const;
 
 export const lineHeights = {
-  none: '1',
-  tight: '1.25',
-  snug: '1.375',
-  normal: '1.5',
-  relaxed: '1.625',
-  loose: '2',
+  'line-10': '0.63', // 10px
+  'line-12': '0.75', // 12px
+  'line-14': '0.88', // 14px
+  'line-16': '1.00', // 16px
+  'line-18': '1.13', // 18px
+  'line-20': '1.25', // 20px
+  'line-22': '1.38', // 22px
+  'line-24': '1.50', // 24px
+  'line-26': '1.63', // 26px
+  'line-28': '1.75', // 28px
+  'line-30': '1.88', // 30px
+  'line-32': '2.00', // 32px
+  'line-38': '2.38', // 38px
+  'line-40': '2.50', // 40px
+  'line-44': '2.75', // 44px
+  'line-48': '3.00', // 48px
+  'line-56': '3.50', // 56px
+  'line-60': '3.75', // 60px
+  'line-64': '4.00', // 64px
+  'line-72': '4.50', // 72px
+  'line-90': '5.63', // 90px
 } as const;
 
 export const letterSpacings = {
@@ -44,9 +64,8 @@ export const letterSpacings = {
 } as const;
 
 export const fontFamilies = {
-  sans: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'] as string[],
-  mono: ['ui-monospace', 'SFMono-Regular', 'monospace'] as string[],
   display: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'] as string[],
+  text: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'] as string[],
 } as const;
 
 // Font styles
