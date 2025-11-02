@@ -60,7 +60,7 @@ const ScientificResearchSection = () => {
         t`بين أنابيب المختبر.. عقول الباحثين تنتج أملاً جديداً لمرضى الكبد`
       ),
       image:
-        'https://images.unsplash.com/photo-1582719471384-894fbb16e074?w=400&h=300&fit=crop',
+      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=400&h=300&fit=crop',
     },
   ];
 
