@@ -1,6 +1,7 @@
 /**
  * Theme Hook
  * Convenient hook for accessing theme values in components
+ * Best Practice: Type-safe direct access to theme tokens
  */
 
 import { useThemeContext } from '@/theme';
@@ -9,51 +10,50 @@ export const useTheme = () => {
   const { mode, theme, toggleTheme, setTheme, isDark, isLight } =
     useThemeContext();
 
-  // Helper functions for common theme operations
-  const getColor = (path: string) => {
-    const keys = path.split('.');
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let value: any = theme.colors;
-
-    for (const key of keys) {
-      value = value?.[key];
-      if (value === undefined) break;
-    }
-
-    return value || path; // fallback to the path if not found
-  };
-
-  const getSpacing = (key: string) => {
-    return (
-      theme.spacing.values[key as keyof typeof theme.spacing.values] || key
-    );
-  };
-
-  const getBorderRadius = (key: string) => {
-    return (
-      theme.borderRadius.values[
-        key as keyof typeof theme.borderRadius.values
-      ] || key
-    );
-  };
-
-  const getShadow = (key: string) => {
-    return (
-      theme.shadows.values[key as keyof typeof theme.shadows.values] || key
-    );
-  };
+  /**
+   * Type-safe theme token accessors
+   * Provides direct access to theme tokens with full type safety
+   *
+   * @example
+   * // Colors
+   * colors.primary[700] // '#1e40af'
+   * colors.text.primary // '#0f172a'
+   * colors.background.primary // '#ffffff'
+   *
+   * // Spacing
+   * spacing.values.md // '1rem'
+   * spacing.scale.xs // '0.25rem'
+   *
+   * // Border Radius
+   * borderRadius.values.lg // '0.5rem'
+   * borderRadius.scale.md // '0.375rem'
+   *
+   * // Shadows
+   * shadows.values.md // '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+   * shadows.scale.lg // '0 10px 15px -3px rgba(0, 0, 0, 0.1)'
+   *
+   * // Typography
+   * typography.fontSizes.lg // '1.125rem'
+   * typography.fontWeights.bold // 700
+   */
+  const colors = theme.colors;
+  const spacing = theme.spacing;
+  const borderRadius = theme.borderRadius;
+  const shadows = theme.shadows;
+  const typography = theme.typography;
 
   return {
+    // Theme state
     mode,
-    theme,
     toggleTheme,
     setTheme,
     isDark,
     isLight,
-    // Helper functions
-    getColor,
-    getSpacing,
-    getBorderRadius,
-    getShadow,
+    // Direct token accessors (type-safe)
+    colors,
+    spacing,
+    borderRadius,
+    shadows,
+    typography,
   };
 };

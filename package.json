@@ -16,6 +16,7 @@
     "lingui:extract": "lingui extract",
     "lingui:compile": "lingui compile --typescript",
     "lingui:watch": "lingui extract --watch",
+    "theme:generate-css": "npx tsx src/theme/utils/generate-css-variables.ts",
     "prepare": "husky"
   },
   "dependencies": {

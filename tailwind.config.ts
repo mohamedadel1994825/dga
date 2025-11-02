@@ -128,6 +128,8 @@ const config: Config = {
           secondary: 'var(--color-background-secondary)',
           tertiary: 'var(--color-background-tertiary)',
           inverse: 'var(--color-background-inverse)',
+          overlay: 'var(--color-background-overlay)',
+          disabled: 'var(--color-background-disabled)',
         },
         // Text colors - using CSS custom properties for dynamic theming
         text: {
@@ -136,6 +138,8 @@ const config: Config = {
           tertiary: 'var(--color-text-tertiary)',
           inverse: 'var(--color-text-inverse)',
           disabled: 'var(--color-text-disabled)',
+          link: 'var(--color-text-link)',
+          'link-hover': 'var(--color-text-link-hover)',
         },
         // Border colors - using CSS custom properties for dynamic theming
         border: {
@@ -143,6 +147,9 @@ const config: Config = {
           secondary: 'var(--color-border-secondary)',
           focus: 'var(--color-border-focus)',
           error: 'var(--color-border-error)',
+          success: 'var(--color-border-success)',
+          warning: 'var(--color-border-warning)',
+          disabled: 'var(--color-border-disabled)',
         },
       },
       fontFamily: {

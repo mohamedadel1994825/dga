@@ -40,7 +40,19 @@ export type {
 } from './types';
 
 // Token exports for direct access
-export { lightColors, darkColors } from './tokens/colors';
+export {
+  lightColors,
+  darkColors,
+  getColor,
+  colorScales,
+  type ColorToken,
+  type ColorPath,
+  type ColorScale,
+  type SemanticColor,
+} from './tokens/colors';
+
+// Color utilities
+export * from './utils';
 export {
   fontWeights,
   fontSizes,
