@@ -22,13 +22,13 @@ export function useFetch<T>(
   const [state, setState] = useState<LoadingState & { data: T | null }>({
     data: null,
     isLoading: false,
-    error: null,
+    error: undefined,
   });
 
   const fetchData = useCallback(async () => {
     if (!url) return;
 
-    setState(prev => ({ ...prev, isLoading: true, error: null }));
+    setState(prev => ({ ...prev, isLoading: true, error: undefined }));
 
     let lastError: Error | null = null;
 
@@ -43,9 +43,9 @@ export function useFetch<T>(
         const data: ApiResponse<T> = await response.json();
 
         setState({
-          data: data.data,
+          data: data.data ?? null,
           isLoading: false,
-          error: null,
+          error: undefined,
         });
 
         return;

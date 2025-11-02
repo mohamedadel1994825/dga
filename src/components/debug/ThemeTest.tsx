@@ -6,10 +6,10 @@
 'use client';
 
 import React from 'react';
-import { useTheme } from '@/theme';
+import { useThemeContext } from '@/theme';
 
 export const ThemeTest: React.FC = () => {
-  const { mode, toggleTheme, isDark, theme } = useTheme();
+  const { mode, toggleTheme, isDark, theme } = useThemeContext();
 
   return (
     <div

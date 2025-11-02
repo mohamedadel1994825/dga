@@ -10,7 +10,7 @@ interface SearchState {
   sortOrder: 'asc' | 'desc';
 
   // Search results
-  results: any[];
+  results: unknown[];
   totalResults: number;
   currentPage: number;
   resultsPerPage: number;
@@ -34,7 +34,7 @@ interface SearchState {
   setFilters: (filters: Partial<SearchParams>) => void;
   setSortBy: (sortBy: string) => void;
   setSortOrder: (order: 'asc' | 'desc') => void;
-  setResults: (results: any[], totalResults: number) => void;
+  setResults: (results: unknown[], totalResults: number) => void;
   setCurrentPage: (page: number) => void;
   setResultsPerPage: (perPage: number) => void;
   setSearching: (isSearching: boolean) => void;

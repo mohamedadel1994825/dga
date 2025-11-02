@@ -7,6 +7,7 @@ export function useTranslation() {
   const { i18n } = useLingui();
 
   const translate = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     (key: string, values?: Record<string, any>) => {
       return i18n._(key, values);
     },

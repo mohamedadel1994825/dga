@@ -48,7 +48,7 @@ const defaultSettings = {
 
 export const useDGAStore = create<DGAState>()(
   persist(
-    (set, get) => ({
+    (set, _get) => ({
       compliance: null,
       lastComplianceCheck: null,
       events: [],

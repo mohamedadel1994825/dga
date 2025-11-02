@@ -1,8 +1,6 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { t } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
 const DgaFeaturedIcon = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaFeaturedIcon),
@@ -10,8 +8,6 @@ const DgaFeaturedIcon = dynamic(
 );
 
 export default function AboutSection() {
-  const { _ } = useLingui();
-
   return (
     <section className='mt-[24px]'>
       <h1 className='display-sm-bold text-[#161616] mb-4'>About us Section</h1>
@@ -53,7 +49,7 @@ export default function AboutSection() {
             primaryActionLabel: 'Read More',
             showSecondaryAction: false,
           },
-        ].map((_, index) => (
+        ].map((item, index) => (
           <div
             key={`stats-${index}`}
             className='flex flex-col justify-center items-center'

@@ -108,6 +108,20 @@ const config: Config = {
           900: 'var(--color-error-900)',
           950: 'var(--color-error-950)',
         },
+        // Info colors - using CSS custom properties for dynamic theming
+        info: {
+          50: 'var(--color-info-50)',
+          100: 'var(--color-info-100)',
+          200: 'var(--color-info-200)',
+          300: 'var(--color-info-300)',
+          400: 'var(--color-info-400)',
+          500: 'var(--color-info-500)',
+          600: 'var(--color-info-600)',
+          700: 'var(--color-info-700)',
+          800: 'var(--color-info-800)',
+          900: 'var(--color-info-900)',
+          950: 'var(--color-info-950)',
+        },
         // Background colors - using CSS custom properties for dynamic theming
         background: {
           primary: 'var(--color-background-primary)',

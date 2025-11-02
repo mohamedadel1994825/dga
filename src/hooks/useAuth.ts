@@ -20,9 +20,47 @@ const defaultAuthState: AuthState = {
 export function useAuth() {
   const [authState, setAuthState] = useState<AuthState>(defaultAuthState);
 
-  // Check for existing session on mount
-  useEffect(() => {
-    checkSession();
+  const refreshToken = useCallback(async () => {
+    try {
+      const storedSession = localStorage.getItem('auth-session');
+      if (!storedSession) return;
+
+      const session = JSON.parse(storedSession);
+
+      const response = await fetch('/api/auth/refresh', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ refreshToken: session.refreshToken }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Token refresh failed');
+      }
+
+      const data = await response.json();
+
+      // Update stored session
+      localStorage.setItem(
+        'auth-session',
+        JSON.stringify({
+          ...session,
+          ...data,
+        })
+      );
+
+      setAuthState(prev => ({
+        ...prev,
+        session: { ...session, ...data },
+        error: null,
+      }));
+
+      return data;
+    } catch (error) {
+      console.error('Token refresh failed:', error);
+      throw error;
+    }
   }, []);
 
   const checkSession = useCallback(async () => {
@@ -60,7 +98,12 @@ export function useAuth() {
         error: 'Failed to check session',
       }));
     }
-  }, []);
+  }, [refreshToken]);
+
+  // Check for existing session on mount
+  useEffect(() => {
+    checkSession();
+  }, [checkSession]);
 
   const login = useCallback(async (email: string, password: string) => {
     try {
@@ -125,51 +168,6 @@ export function useAuth() {
       setAuthState(defaultAuthState);
     }
   }, [authState.session?.id]);
-
-  const refreshToken = useCallback(async () => {
-    try {
-      const storedSession = localStorage.getItem('auth-session');
-      if (!storedSession) return;
-
-      const session = JSON.parse(storedSession);
-
-      const response = await fetch('/api/auth/refresh', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ refreshToken: session.refreshToken }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Token refresh failed');
-      }
-
-      const data = await response.json();
-
-      // Update stored session
-      localStorage.setItem(
-        'auth-session',
-        JSON.stringify({
-          ...session,
-          ...data,
-        })
-      );
-
-      setAuthState(prev => ({
-        ...prev,
-        session: { ...session, ...data },
-        error: null,
-      }));
-
-      return data;
-    } catch (error) {
-      console.error('Token refresh failed:', error);
-      // If refresh fails, logout user
-      await logout();
-      throw error;
-    }
-  }, [logout]);
 
   const updateUser = useCallback((userData: Partial<User>) => {
     setAuthState(prev => {

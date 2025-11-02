@@ -1,7 +1,6 @@
 import type {
   ID,
   Timestamp,
-  Status,
   LocalizedContent,
   LocalizedRichContent,
   PaginationParams,
@@ -165,7 +164,6 @@ export interface AdmissionApplication {
 
 export interface AdmissionFilters extends SearchParams {
   program?: string;
-  status?: string;
   year?: number;
   semester?: string;
   dateFrom?: string;

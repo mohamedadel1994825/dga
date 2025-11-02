@@ -17,7 +17,7 @@ export function invalidateAdmissionsQueries(queryClient: QueryClient) {
 // Prefetch helpers
 export function prefetchNewsList(
   queryClient: QueryClient,
-  params?: Record<string, unknown>
+  params?: Record<string, string | number | boolean>
 ) {
   return queryClient.prefetchQuery({
     queryKey: queryKeys.news.list(params),

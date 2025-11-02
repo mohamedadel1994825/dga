@@ -3,12 +3,12 @@
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { fetchEvents, fetchEventById } from '@/services/eventsService';
 import { queryKeys } from '../keys';
-import type { Event } from '@/types/events.types';
+import type { EventItem } from '@/types/events.types';
 import type { PaginatedResponse } from '@/types/common.types';
 
 export function useEventsList(
   params?: Record<string, string | number | boolean>,
-  options?: UseQueryOptions<{ data: PaginatedResponse<Event> }, Error>
+  options?: UseQueryOptions<{ data: PaginatedResponse<EventItem> }, Error>
 ) {
   return useQuery({
     queryKey: queryKeys.events.list(params),
@@ -19,7 +19,7 @@ export function useEventsList(
 
 export function useEventItem(
   id: string,
-  options?: UseQueryOptions<{ data: Event }, Error>
+  options?: UseQueryOptions<{ data: EventItem }, Error>
 ) {
   return useQuery({
     queryKey: queryKeys.events.detail(id),

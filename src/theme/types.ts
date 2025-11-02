@@ -11,21 +11,16 @@ import type {
   LetterSpacing,
   FontFamily,
 } from './tokens/typography';
-import type { Spacing, SpacingScale, ComponentSpacing } from './tokens/spacing';
+import type { Spacing, SpacingScale } from './tokens/spacing';
 import type { BorderRadius, BorderRadiusScale } from './tokens/borderRadius';
 import type { Shadow, ShadowScale } from './tokens/shadows';
-import type {
-  Duration,
-  Easing,
-  Animation,
-  AnimationPreset,
-} from './tokens/animations';
+import type { Duration, Easing, Animation } from './tokens/animations';
 import type { ZIndex, ComponentZIndex } from './tokens/zIndex';
 
 export type ThemeMode = 'light' | 'dark';
 
 export interface ThemeTokens {
-  colors: any; // Using any to avoid complex type conflicts between light and dark themes
+  colors: ColorToken;
   typography: {
     fontWeights: Record<FontWeight, number>;
     fontSizes: Record<FontSize, string>;

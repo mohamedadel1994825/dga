@@ -2,7 +2,6 @@
 
 import { Suspense } from 'react';
 import DigitalSignatureBanner from './(public)/_components/DigitalSignatureBanner';
-import WebComponentErrorBoundary from './(public)/_components/WebComponentErrorBoundary';
 import SecondNavHeader from './(public)/_components/SecondNavHeader';
 import NavHeader from './(public)/_components/NavHeader';
 import HeroSection from './(public)/_components/HeroSection';

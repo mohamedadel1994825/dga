@@ -1,20 +1,11 @@
 'use client';
 // @ts-nocheck
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 import { Trans, t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 
 const DgaIcon = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaIcon),
-  { ssr: false }
-);
-const DgaButton = dynamic(
-  () => import('platformscode-new-react').then(m => m.DgaButton),
-  { ssr: false }
-);
-const DgaLabel = dynamic(
-  () => import('platformscode-new-react').then(m => m.DgaLabel),
   { ssr: false }
 );
 

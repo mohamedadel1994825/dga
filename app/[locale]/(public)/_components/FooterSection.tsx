@@ -1,8 +1,6 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { t } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
 const DgaDivider = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaDivider),
@@ -14,8 +12,6 @@ const DgaFooter = dynamic(
 );
 
 export default function FooterSection() {
-  const { _ } = useLingui();
-
   return (
     <div className='w-full'>
       <DgaDivider color='primary' />

@@ -27,11 +27,12 @@ export default function DigitalSignatureBanner() {
   }, []);
 
   // Set language attribute when component is ready or language changes
+  // This prevents the web component from trying to call .replace() on undefined
   useEffect(() => {
-    if (sigRef.current && ready) {
+    if (sigRef.current && lang) {
       sigRef.current.setAttribute('language', lang);
     }
-  }, [lang, ready]);
+  }, [lang, mounted, ready]);
 
   if (!mounted || !ready) {
     return <div style={{ minHeight: '40px' }} />; // Placeholder to prevent layout shift
@@ -40,7 +41,16 @@ export default function DigitalSignatureBanner() {
   return (
     <div suppressHydrationWarning>
       {/* @ts-expect-error - web component */}
-      <dga-digital-signature ref={(el: HTMLElement) => (sigRef.current = el)} />
+      <dga-digital-signature
+        ref={(el: HTMLElement) => {
+          sigRef.current = el;
+          // Set language attribute immediately when ref is set
+          if (el && lang) {
+            el.setAttribute('language', lang);
+          }
+        }}
+        language={lang || 'ar'}
+      />
     </div>
   );
 }

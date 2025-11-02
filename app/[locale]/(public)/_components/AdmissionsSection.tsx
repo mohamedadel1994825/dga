@@ -2,14 +2,11 @@
 // @ts-nocheck
 
 import dynamic from 'next/dynamic';
+import Image from 'next/image';
 import { Trans, t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 const DgaButton = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaButton),
-  { ssr: false }
-);
-const DgaCard = dynamic(
-  () => import('platformscode-new-react').then(m => m.DgaCard),
   { ssr: false }
 );
 const DgaDivider = dynamic(
@@ -98,10 +95,11 @@ const AdmissionsSection: React.FC = () => {
           <DgaCarousel>
             <DgaCarouselItem>
               <div className='relative h-[336px] w-full'>
-                <img
+                <Image
                   src='https://saudigazette.com.sa/uploads/images/2023/11/02/2173406.jpg'
                   alt='لقاء تعريفي يخص الطريق للطالبات المستجدات'
-                  className='w-full h-full object-cover'
+                  fill
+                  className='object-cover'
                 />
                 <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent'></div>
                 <div className='absolute bottom-0 left-0 right-0 p-[24px]'>
@@ -116,10 +114,11 @@ const AdmissionsSection: React.FC = () => {
             </DgaCarouselItem>
             <DgaCarouselItem>
               <div className='relative h-[336px] w-full'>
-                <img
+                <Image
                   src='https://saudigazette.com.sa/uploads/images/2023/11/02/2173406.jpg'
                   alt='معلومات عن التسجيل'
-                  className='w-full h-full object-cover'
+                  fill
+                  className='object-cover'
                 />
                 <div className='absolute inset-0 bg-gradient-to-t from-black/60 to-transparent'></div>
                 <div className='absolute bottom-0 left-0 right-0 p-[24px]'>

@@ -1,9 +1,11 @@
 import {
   useMutation,
   useQueryClient,
-  UseMutationOptions,
+  type QueryClient,
 } from '@tanstack/react-query';
 import { invalidateNewsQueries, invalidateEventsQueries } from '../cache';
+import type { NewsItem, NewsFormData } from '@/types/news.types';
+import type { EventItem, EventFormData } from '@/types/events.types';
 
 // Generic mutation wrapper with automatic cache invalidation
 export function useOptimisticMutation<TData, TVariables, TError = Error>(
@@ -11,7 +13,7 @@ export function useOptimisticMutation<TData, TVariables, TError = Error>(
   options?: {
     onSuccess?: (data: TData, variables: TVariables) => void;
     onError?: (error: TError, variables: TVariables) => void;
-    invalidateQueries?: (queryClient: any) => void;
+    invalidateQueries?: (queryClient: QueryClient) => void;
   }
 ) {
   const queryClient = useQueryClient();
@@ -28,8 +30,8 @@ export function useOptimisticMutation<TData, TVariables, TError = Error>(
 
 // News mutations
 export function useCreateNewsMutation() {
-  return useOptimisticMutation(
-    async (data: any) => {
+  return useOptimisticMutation<NewsItem, NewsFormData>(
+    async (data: NewsFormData) => {
       // Replace with actual API call
       const response = await fetch('/api/news', {
         method: 'POST',
@@ -46,8 +48,8 @@ export function useCreateNewsMutation() {
 
 // Events mutations
 export function useCreateEventMutation() {
-  return useOptimisticMutation(
-    async (data: any) => {
+  return useOptimisticMutation<EventItem, EventFormData>(
+    async (data: EventFormData) => {
       // Replace with actual API call
       const response = await fetch('/api/events', {
         method: 'POST',

@@ -110,8 +110,12 @@ const Alert: React.FC<AlertProps> = ({
                 className={clsx(
                   'inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2',
                   variantClasses[variant]
-                    .replace('text-', 'hover:bg-')
-                    .replace('-800', '-100')
+                    ? variantClasses[variant]
+                        .replace('text-', 'hover:bg-')
+                        .replace('-800', '-100')
+                    : variantClasses.info
+                        .replace('text-', 'hover:bg-')
+                        .replace('-800', '-100')
                 )}
                 aria-label='Dismiss'
               >

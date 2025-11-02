@@ -30,7 +30,7 @@ export interface SEOConfig {
       index: boolean;
       follow: boolean;
       'max-video-preview': number;
-      'max-image-preview': string;
+      'max-image-preview': 'none' | 'standard' | 'large';
       'max-snippet': number;
     };
   };

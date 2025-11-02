@@ -130,7 +130,7 @@ export interface UserActivity {
     | 'email_change'
     | 'permission_change';
   description: LocalizedContent;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   ipAddress: string;
   userAgent: string;
   createdAt: Timestamp;
@@ -146,7 +146,7 @@ export interface UserNotification {
   isImportant: boolean;
   actionUrl?: string;
   actionText?: LocalizedContent;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   sentAt: Timestamp;
   readAt?: Timestamp;
   expiresAt?: Timestamp;
@@ -172,7 +172,7 @@ export interface UserPermission {
   description?: LocalizedContent;
   resource: string;
   action: string;
-  conditions?: Record<string, any>;
+  conditions?: Record<string, unknown>;
   isSystem: boolean;
   isActive: boolean;
   createdAt: Timestamp;

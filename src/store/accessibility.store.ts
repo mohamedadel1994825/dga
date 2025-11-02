@@ -24,7 +24,7 @@ const defaultSettings: AccessibilitySettings = {
 
 export const useAccessibilityStore = create<AccessibilityState>()(
   persist(
-    (set, get) => ({
+    (set, _get) => ({
       settings: defaultSettings,
       isLoaded: false,
 

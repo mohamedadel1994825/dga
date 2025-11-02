@@ -59,7 +59,7 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({
   size = 'md',
   showLabel = false,
 }) => {
-  const { mode, toggleTheme, isDark } = useThemeContext();
+  const { toggleTheme, isDark } = useThemeContext();
 
   const sizeClasses = {
     sm: 'w-8 h-8 text-sm',

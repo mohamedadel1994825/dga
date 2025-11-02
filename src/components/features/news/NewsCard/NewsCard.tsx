@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, Badge } from '../../../ui';
-import type { BaseComponentProps } from '../../../types';
+import type { BaseComponentProps } from '@/types';
 
 export interface NewsArticle {
   id: string;

@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "pnpm lingui:compile && pnpm lingui:extract && next dev",
+    "dev": "pnpm lingui:compile && pnpm lingui:extract && TURBOPACK=1 next dev --turbopack",
+    "dev:webpack": "pnpm lingui:compile && pnpm lingui:extract && next dev",
     "build": "pnpm lingui:compile && pnpm lingui:extract && next build",
     "start": "next start",
     "postinstall": "node scripts/strip-platformscode-css.mjs",

@@ -1,11 +1,10 @@
 import { i18n } from '@lingui/core';
-import { t } from '@lingui/macro';
 import type { Locale } from './config';
 
 // Translation utilities
 export function useTranslation() {
   return {
-    t: (key: string, values?: Record<string, any>) => {
+    t: (key: string, values?: Record<string, unknown>) => {
       return i18n._(key, values);
     },
     locale: i18n.locale,

@@ -7,7 +7,7 @@ interface UseFormOptions<T> {
   onSubmit: (values: T) => Promise<void> | void;
 }
 
-export function useForm<T extends Record<string, any>>({
+export function useForm<T extends Record<string, unknown>>({
   initialValues,
   validate,
   onSubmit,
@@ -28,7 +28,7 @@ export function useForm<T extends Record<string, any>>({
   }, [values, validate]);
 
   const setValue = useCallback(
-    (name: string, value: any) => {
+    (name: string, value: unknown) => {
       setValues(prev => ({ ...prev, [name]: value }));
 
       // Clear error for this field when user starts typing
@@ -40,7 +40,7 @@ export function useForm<T extends Record<string, any>>({
   );
 
   const setFieldValue = useCallback(
-    (name: string, value: any) => {
+    (name: string, value: unknown) => {
       setValue(name, value);
       setTouched(prev => ({ ...prev, [name]: true }));
     },

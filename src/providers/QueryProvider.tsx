@@ -22,7 +22,9 @@ export default function QueryProvider({
   return (
     <QueryClientProvider client={client}>
       {children}
-      <ReactQueryDevtools initialIsOpen={false} buttonPosition='bottom-right' />
+      <div suppressHydrationWarning>
+        <ReactQueryDevtools initialIsOpen={false} buttonPosition='bottom-right' />
+      </div>
     </QueryClientProvider>
   );
 }

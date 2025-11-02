@@ -7,8 +7,9 @@ export * from './events.types';
 export * from './admission.types';
 export * from './user.types';
 
-// API types
-export * from './api.types';
+// API types (exclude ApiError and ApiResponse which are already exported from common.types)
+// Only export types that don't conflict with common.types
+export type { ApiRequest, ApiError as ApiErrorType } from './api.types';
 
 // DGA types
 export * from './dga.types';

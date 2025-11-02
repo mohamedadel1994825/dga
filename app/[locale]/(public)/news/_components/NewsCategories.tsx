@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { Badge } from '@/components/ui';
 import type { BaseComponentProps } from '@/types';
 
 export interface NewsCategory {

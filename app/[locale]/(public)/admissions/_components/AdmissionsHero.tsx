@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import { Button } from '@/components/ui';
 import type { BaseComponentProps } from '@/types';
 
@@ -33,13 +34,14 @@ const AdmissionsHero: React.FC<AdmissionsHeroProps> = ({
         <div className='max-w-3xl'>
           <h1 className='text-4xl md:text-5xl font-bold mb-6'>{title}</h1>
           <p className='text-xl mb-8 opacity-90'>{subtitle}</p>
-          <Button
-            href={ctaHref}
-            size='lg'
-            className='bg-white text-blue-600 hover:bg-gray-100'
-          >
-            {ctaText}
-          </Button>
+          <Link href={ctaHref}>
+            <Button
+              size='lg'
+              className='bg-white text-blue-600 hover:bg-gray-100'
+            >
+              {ctaText}
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useId } from 'react';
 import { clsx } from 'clsx';
-import type { BaseComponentProps } from '@/types';
 
 export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
@@ -29,11 +28,12 @@ const Input: React.FC<InputProps> = ({
   endIcon,
   className,
   'aria-label': ariaLabel,
-  'aria-describedby': ariaDescribedBy,
+  'aria-describedby': _ariaDescribedBy,
   id,
   ...props
 }) => {
-  const inputId = id || `input-${Math.random().toString(36).substr(2, 9)}`;
+  const generatedId = useId();
+  const inputId = id || generatedId;
   const errorId = error ? `${inputId}-error` : undefined;
   const helperId = helperText ? `${inputId}-helper` : undefined;
 

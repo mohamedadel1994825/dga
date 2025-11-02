@@ -3,7 +3,7 @@ export const queryKeys = {
   news: {
     all: ['news'] as const,
     lists: () => [...queryKeys.news.all, 'list'] as const,
-    list: (params?: Record<string, unknown>) =>
+    list: (params?: Record<string, string | number | boolean>) =>
       [...queryKeys.news.lists(), params] as const,
     details: () => [...queryKeys.news.all, 'detail'] as const,
     detail: (id: string) => [...queryKeys.news.details(), id] as const,

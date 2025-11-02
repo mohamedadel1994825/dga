@@ -1,8 +1,6 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { t } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
 const DgaCard = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaCard),
@@ -10,8 +8,6 @@ const DgaCard = dynamic(
 );
 
 export default function NewsSection() {
-  const { _ } = useLingui();
-
   return (
     <section className='mt-[24px]'>
       <h1 className='display-sm-bold text-[#161616] mb-4'>

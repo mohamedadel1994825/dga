@@ -29,7 +29,7 @@ export const ThemeCard: React.FC<ThemeCardProps> = ({
   size = 'md',
   className = '',
 }) => {
-  const { mode, isDark } = useThemeContext();
+  const { mode } = useThemeContext();
 
   const variantClasses = {
     default: 'bg-background-primary border-border-primary text-text-primary',

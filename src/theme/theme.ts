@@ -4,6 +4,7 @@
  */
 
 import { lightColors, darkColors } from './tokens/colors';
+import type { ColorToken } from './tokens/colors';
 import {
   fontWeights,
   fontSizes,
@@ -17,7 +18,7 @@ import { shadows, shadowScale } from './tokens/shadows';
 import type { ThemeTokens, ThemeMode } from './types';
 
 export const lightTheme: ThemeTokens = {
-  colors: lightColors as any,
+  colors: lightColors as unknown as ColorToken,
   typography: {
     fontWeights,
     fontSizes,
@@ -40,7 +41,7 @@ export const lightTheme: ThemeTokens = {
 };
 
 export const darkTheme: ThemeTokens = {
-  colors: darkColors as any,
+  colors: darkColors as unknown as ColorToken,
   typography: {
     fontWeights,
     fontSizes,

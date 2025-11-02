@@ -23,7 +23,9 @@ function createHttpClient(): AxiosInstance {
       }
       // locale header (for backend localization)
       const locale = document.documentElement.lang || 'ar';
-      (config.headers as any)['Accept-Language'] = locale;
+      if (config.headers) {
+        config.headers['Accept-Language'] = locale;
+      }
     }
     return config;
   });
@@ -34,14 +36,19 @@ function createHttpClient(): AxiosInstance {
   instance.interceptors.response.use(
     res => res,
     async (error: AxiosError) => {
-      const original = error.config as any;
+      if (!error.config) {
+        return Promise.reject({ message: 'Network error', cause: error });
+      }
+      const original = error.config as typeof error.config & {
+        _retry?: boolean;
+      };
       const status = error.response?.status;
 
       if (!status) {
         return Promise.reject({ message: 'Network error', cause: error });
       }
 
-      if (status === 401 && !original?._retry) {
+      if (status === 401 && !original._retry) {
         original._retry = true;
 
         if (isRefreshing) {

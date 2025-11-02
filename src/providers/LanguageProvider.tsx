@@ -80,12 +80,15 @@ export default function LanguageProvider({
         document.cookie = `locale=${newLang}; Path=/; Max-Age=31536000; SameSite=Lax`;
 
         // Update URL to reflect language change
-        const currentPath = window.location.pathname;
-        const pathWithoutLocale = currentPath.replace(/^\/[a-z]{2}(\/|$)/, '/');
-        const newPath = `/${newLang}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
+        if (typeof window !== 'undefined' && window.location) {
+          const currentPath = window.location.pathname || '/';
+          const pathWithoutLocale = currentPath.replace(
+            /^\/[a-z]{2}(\/|$)/,
+            '/'
+          );
+          const newPath = `/${newLang}${pathWithoutLocale === '/' ? '' : pathWithoutLocale}`;
 
-        // Use pushState for smooth navigation without reload
-        if (typeof window !== 'undefined') {
+          // Use pushState for smooth navigation without reload
           window.history.pushState(null, '', newPath);
         }
       } catch (error) {

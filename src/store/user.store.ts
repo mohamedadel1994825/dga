@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import type { User, UserSession, UserPreferences } from '@/types';
+import type { User, UserSession } from '@/types';
+import type { UserPreferences } from '@/types/user.types';
 
 interface UserState {
   user: User | null;
@@ -52,7 +53,7 @@ const defaultPreferences: UserPreferences = {
 
 export const useUserStore = create<UserState>()(
   persist(
-    (set, get) => ({
+    (set, _get) => ({
       user: null,
       session: null,
       isAuthenticated: false,

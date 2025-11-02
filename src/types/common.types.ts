@@ -30,7 +30,7 @@ export interface LocalizedRichContent {
 }
 
 // API Response types
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data: T;
   message?: string;
@@ -47,7 +47,7 @@ export interface ApiError {
   code: string;
   message: string;
   field?: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
 }
 
 // Pagination
@@ -152,7 +152,7 @@ export interface ValidationError {
   code: string;
 }
 
-export interface FormState<T = any> {
+export interface FormState<T = unknown> {
   data: T;
   errors: ValidationError[];
   isSubmitting: boolean;
@@ -198,8 +198,8 @@ export type DeepPartial<T> = {
 };
 
 // Event handlers
-export type EventHandler<T = any> = (event: T) => void;
-export type AsyncEventHandler<T = any> = (event: T) => Promise<void>;
+export type EventHandler<T = unknown> = (event: T) => void;
+export type AsyncEventHandler<T = unknown> = (event: T) => Promise<void>;
 
 // Component props
 export interface BaseComponentProps {

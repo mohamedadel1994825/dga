@@ -8,10 +8,6 @@ const DgaButton = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaButton),
   { ssr: false }
 );
-const DgaCard = dynamic(
-  () => import('platformscode-new-react').then(m => m.DgaCard),
-  { ssr: false }
-);
 const DgaCarousel = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaCarousel),
   { ssr: false }

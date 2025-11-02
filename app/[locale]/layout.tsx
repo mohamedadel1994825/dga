@@ -5,7 +5,6 @@ import '../globals.css';
 import 'platformscode-new-react/dist/style.css';
 import '../../src/theme/theme-variables.css';
 import LanguageProvider from '../../src/providers/LanguageProvider';
-import DigitalSignatureBanner from './(public)/_components/DigitalSignatureBanner';
 import QueryProvider from '@/providers/QueryProvider';
 import { ThemeProvider } from '@/theme';
 
@@ -84,7 +83,6 @@ export default async function LocaleLayout({
         className={`${Geist_Sans.variable} ${Geist_Mono_Font.variable} ${IBM_Arabic.variable} antialiased`}
         suppressHydrationWarning
       >
-        <link rel='stylesheet' href='/vendor/platformscode-core.css' />
         <QueryProvider>
           <ThemeProvider>
             <LanguageProvider initialLocale={locale}>

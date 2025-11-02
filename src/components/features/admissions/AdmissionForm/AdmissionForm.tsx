@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Button, Input, Card } from '../../../ui';
-import { useForm } from '../../../hooks';
-import type { BaseComponentProps } from '../../../types';
+import { useForm } from '@/hooks';
+import type { BaseComponentProps, ValidationError } from '@/types';
 
 export interface AdmissionFormData {
   personalInfo: {
@@ -39,61 +39,117 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 3;
 
-  const { values, errors, handleChange, handleSubmit, setValues } = useForm({
-    initialValues: {
-      personalInfo: {
-        firstName: '',
-        lastName: '',
-        email: '',
-        phone: '',
-        nationalId: '',
+  const { values, setValue, setFieldValue, handleSubmit, getFieldError } =
+    useForm({
+      initialValues: {
+        personalInfo: {
+          firstName: '',
+          lastName: '',
+          email: '',
+          phone: '',
+          nationalId: '',
+        },
+        education: {
+          highSchool: '',
+          graduationYear: '',
+          gpa: '',
+          satScore: '',
+        },
+        program: {
+          programId: '',
+          specialization: '',
+        },
       },
-      education: {
-        highSchool: '',
-        graduationYear: '',
-        gpa: '',
-        satScore: '',
+      validate: values => {
+        const errors: ValidationError[] = [];
+
+        if (currentStep === 1) {
+          if (!values.personalInfo.firstName)
+            errors.push({
+              field: 'personalInfo.firstName',
+              message: {
+                ar: 'First name is required',
+                en: 'First name is required',
+              },
+              code: 'required',
+            });
+          if (!values.personalInfo.lastName)
+            errors.push({
+              field: 'personalInfo.lastName',
+              message: {
+                ar: 'Last name is required',
+                en: 'Last name is required',
+              },
+              code: 'required',
+            });
+          if (!values.personalInfo.email)
+            errors.push({
+              field: 'personalInfo.email',
+              message: { ar: 'Email is required', en: 'Email is required' },
+              code: 'required',
+            });
+          if (!values.personalInfo.phone)
+            errors.push({
+              field: 'personalInfo.phone',
+              message: { ar: 'Phone is required', en: 'Phone is required' },
+              code: 'required',
+            });
+          if (!values.personalInfo.nationalId)
+            errors.push({
+              field: 'personalInfo.nationalId',
+              message: {
+                ar: 'National ID is required',
+                en: 'National ID is required',
+              },
+              code: 'required',
+            });
+        }
+
+        if (currentStep === 2) {
+          if (!values.education.highSchool)
+            errors.push({
+              field: 'education.highSchool',
+              message: {
+                ar: 'High school is required',
+                en: 'High school is required',
+              },
+              code: 'required',
+            });
+          if (!values.education.graduationYear)
+            errors.push({
+              field: 'education.graduationYear',
+              message: {
+                ar: 'Graduation year is required',
+                en: 'Graduation year is required',
+              },
+              code: 'required',
+            });
+          if (!values.education.gpa)
+            errors.push({
+              field: 'education.gpa',
+              message: { ar: 'GPA is required', en: 'GPA is required' },
+              code: 'required',
+            });
+        }
+
+        if (currentStep === 3) {
+          if (!values.program.programId)
+            errors.push({
+              field: 'program.programId',
+              message: {
+                ar: 'Program selection is required',
+                en: 'Program selection is required',
+              },
+              code: 'required',
+            });
+        }
+
+        return errors;
       },
-      program: {
-        programId: '',
-        specialization: '',
+      onSubmit: values => {
+        onSubmit(values);
       },
-    },
-    validate: values => {
-      const errors: Record<string, string> = {};
-
-      if (currentStep === 1) {
-        if (!values.personalInfo.firstName)
-          errors['personalInfo.firstName'] = 'First name is required';
-        if (!values.personalInfo.lastName)
-          errors['personalInfo.lastName'] = 'Last name is required';
-        if (!values.personalInfo.email)
-          errors['personalInfo.email'] = 'Email is required';
-        if (!values.personalInfo.phone)
-          errors['personalInfo.phone'] = 'Phone is required';
-        if (!values.personalInfo.nationalId)
-          errors['personalInfo.nationalId'] = 'National ID is required';
-      }
-
-      if (currentStep === 2) {
-        if (!values.education.highSchool)
-          errors['education.highSchool'] = 'High school is required';
-        if (!values.education.graduationYear)
-          errors['education.graduationYear'] = 'Graduation year is required';
-        if (!values.education.gpa) errors['education.gpa'] = 'GPA is required';
-      }
-
-      if (currentStep === 3) {
-        if (!values.program.programId)
-          errors['program.programId'] = 'Program selection is required';
-      }
-
-      return errors;
-    },
-    onSubmit: values => {
-      onSubmit(values);
-    },
-  });
+    });
 
   const nextStep = () => {
     if (currentStep < totalSteps) {
@@ -107,6 +163,40 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
     }
   };
 
+  // Helper function to set nested values (handles paths like 'personalInfo.firstName')
+  const setNestedValue = useCallback(
+    (path: string, value: string | number) => {
+      const keys = path.split('.');
+      if (keys.length === 2) {
+        // For 2-level nesting like 'personalInfo.firstName', update the parent object
+        const parentKey = keys[0];
+        const childKey = keys[1];
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const parent = (values as Record<string, any>)[parentKey];
+        setValue(parentKey, { ...parent, [childKey]: value });
+      } else {
+        // For other cases, use setFieldValue
+        setFieldValue(path, value);
+      }
+    },
+    [setValue, setFieldValue, values]
+  );
+
+  // Handle change for nested field paths
+  const handleChange = useCallback(
+    (
+      e: React.ChangeEvent<
+        HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+      >
+    ) => {
+      const name = e.target.name;
+      const value =
+        e.target.type === 'number' ? Number(e.target.value) : e.target.value;
+      setNestedValue(name, value);
+    },
+    [setNestedValue]
+  );
+
   const renderStep = () => {
     switch (currentStep) {
       case 1:
@@ -119,7 +209,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                 label='First Name'
                 value={values.personalInfo.firstName}
                 onChange={handleChange}
-                error={errors['personalInfo.firstName']}
+                error={getFieldError('personalInfo.firstName')?.message.ar}
                 required
               />
               <Input
@@ -127,7 +217,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                 label='Last Name'
                 value={values.personalInfo.lastName}
                 onChange={handleChange}
-                error={errors['personalInfo.lastName']}
+                error={getFieldError('personalInfo.lastName')?.message.ar}
                 required
               />
               <Input
@@ -136,7 +226,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                 type='email'
                 value={values.personalInfo.email}
                 onChange={handleChange}
-                error={errors['personalInfo.email']}
+                error={getFieldError('personalInfo.email')?.message.ar}
                 required
               />
               <Input
@@ -144,7 +234,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                 label='Phone Number'
                 value={values.personalInfo.phone}
                 onChange={handleChange}
-                error={errors['personalInfo.phone']}
+                error={getFieldError('personalInfo.phone')?.message.ar}
                 required
               />
               <Input
@@ -152,7 +242,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                 label='National ID'
                 value={values.personalInfo.nationalId}
                 onChange={handleChange}
-                error={errors['personalInfo.nationalId']}
+                error={getFieldError('personalInfo.nationalId')?.message.ar}
                 required
               />
             </div>
@@ -171,7 +261,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                 label='High School Name'
                 value={values.education.highSchool}
                 onChange={handleChange}
-                error={errors['education.highSchool']}
+                error={getFieldError('education.highSchool')?.message.ar}
                 required
               />
               <Input
@@ -180,7 +270,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                 type='number'
                 value={values.education.graduationYear}
                 onChange={handleChange}
-                error={errors['education.graduationYear']}
+                error={getFieldError('education.graduationYear')?.message.ar}
                 required
               />
               <Input
@@ -190,7 +280,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                 step='0.01'
                 value={values.education.gpa}
                 onChange={handleChange}
-                error={errors['education.gpa']}
+                error={getFieldError('education.gpa')?.message.ar}
                 required
               />
               <Input
@@ -199,7 +289,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                 type='number'
                 value={values.education.satScore}
                 onChange={handleChange}
-                error={errors['education.satScore']}
+                error={getFieldError('education.satScore')?.message.ar}
               />
             </div>
           </div>
@@ -227,9 +317,9 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                     </option>
                   ))}
                 </select>
-                {errors['program.programId'] && (
+                {getFieldError('program.programId') && (
                   <p className='text-red-500 text-sm mt-1'>
-                    {errors['program.programId']}
+                    {getFieldError('program.programId')?.message.ar}
                   </p>
                 )}
               </div>
@@ -238,7 +328,7 @@ const AdmissionForm: React.FC<AdmissionFormProps> = ({
                 label='Specialization (Optional)'
                 value={values.program.specialization}
                 onChange={handleChange}
-                error={errors['program.specialization']}
+                error={getFieldError('program.specialization')?.message.ar}
               />
             </div>
           </div>

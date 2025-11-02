@@ -2,8 +2,6 @@
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { t } from '@lingui/macro';
-import { useLingui } from '@lingui/react';
 
 const DgaCarousel = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaCarousel),
@@ -15,8 +13,6 @@ const DgaCarouselItem = dynamic(
 );
 
 export default function ServicesSection() {
-  const { _ } = useLingui();
-
   return (
     <section className='mt-[24px] bg-[#F9FAFB] py-[40px]'>
       <h1 className='display-sm-bold text-[#161616] mb-4'>Services Section</h1>

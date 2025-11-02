@@ -5,12 +5,6 @@ import Image from 'next/image';
 import { t } from '@lingui/macro';
 import { useLingui } from '@lingui/react';
 import { useLanguage } from '@/providers/LanguageProvider';
-import { ThemeToggle } from '@/components/ui/ThemeToggle';
-
-const DgaButton = dynamic(
-  () => import('platformscode-new-react').then(m => m.DgaButton),
-  { ssr: false }
-);
 const DgaHeaderActionBtn = dynamic(
   () => import('platformscode-new-react').then(m => m.DgaHeaderActionBtn),
   { ssr: false }

@@ -1,4 +1,4 @@
-import type { ID, Timestamp, Status, LocalizedContent } from './common.types';
+import type { ID, Timestamp, LocalizedContent } from './common.types';
 
 // DGA Compliance types
 export interface DGACompliance {
@@ -199,15 +199,15 @@ export interface DGAComponentProp {
   name: string;
   type: string;
   required: boolean;
-  defaultValue?: any;
+  defaultValue?: unknown;
   description: string;
-  options?: any[];
+  options?: unknown[];
 }
 
 export interface DGAComponentVariant {
   name: string;
   description: string;
-  props: Record<string, any>;
+  props: Record<string, unknown>;
   code: string;
 }
 
@@ -270,7 +270,7 @@ export interface DGAValidationRule {
     | 'max'
     | 'pattern'
     | 'custom';
-  value?: any;
+  value?: unknown;
   message: LocalizedContent;
 }
 
@@ -292,7 +292,7 @@ export interface DGAFormOption {
 export interface DGAFormConditional {
   field: string;
   operator: 'equals' | 'not_equals' | 'contains' | 'not_contains';
-  value: any;
+  value: unknown;
   show: boolean;
 }
 
@@ -333,7 +333,7 @@ export interface DGAAnalyticsEvent {
   action: string;
   label?: string;
   value?: number;
-  metadata: Record<string, any>;
+  metadata: Record<string, unknown>;
   timestamp: Timestamp;
   userId?: ID;
   sessionId?: ID;
@@ -441,7 +441,7 @@ export interface DGAMonitoringAlert {
   severity: 'low' | 'medium' | 'high' | 'critical';
   title: string;
   description: string;
-  metrics: Record<string, any>;
+  metrics: Record<string, unknown>;
   threshold: number;
   currentValue: number;
   isResolved: boolean;
@@ -463,8 +463,8 @@ export interface DGAMonitoringWidget {
   id: ID;
   type: 'chart' | 'metric' | 'table' | 'alert';
   title: string;
-  data: any;
-  config: Record<string, any>;
+  data: unknown;
+  config: Record<string, unknown>;
   position: {
     x: number;
     y: number;

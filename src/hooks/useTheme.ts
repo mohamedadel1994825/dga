@@ -12,6 +12,7 @@ export const useTheme = () => {
   // Helper functions for common theme operations
   const getColor = (path: string) => {
     const keys = path.split('.');
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     let value: any = theme.colors;
 
     for (const key of keys) {

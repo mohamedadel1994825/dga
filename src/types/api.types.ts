@@ -1,16 +1,16 @@
-import type { ID, Timestamp, Status } from './common.types';
+import type { ID, Timestamp } from './common.types';
 
 // API Request/Response types
-export interface ApiRequest<T = any> {
+export interface ApiRequest<T = unknown> {
   method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   url: string;
   headers?: Record<string, string>;
-  params?: Record<string, any>;
+  params?: Record<string, unknown>;
   data?: T;
   timeout?: number;
 }
 
-export interface ApiResponse<T = any> {
+export interface ApiResponse<T = unknown> {
   success: boolean;
   data?: T;
   message?: string;
@@ -23,7 +23,7 @@ export interface ApiError {
   code: string;
   message: string;
   field?: string;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   timestamp: Timestamp;
 }
 
@@ -90,7 +90,7 @@ export interface FileUploadRequest {
   file: File;
   type: 'image' | 'document' | 'avatar' | 'gallery';
   category?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
 }
 
 export interface FileUploadResponse {
@@ -111,19 +111,19 @@ export interface FileUploadResponse {
 export interface SearchRequest {
   query: string;
   type?: 'all' | 'news' | 'events' | 'people' | 'academics';
-  filters?: Record<string, any>;
+  filters?: Record<string, unknown>;
   page?: number;
   limit?: number;
   sortBy?: string;
   order?: 'asc' | 'desc';
 }
 
-export interface SearchResponse<T = any> {
+export interface SearchResponse<T = unknown> {
   results: T[];
   totalResults: number;
   searchTime: number;
   suggestions?: string[];
-  filters?: Record<string, any>;
+  filters?: Record<string, unknown>;
   pagination: {
     page: number;
     limit: number;
@@ -140,7 +140,7 @@ export interface AnalyticsEvent {
   action: string;
   label?: string;
   value?: number;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   timestamp: Timestamp;
   userId?: ID;
   sessionId?: ID;
@@ -170,7 +170,7 @@ export interface NotificationRequest {
   isImportant?: boolean;
   actionUrl?: string;
   actionText?: string;
-  metadata?: Record<string, any>;
+  metadata?: Record<string, unknown>;
   scheduledAt?: Timestamp;
 }
 
@@ -189,7 +189,7 @@ export interface AuditLogEntry {
   action: string;
   resource: string;
   resourceId?: ID;
-  details: Record<string, any>;
+  details: Record<string, unknown>;
   ipAddress: string;
   userAgent: string;
   timestamp: Timestamp;
@@ -199,7 +199,7 @@ export interface AuditLogRequest {
   action: string;
   resource: string;
   resourceId?: ID;
-  details: Record<string, any>;
+  details: Record<string, unknown>;
 }
 
 export interface AuditLogResponse {
@@ -283,7 +283,7 @@ export interface WebhookEvent {
   id: ID;
   webhookId: ID;
   event: string;
-  payload: Record<string, any>;
+  payload: Record<string, unknown>;
   status: 'pending' | 'sent' | 'failed';
   attempts: number;
   maxAttempts: number;
@@ -311,17 +311,17 @@ export interface ApiClientConfig {
 export interface ApiException extends Error {
   code: string;
   status: number;
-  details?: Record<string, any>;
+  details?: Record<string, unknown>;
   timestamp: Timestamp;
 }
 
 // Request/Response interceptors
 export interface RequestInterceptor {
   onRequest: (config: ApiRequest) => ApiRequest | Promise<ApiRequest>;
-  onRequestError: (error: any) => any;
+  onRequestError: (error: unknown) => unknown;
 }
 
 export interface ResponseInterceptor {
   onResponse: (response: ApiResponse) => ApiResponse | Promise<ApiResponse>;
-  onResponseError: (error: any) => any;
+  onResponseError: (error: unknown) => unknown;
 }
