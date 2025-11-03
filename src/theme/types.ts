@@ -69,10 +69,11 @@ export type ThemeColorPath =
   | `text.${keyof ColorToken['text']}`
   | `border.${keyof ColorToken['border']}`;
 
-export type ThemeSpacingValue = Spacing | SpacingScale;
-export type ThemeBorderRadiusValue = BorderRadius | BorderRadiusScale;
-export type ThemeShadowValue = Shadow | ShadowScale;
+export type ThemeSpacingValue = Spacing ;
+export type ThemeBorderRadiusValue = BorderRadius ;
+export type ThemeShadowValue = Shadow ;
 export type ThemeDurationValue = Duration;
 export type ThemeEasingValue = Easing;
 export type ThemeAnimationValue = Animation;
-export type ThemeZIndexValue = ZIndex | ComponentZIndex;
+export type ThemeZIndexValue = ZIndex ;
+export type ThemeComponentZIndexValue = ComponentZIndex;
