@@ -11,9 +11,9 @@ import type {
   LetterSpacing,
   FontFamily,
 } from './tokens/typography';
-import type { Spacing, SpacingScale } from './tokens/spacing';
-import type { BorderRadius, BorderRadiusScale } from './tokens/borderRadius';
-import type { Shadow, ShadowScale } from './tokens/shadows';
+import type { Spacing } from './tokens/spacing';
+import type { BorderRadius } from './tokens/borderRadius';
+import type { Shadow } from './tokens/shadows';
 import type { Duration, Easing, Animation } from './tokens/animations';
 import type { ZIndex, ComponentZIndex } from './tokens/zIndex';
 
@@ -30,15 +30,12 @@ export interface ThemeTokens {
   };
   spacing: {
     values: Record<Spacing, string>;
-    scale: Record<SpacingScale, string>;
   };
   borderRadius: {
-    values: Record<BorderRadius, string>;
-    scale: Record<BorderRadiusScale, string>;
+    values: Record<BorderRadius, string>; 
   };
   shadows: {
     values: Record<Shadow, string>;
-    scale: Record<ShadowScale, string>;
   };
 }
 

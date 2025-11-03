@@ -63,9 +63,12 @@ export const letterSpacings = {
   widest: '0.1em',
 } as const;
 
+const baseSans = ['var(--font-arabic)', 'system-ui', 'sans-serif'] as string[];
+export const fontFamily = baseSans.join(', ');
+
+// Single primary family 'sans' only
 export const fontFamilies = {
-  display: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'] as string[],
-  text: ['IBM Plex Sans Arabic', 'system-ui', 'sans-serif'] as string[],
+  sans: baseSans,
 } as const;
 
 // Font styles

@@ -23,5 +23,10 @@ export const borderRadiusScale = {
   full: borderRadius.full, // 9999px
 } as const;
 
+// Component-specific radius
+export const componentBorderRadius = {
+  card: borderRadius['2xl'], // 16px
+} as const;
+
 export type BorderRadius = keyof typeof borderRadius;
 export type BorderRadiusScale = keyof typeof borderRadiusScale;

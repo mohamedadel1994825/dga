@@ -26,13 +26,5 @@ export const shadows = {
 } as const;
 
 // Semantic shadow scale
-export const shadowScale = {
-  sm: shadows.sm,
-  md: shadows.md,
-  lg: shadows.lg,
-  xl: shadows.xl,
-  '2xl': shadows['2xl'],
-} as const;
 
 export type Shadow = keyof typeof shadows;
-export type ShadowScale = keyof typeof shadowScale;

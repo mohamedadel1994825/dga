@@ -7,12 +7,18 @@ import {
   letterSpacings,
   fontFamilies,
 } from './src/theme/tokens/typography';
-import { spacing, spacingScale } from './src/theme/tokens/spacing';
+import { spacing } from './src/theme/tokens/spacing';
 import {
   borderRadius,
-  borderRadiusScale,
+  componentBorderRadius,
 } from './src/theme/tokens/borderRadius';
-import { shadows, shadowScale } from './src/theme/tokens/shadows';
+import { shadows } from './src/theme/tokens/shadows';
+import { containers, widths, maxWidths } from './src/theme/tokens/layout';
+import {
+  zIndex as zIndexTokens,
+  componentZIndex,
+} from './src/theme/tokens/zIndex';
+import { durations, easings } from './src/theme/tokens/animations';
 
 const config: Config = {
   content: [
@@ -154,23 +160,97 @@ const config: Config = {
       },
       fontFamily: {
         sans: fontFamilies.sans,
-        mono: fontFamilies.mono,
       },
       fontWeight: fontWeights,
       fontSize: fontSizes,
       lineHeight: lineHeights,
       letterSpacing: letterSpacings,
+      zIndex: {
+        ...zIndexTokens,
+        ...componentZIndex,
+      },
+      transitionDuration: {
+        ...durations,
+      },
+      transitionTimingFunction: {
+        ...easings,
+      },
+      keyframes: {
+        fadeIn: {
+          from: { opacity: '0' },
+          to: { opacity: '1' },
+        },
+        fadeOut: {
+          from: { opacity: '1' },
+          to: { opacity: '0' },
+        },
+        slideInUp: {
+          from: { transform: 'translateY(100%)', opacity: '0' },
+          to: { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideInDown: {
+          from: { transform: 'translateY(-100%)', opacity: '0' },
+          to: { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideInLeft: {
+          from: { transform: 'translateX(-100%)', opacity: '0' },
+          to: { transform: 'translateX(0)', opacity: '1' },
+        },
+        slideInRight: {
+          from: { transform: 'translateX(100%)', opacity: '0' },
+          to: { transform: 'translateX(0)', opacity: '1' },
+        },
+        scaleIn: {
+          from: { transform: 'scale(0)', opacity: '0' },
+          to: { transform: 'scale(1)', opacity: '1' },
+        },
+        scaleOut: {
+          from: { transform: 'scale(1)', opacity: '1' },
+          to: { transform: 'scale(0)', opacity: '0' },
+        },
+        bounce: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        pulse: {
+          '0%, 100%': { transform: 'scale(1)' },
+          '50%': { transform: 'scale(1.05)' },
+        },
+        shake: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '10%, 30%, 50%, 70%, 90%': { transform: 'translateX(-10px)' },
+          '20%, 40%, 60%, 80%': { transform: 'translateX(10px)' },
+        },
+      },
+      animation: {
+        'fade-in': `fadeIn ${durations.normal} ${easings.smooth} both`,
+        'fade-out': `fadeOut ${durations.normal} ${easings.smooth} both`,
+        'slide-in-up': `slideInUp ${durations.normal} ${easings.smooth} both`,
+        'slide-in-down': `slideInDown ${durations.normal} ${easings.smooth} both`,
+        'slide-in-left': `slideInLeft ${durations.normal} ${easings.smooth} both`,
+        'slide-in-right': `slideInRight ${durations.normal} ${easings.smooth} both`,
+        'scale-in': `scaleIn ${durations.normal} ${easings.smooth} both`,
+        'scale-out': `scaleOut ${durations.normal} ${easings.smooth} both`,
+        'bounce-soft': `bounce ${durations.slow} ${easings.spring} infinite`,
+        'pulse-soft': `pulse ${durations.slow} ${easings.smooth} infinite`,
+        shake: `shake ${durations.fast} ${easings.sharp}`,
+      },
       spacing: {
         ...spacing,
-        ...spacingScale,
+      },
+      width: {
+        ...widths,
+      },
+      maxWidth: {
+        container: containers.maxWidthDesktop,
+        paragraph: maxWidths.paragraph,
       },
       borderRadius: {
         ...borderRadius,
-        ...borderRadiusScale,
+        ...componentBorderRadius,
       },
       boxShadow: {
         ...shadows,
-        ...shadowScale,
       },
     },
   },

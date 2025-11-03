@@ -63,7 +63,7 @@ export {
   textDecoration,
   textTransform,
 } from './tokens/typography';
-export { spacing, spacingScale, componentSpacing } from './tokens/spacing';
+export { spacing, spacingScale } from './tokens/spacing';
 export { borderRadius, borderRadiusScale } from './tokens/borderRadius';
 export { shadows, shadowScale } from './tokens/shadows';
 export {

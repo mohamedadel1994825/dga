@@ -12,9 +12,9 @@ import {
   letterSpacings,
   fontFamilies,
 } from './tokens/typography';
-import { spacing, spacingScale } from './tokens/spacing';
+import { spacing } from './tokens/spacing';
 import { borderRadius, borderRadiusScale } from './tokens/borderRadius';
-import { shadows, shadowScale } from './tokens/shadows';
+import { shadows } from './tokens/shadows';
 import type { ThemeTokens, ThemeMode } from './types';
 
 export const lightTheme: ThemeTokens = {
@@ -28,15 +28,12 @@ export const lightTheme: ThemeTokens = {
   },
   spacing: {
     values: spacing,
-    scale: spacingScale,
   },
   borderRadius: {
     values: borderRadius,
-    scale: borderRadiusScale,
   },
   shadows: {
     values: shadows,
-    scale: shadowScale,
   },
 };
 
@@ -51,15 +48,12 @@ export const darkTheme: ThemeTokens = {
   },
   spacing: {
     values: spacing,
-    scale: spacingScale,
   },
   borderRadius: {
     values: borderRadius,
-    scale: borderRadiusScale,
   },
   shadows: {
     values: shadows,
-    scale: shadowScale,
   },
 };
 

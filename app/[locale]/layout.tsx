@@ -20,8 +20,8 @@ const Geist_Mono_Font = Geist_Mono({
 
 const IBM_Arabic = IBM_Plex_Sans_Arabic({
   variable: '--font-arabic',
-  subsets: ['arabic'],
-  weight: ['400', '600', '700'],
+  subsets: ['arabic', 'latin'],
+  weight: ['400', '500', '600', '700'],
 });
 
 // Supported locales
